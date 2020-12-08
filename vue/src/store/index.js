@@ -11,6 +11,8 @@ Vue.use(Vuex)
  */
 const currentToken = localStorage.getItem('token')
 const currentUser = JSON.parse(localStorage.getItem('user'));
+const initialPants=0;
+const initialParticipants = [];
 
 if(currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
@@ -19,7 +21,10 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
-    user: currentUser || {}
+    user: currentUser || {},
+    numberOfParticipants: initialPants,
+    Participants: initialParticipants,
+
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -37,6 +42,17 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    UPDATE_PARTICIPANTS(state,numberOfPants){
+
+      for(let i = 0; i < numberOfPants ;i++){
+
+        let name = "Team "+ (i+1);
+        
+        state.Participants.push(name);
+      }
+      
+
     }
   }
 })
