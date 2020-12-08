@@ -1,5 +1,5 @@
 <template>
-    <form action="">
+    <form action="" >
       <div>
         <label for="Title">Title</label>
         <input type="text" placeholder="Enter Title">
@@ -11,8 +11,9 @@
             {{option}}
           </option> 
         </select>
-
-        
+      </div>
+      <div>
+        <button type="submit" @click.prevent="updatePants"/>
       </div>
     </form>
 </template>
@@ -23,7 +24,13 @@ export default {
   data() {
     return {
     selected: '',
-    options: [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+    options: [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],
+    
+    }
+  },
+  methods:{
+    updatePants(){
+      this.$store.commit('UPDATE_PARTICIPANTS',this.selected )
     }
   }
 
