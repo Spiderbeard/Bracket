@@ -42,6 +42,7 @@
           </div>
           <br />
         </div>
+        <button v-on:click="shuffleStore">Randomize</button>
       </div>
     </div>
   </div>
@@ -110,6 +111,13 @@ export default {
         return false;
       }
       return true;
+    },
+    shuffle(array) {
+      array.sort(() => Math.random() - 0.5);
+    },
+    shuffleStore() {
+      this.shuffle(this.$store.state.Participants);
+      this.shuffle(this.$store.state.Participants);
     },
   },
 };
