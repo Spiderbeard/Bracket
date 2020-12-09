@@ -2,19 +2,15 @@
   <div class="home">
     <h1>Home</h1>
     <p>You must be authenticated to see this</p>
-    <sidenav/>
-    <create-bracket/>
+    <sidenav />
   </div>
 </template>
 
 <script>
-import sidenav from "@/components/sidenav"
-import CreateBracket from '@/components/CreateBracket'
-
+import sidenav from "@/components/sidenav";
 
 export default {
-  components: { sidenav,CreateBracket },
-  name: "home"
+  components: { sidenav },
+  name: "home",
 };
-
 </script>
