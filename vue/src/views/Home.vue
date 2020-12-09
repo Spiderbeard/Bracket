@@ -12,5 +12,10 @@ import sidenav from "@/components/sidenav";
 export default {
   components: { sidenav },
   name: "home",
+
+  created(){
+    this.$store.commit("UPDATE_PARTICIPANTS",0)
+  },
+                                
 };
 </script>

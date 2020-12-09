@@ -3,20 +3,20 @@
     <ul>
       <li
         v-for="participant in this.$store.state.Participants"
-        v-bind:key="participant"
+        v-bind:key="participant.id"
       >
-        {{ participant }}
+        {{ participant.id }}
       </li>
       <!-- TODO need to keep title of the bracket from the form , create form object , all we did was call participants pants, also JESS doesnt like the variable name, racheal loves it though nick and joe are the same page    -->
     </ul>
 
     <div>
       <div class="headers">
-        <h3 v-for="Round in this.getRoundTitles" v-bind:key="Round">
+        <h3 v-for="Round in this.getRoundTitles" v-bind:key="Round" v-bind:class="{}">
           {{ Round }}
         </h3>
       </div>
-      <div class="matches">
+      <div class="matches round-1">
         <div
           class="match"
           v-for="(match, index) in this.constuctMatches"
@@ -25,17 +25,18 @@
           <div class="team-top">
             <input
               type="text"
-              :placeholder="[[$store.state.Participants[index]]]"
+              :placeholder="[[$store.state.Participants[index].id]]"
             />
           </div>
           <div v-if="isLastOddElement(index)" class="team-bottom">
             <input
+            
               type="text"
               :placeholder="[
                 [
                   $store.state.Participants[
                     $store.state.Participants.length - index - 1
-                  ],
+                  ].id,
                 ],
               ]"
             />
@@ -43,6 +44,11 @@
           <br />
         </div>
         <button v-on:click="shuffleStore">Randomize</button>
+      </div>
+      <div class="matches round-2">
+        <div>
+
+        </div>
       </div>
     </div>
   </div>
@@ -63,7 +69,7 @@ export default {
         output = 1;
       } else if (numberOfPants == 4 || numberOfPants == 3) {
         output = 2;
-      } else if (numberOfPants > 4 && numberOfPants < 10) {
+      } else if (numberOfPants > 4 && numberOfPants < 9) {
         output = 3;
       } else {
         output = 4;
@@ -124,7 +130,13 @@ export default {
 </script>
 
 <style>
-.match:last-child .hide-this {
+/* .match:last-child .hide-this {
   display: none;
+} */
+
+.headers> h3 {
+  display: inline-block;
+  width:25%;
+  
 }
 </style>
