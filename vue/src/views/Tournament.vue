@@ -1,15 +1,13 @@
 <template>
-    <sidenav/>
+  <create-bracket />
 </template>
 
 <script>
-import sidenav from "@/components/sidenav";
-export default {
-  components: {sidenav}
+import CreateBracket from "@/components/CreateBracket";
 
+export default {
+  components: { CreateBracket },
 };
 </script>
 
-<style>
-
-</style>
+<style></style>
