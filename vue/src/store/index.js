@@ -44,15 +44,25 @@ export default new Vuex.Store({
       axios.defaults.headers.common = {};
     },
     UPDATE_PARTICIPANTS(state,numberOfPants){
+      if( numberOfPants == 0){
+        state.Participants = []; 
+      } else {
+        for(let i = 0; i < numberOfPants ; i++){
 
-      for(let i = 0; i < numberOfPants ;i++){
 
-        let name = "Team "+ (i+1);
-        
-        state.Participants.push(name);
+          let Team = {
+            id: "Team "+ (i+1),
+            name:"",
+
+
+          };
+                
+          
+
+
+          state.Participants.push(Team);
+        }
       }
-      
-
-    }
+    },
   }
 })
