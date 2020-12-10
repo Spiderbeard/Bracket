@@ -1,15 +1,6 @@
 <template>
   <div>
-    <ul>
-      <li
-        v-for="participant in this.$store.state.Participants"
-        v-bind:key="participant.id"
-      >
-        {{ participant.id }}
-      </li>
-      <!-- TODO need to keep title of the bracket from the form , create form object , all we did was call participants pants, also JESS doesnt like the variable name, racheal loves it though nick and joe are the same page    -->
-    </ul>
-
+  
     <div>
       <div class="headers">
         <h3 v-for="Round in this.getRoundTitles" v-bind:key="Round" v-bind:class="{}">
