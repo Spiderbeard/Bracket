@@ -9,7 +9,7 @@
               <span class="top-row col-sm">CHAMPION</span>
             </div>
         </div>
-      <div class = "bracket-16 container  d-flex justify-content-between " >
+      <div class = "bracket-16 container  d-flex  " >
           
             <div class = "Round flex-column d-flex align-center">
                 <div
@@ -39,9 +39,9 @@
            <br/>
             </div>
             </div>
-            <div class = "Round d-flex flex-sm-column  align-items-center justify-content-around y " >   
+            <div class = "Round d-flex flex-sm-column  justify-content-around   ml-5" >   
                 
-                    <div class= "match ">
+                    <div class= "match border border-dark">
                         <div class = "team-top">
                             greg
                         </div>
@@ -83,9 +83,9 @@
                     </div>
                 
             </div>
-            
-            <div class= "Round  d-flex align-items-around">
-                <div class="d-flex flex-column align-content-around">
+            <div class="d-flex w-75 justify-content-around">
+            <div class= "Round3  d-flex align-items-around ">
+                <div class="d-flex flex-sm-column  justify-content-around ml-5">
                     <div class= "match">
                         <div class = "team-top">
                             greg
@@ -108,7 +108,7 @@
                 </div>
             </div>
             
-            <div class ="Round  d-flex align-items-center">   
+            <div class ="Round  d-flex align-items-center mr-5">   
               <div class= "match">
                     <div class = "team-top">
                         nick K
@@ -119,9 +119,10 @@
                     </div>
                 </div>  
             </div>
-            <div class ="champion d-flex align-items-center">
+            <div class ="champion d-flex align-items-center pr-3">
                 NICK K 
             </div>
+          </div>
           </div>
       </div>
   
