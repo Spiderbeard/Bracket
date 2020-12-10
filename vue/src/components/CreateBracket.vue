@@ -24,14 +24,14 @@
         >
           <div class="team-top">
             <input
-              type="text"
+              type="text" v-model="team[index]"
               :placeholder="[[$store.state.Participants[index].id]]"
             />
           </div>
           <div v-if="isLastOddElement(index)" class="team-bottom">
             <input
             
-              type="text"
+              type="text" v-model="team[$store.state.Participants.length - index - 1]"
               :placeholder="[
                 [
                   $store.state.Participants[
@@ -44,6 +44,7 @@
           <br />
         </div>
         <button v-on:click="shuffleStore">Randomize</button>
+        <button>Add Teams</button>
       </div>
       <div class="matches round-2">
         <div>
@@ -59,6 +60,7 @@ export default {
   data() {
     return {
       numberOfRounds: this.getNumberOfRounds,
+      team: []
     };
   },
   computed: {
@@ -122,9 +124,12 @@ export default {
       array.sort(() => Math.random() - 0.5);
     },
     shuffleStore() {
-      this.shuffle(this.$store.state.Participants);
-      this.shuffle(this.$store.state.Participants);
+      this.shuffle(this.team);
+      this.shuffle(this.team);
     },
+    addTeams(){
+      
+    }
   },
 };
 </script>
