@@ -35,8 +35,7 @@
           </div>
           <br />
         </div>
-        <button v-on:click="shuffleStore">Randomize</button>
-        <button>Add Teams</button>
+        
       </div>
       <div v-if="someRandomMethod() > 1" class="round-2">
         <div  class="matches"   v-for="(match,index) in this.round2Matches" v-bind:key="index">        
@@ -51,12 +50,35 @@
         </div>
       </div>      
       <div v-if="someRandomMethod() > 2" class="matches round-3">
-        <h3>{{this.round3Matches.length}}</h3>
+        <div  class="matches"   v-for="(match,index) in this.round3Matches" v-bind:key="index">        
+            <div class= "match border border-dark" >
+                <div class = "team-top border-bottom border-dark">
+                  <h3>NIck RD3 </h3>
+                </div>                       
+                <div class = "team-botom ">
+                  <h3>Jess RD3 </h3>
+                </div>
+            </div>   
+        </div>
       </div>
-      <div v-if="someRandomMethod() > 3 && this.$store.state.Participants.length !=8 " class="matches round-4">
-        <h3>{{this.round4Matches.length}}</h3>
+      <div v-if="someRandomMethod() > 3  " class="matches round-4">
+        <div  class="matches"   v-for="(match,index) in this.round4Matches" v-bind:key="index">        
+            <div class= "match border border-dark" >
+                <div class = "team-top border-bottom border-dark">
+                  <h3>NIck RD3 </h3>
+                </div>                       
+                <div class = "team-botom ">
+                  <h3>Jess RD3 </h3>
+                </div>
+            </div>   
+        </div>
+      </div>
+      <div class= "CHAMPION">
+        <div class="border border-dark"><h1>WInner winner chicken dinner</h1></div>
       </div>
     </div>
+    <button v-on:click="shuffleStore">Randomize</button>
+    <button>Add Teams</button>
   </div>
 </template>
 
