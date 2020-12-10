@@ -2,10 +2,11 @@
   <div>
   
     <div>
-      <div class="headers">
-        <h3 v-for="Round in this.getRoundTitles" v-bind:key="Round" v-bind:class="{}">
+      <div class="headers d-flex flex-row justify-content-between pl-3 pr-3">
+        <h3 v-for="Round in this.getRoundTitles" v-bind:key="Round" v-bind:class="{}" >
           {{ Round }}
         </h3>
+        <h3>CHAMPION</h3>
       </div>
       <div class="matches round-1">
         <div
@@ -37,10 +38,23 @@
         <button v-on:click="shuffleStore">Randomize</button>
         <button>Add Teams</button>
       </div>
-      <div class="matches round-2">
-        <div>
-
+      <div v-if="someRandomMethod() > 1" class="round-2">
+        <div  class="matches"   v-for="(match,index) in this.round2Matches" v-bind:key="index">        
+            <div class= "match border border-dark" >
+                <div class = "team-top border-bottom border-dark">
+                  <h3>NIck </h3>
+                </div>                       
+                <div class = "team-botom ">
+                  <h3>Jess</h3>
+                </div>
+            </div>   
         </div>
+      </div>      
+      <div v-if="someRandomMethod() > 2" class="matches round-3">
+        <h3>{{this.round3Matches.length}}</h3>
+      </div>
+      <div v-if="someRandomMethod() > 3 && this.$store.state.Participants.length !=8 " class="matches round-4">
+        <h3>{{this.round4Matches.length}}</h3>
       </div>
     </div>
   </div>
@@ -48,10 +62,16 @@
 
 <script>
 export default {
+  created(){
+    this.nextRoundMatches();
+  },
   data() {
     return {
       numberOfRounds: this.getNumberOfRounds,
-      team: []
+      team: [],
+      round2Matches:[],
+      round3Matches:[],
+      round4Matches:[]
     };
   },
   computed: {
@@ -93,14 +113,7 @@ export default {
       return this.$store.state.Participants.length % 2 == 1 ? true : false;
     },
     
-    // nextRoundMatches(){
-    //   // let holderArray = this.constuctMatches();
-    //   // if(holderArray.length === 8){
-    //   //   let roundTwoMatches = holderArray.length /2;
-
-    //   // }
-      
-    // }
+    
   },
   methods: {
     isLastOddElement(index) {
@@ -115,9 +128,57 @@ export default {
     shuffleStore() {
       this.shuffle(this.team);
       this.shuffle(this.team);
+      this.shuffle(this.$store.state.Participants);
     },
     addTeams(){
       
+    },
+    someRandomMethod(){
+      let output=0;
+      let length = this.$store.state.Participants.length;
+      if(length % 2 === 1){
+        length--;
+      }
+      do{
+          length/=2;
+          output++;
+      }while (length >=1)
+      return output;
+    },
+    nextRoundMatches(){
+    let fullLength= this.$store.state.Participants.length;
+     if(fullLength>=13){
+      this.round2Matches.push('','','','');
+     }else if (fullLength<13 && fullLength>=9){
+      this.round2Matches.push('','','');
+     }else if(fullLength<9 && fullLength>=5){
+      this.round2Matches.push('','');
+     }else if(fullLength<5 && fullLength>=3){
+      this.round2Matches.push('');
+     }
+      
+    if( fullLength>= 5 && fullLength<=8){
+      this.round3Matches.push('');
+    }
+      
+    if(fullLength>=9){
+      this.round4Matches.push('');
+      this.round3Matches.push('','');
+    }
+
+      return length;
+    },
+    ifOddMinusOne(length){
+      if(length % 2 ===1){
+        length--;
+      }
+      return length;
+    },
+    IfOddPlusOne(length){
+      if(length%2 ===1){
+        length++;
+      }
+      return length;
     }
   },
 };
@@ -128,9 +189,5 @@ export default {
   display: none;
 } */
 
-.headers> h3 {
-  display: inline-block;
-  width:25%;
-  
-}
+
 </style>

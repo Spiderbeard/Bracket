@@ -9,24 +9,28 @@
               <span class="top-row col-sm">CHAMPION</span>
             </div>
         </div>
-      <div class = "bracket-16 container  d-flex  " >
+      <div class = "bracket-16 container d-flex " >
           
-            <div class = "Round flex-column d-flex align-center">
+            <div class = "Round flex-column d-flex align-center ">
                 <div
-            class="match col-sm"
+            class="match w-100 "
             v-for="(match, index) in this.constuctMatches"
             v-bind:key="match.index"
             >
-            <div class="team-top">
+            <div class="team-top w-75">
                 <input
+                class="w-50"
                 type="text" v-model="team[index]"
+                
                 :placeholder="[[$store.state.Participants[index].id]]"
                 />
             </div>
-            <div v-if="isLastOddElement(index)" class="team-bottom">
+            <div v-if="isLastOddElement(index)" class="team-bottom w-75">
                 <input
                 
-                type="text" v-model="team[$store.state.Participants.length - index - 1]"
+                type="text" 
+                class="w-50"
+                v-model="team[$store.state.Participants.length - index - 1]"
                 :placeholder="[
                     [
                     $store.state.Participants[
@@ -39,74 +43,66 @@
            <br/>
             </div>
             </div>
-            <div class = "Round d-flex flex-sm-column  justify-content-around   ml-5" >   
-                
+            <div class = "Round d-flex flex-sm-column  justify-content-around ml-5  " >                   
                     <div class= "match border border-dark">
-                        <div class = "team-top">
+                        <div class = "team-top border-bottom border-dark">
                             greg
-                        </div>
-                        
-                        <div class = "team-botom">
+                        </div>                       
+                        <div class = "team-botom ">
                             jim
                         </div>
-                    </div>
-                    
-                    <div class= "match ">
-                        <div class = "team-top">
+                    </div>               
+                    <div class= "match border border-dark">
+                        <div class = "team-top border-bottom border-dark">
                             joe
-                        </div>
-                        
-                        <div class = "team-botom">
+                        </div>                       
+                        <div class = "team-botom ">
                             george
                         </div>
-                    </div>
-                    
-                    
-                    <div class= "match ">
-                        <div class = "team-top">
+                    </div>                    
+                    <div class= "match border border-dark">
+                        <div class = "team-top border-bottom border-dark">
                             nick
                         </div>
                         
-                        <div class = "team-botom">
+                        <div class = "team-botom ">
                             jess
                         </div>
-                    </div>
-                    
-                    <div class= "match ">
-                        <div class = "team-top">
+                    </div>                   
+                    <div class= "match border border-dark">
+                        <div class = "team-top border-bottom border-dark">
                             rachel
                         </div>
                         
-                        <div class = "team-botom">
+                        <div class = "team-botom ">
                             nick
                         </div>
-                    </div>
-                
+                    </div>                
             </div>
             <div class="d-flex w-75 justify-content-around">
-            <div class= "Round3  d-flex align-items-around ">
-                <div class="d-flex flex-sm-column  justify-content-around ml-5">
-                    <div class= "match">
-                        <div class = "team-top">
-                            greg
-                        </div>
-                        
-                        <div class = "team-botom">
-                            george
-                        </div>
-                    </div>
-                    
-                    <div class= "match">
-                        <div class = "team-top">
-                            nick C
-                        </div>
-                        
-                        <div class = "team-botom">
-                            nick
-                        </div>
-                    </div>
-                </div>
-            </div>
+              <div class= "Round3  d-flex align-items-around ml-5">
+                  <div class="d-flex flex-sm-column  justify-content-around ml-5">
+                      <div class= "match">
+                          <div class = "team-top">
+                              greg
+                          </div>
+                          
+                          <div class = "team-botom">
+                              george
+                          </div>
+                      </div>
+                      
+                      <div class= "match">
+                          <div class = "team-top">
+                              nick C
+                          </div>
+                          
+                          <div class = "team-botom">
+                              nick
+                          </div>
+                      </div>
+                  </div>
+              </div>
             
             <div class ="Round  d-flex align-items-center mr-5">   
               <div class= "match">
