@@ -80,17 +80,11 @@ export default {
       let output = [];
       let matchUp = {};
       let length = this.$store.state.Participants.length;
-
-      // if( length % 2 != 0 ){
-      //     length--;
-      // }
       length /= 2;
       for (let i = 0; i < length; i++) {
         output.push(matchUp);
       }
-      // if(length % 2 !=0){
-      //
-      // }
+      
 
       return output;
     },
@@ -98,10 +92,14 @@ export default {
     hasOddPants() {
       return this.$store.state.Participants.length % 2 == 1 ? true : false;
     },
-    // ,
-    // addHideMe(){
-    //     let output = false;
-    //     if(this.hasOddPants && )
+    
+    // nextRoundMatches(){
+    //   // let holderArray = this.constuctMatches();
+    //   // if(holderArray.length === 8){
+    //   //   let roundTwoMatches = holderArray.length /2;
+
+    //   // }
+      
     // }
   },
   methods: {
