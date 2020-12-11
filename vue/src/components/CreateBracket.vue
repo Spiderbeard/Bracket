@@ -24,7 +24,7 @@
                  -->
                     <span>
                       <div v-show ="teamsArray[index].edit == false">
-                        <label @click ="teamsArray[index].edit = true"> {{teamsArray[index].id}} </label>
+                        <label @click ="teamsArray[index].edit = true"> {{teamsArray[index].name==''? teamsArray[index].id :teamsArray[index].name}} </label>
                       </div>
                       <input v-show ="teamsArray[index].edit == true" v-model="teamsArray[index].name"
                       v-on:blur="teamsArray[index].edit=false; $emit('update')"
@@ -48,7 +48,7 @@
                 -->
                  <span>
                     <div v-show ="teamsArray[teamsArray.length - index - 1].edit == false">
-                      <label @click ="teamsArray[teamsArray.length - index - 1].edit = true"> {{teamsArray[teamsArray.length - index - 1].id}} </label>
+                      <label @click ="teamsArray[teamsArray.length - index - 1].edit = true"> {{teamsArray[teamsArray.length - index - 1].name == '' ? teamsArray[teamsArray.length - index - 1].id : teamsArray[teamsArray.length - index - 1].name }} </label>
                     </div>
                     <input v-show ="teamsArray[teamsArray.length - index - 1].edit == true" v-model="teamsArray[teamsArray.length - index - 1].name"
                     v-on:blur="teamsArray[teamsArray.length- index - 1].edit=false; $emit('update')"
@@ -56,7 +56,7 @@
                  </span>
 
               </div>
-              <br />
+              
             </div>
             
           </div>
@@ -71,10 +71,10 @@
             <div  class="matches w-100"   v-for="(match,index) in this.round2Matches" v-bind:key="index">        
                 <div class= "match border border-dark w-100 " >
                     <div class = "team-top border-bottom border-dark ">
-                      <span>Winner of Match{{index + 1}}</span>
+                      <span>Winner of Match {{index + 1 + index}}</span>
                     </div>                       
-                    <div v-if="isLastOddElement(index)" class = "team-botom ">
-                      <span>Winner of Match {{index + 2}}</span>
+                    <div  class = "team-botom ">
+                      <span v-if="round2Bys(index)">Winner of Match {{index + 2 + index}}</span>
                     </div>
                 </div>   
             </div>
@@ -93,7 +93,7 @@
                       <span>NIck RD3 </span>
                     </div>                       
                     <div class = "team-botom ">
-                      <span>Jess RD3 </span>
+                      <span v-if="round3Bys(index)">Jess RD3 </span>
                     </div>
                 </div>   
             </div>
@@ -112,7 +112,7 @@
                       <span> Nick RD4 </span>
                     </div>                       
                     <div class = "team-botom ">
-                      <span>Jess RD4 </span>
+                      <span >Jess RD4 </span>
                     </div>
                 </div>   
             </div>
@@ -153,6 +153,7 @@ export default {
       round4Matches:[],
       teamsArray: this.$store.state.Participants,
       editedTodo: null,
+      whatever: false,
 
     };
   },
@@ -204,6 +205,54 @@ export default {
         return false;
       }
       return true;
+    },
+    // nextRoundOddElement(index,array){
+    //   if( array.length == 1 ){
+    //     return true;
+    //   }else {
+    //     if (this.roundTwoAndRoundOneIsOdd() && index === array.length - 1) {
+        
+    //       return false;
+
+    //     }
+    //     return true;
+    //   }
+
+
+        
+      
+    // },
+    // roundTwoAndRoundOneIsOdd(){
+    //   if( ((this.constuctMatches.length / 2) % 2 != 0) && ( this.round2Matches % 2  !=0  )){ 
+    //     return true;
+    //   }else {
+    //     return false;
+    //   }
+    // },
+    // iDontKnow(){
+    //   if((this.constuctMatches.length/2)%2 ===1){
+    //     return false 
+    //   }else {
+    //     if(this.round2Matches%2 !=0 ){
+    //       return true;
+    //     }else {
+    //       return false 
+    //     }
+    //   }
+    // },
+    round2Bys(index){
+
+      if((this.teamsArray.length === 5||this.teamsArray.length === 6||this.teamsArray.length === 9||this.teamsArray.length === 10||this.teamsArray.length === 13||this.teamsArray.length === 14) && this.round2Matches.length-1 === index ){
+        
+        return false;
+      }
+      return true;
+    },
+    round3Bys(index){
+      if( (this.teamsArray.length >=9 && this.teamsArray.length  <= 12) && this.round3Matches.length-1 === index ){
+       this.whatever==true
+       return false;
+      }return true;
     },
     shuffle(array) {
       array.sort(() => Math.random() - 0.5);
@@ -311,4 +360,5 @@ input[type="text"]{
 input[type="text"]:hover{
   border-bottom:1px solid ;
 }
+
 </style>
