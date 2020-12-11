@@ -8,18 +8,22 @@
         </h3>
         <h3>CHAMPION</h3>
       </div>
-      <div class="d-flex flex-row">
+      <div class="d-flex flex-row justify-content-around">
         <div class="matches round-1 d-flex flex-column justify-content-around  ">
             <div
-              class="match w-25"
+              class="match  border border-dark"
               v-for="(match, index) in this.constuctMatches"
               v-bind:key="match.index"
             >
-              <div class="team-top">
-                <input
+              <div class="team-top border-bottom border-dark">
+
+                <input v-if="isEditting"
                   type="text" v-model="team[index]"
                   :placeholder="[[$store.state.Participants[index].id]]"
                 />
+                <p v-else>{{this.$store.state.Participants[index].id}}</p>
+
+
               </div>
               
               <div v-if="isLastOddElement(index)" class="team-bottom">
@@ -50,10 +54,10 @@
             <div  class="matches w-100"   v-for="(match,index) in this.round2Matches" v-bind:key="index">        
                 <div class= "match border border-dark w-100 " >
                     <div class = "team-top border-bottom border-dark ">
-                      <span>NIck 2 </span>
+                      <span>Winner of Match{{index + 1}}</span>
                     </div>                       
-                    <div class = "team-botom ">
-                      <span>Jess 2</span>
+                    <div v-if="isLastOddElement(index)" class = "team-botom ">
+                      <span>Winner of Match {{index + 2}}</span>
                     </div>
                 </div>   
             </div>
@@ -78,8 +82,8 @@
             </div>
           </div>
           <div class="d-flex flex-column justify-content-center " id="yep2">
-            <div v-for="round in this.round4Matches" v-bind:key="round.id" class="d-flex flex-column justify-content-center " id="sp" >
-              <img src="../assets/bracket.png"  class="img-fluid pt-4 pb-4" alt="">
+            <div v-for="round in this.round4Matches" v-bind:key="round.id" class="d-flex flex-column  " id="sp2" >
+              <img src="../assets/bracket.png"  class=" pt-4 pb-4" alt="">
               
             </div>
           </div> 
@@ -108,10 +112,15 @@
         </div>
       
     </div>
+    <br/>
+    <br/>
     <button v-on:click="shuffleStore">Randomize</button>
     <button>Add Teams</button>
+    <button v-on:click="sendThemHome"  >Generate New Bracket</button>
   </div>
 </template>
+
+
 
 <script>
 export default {
@@ -157,14 +166,15 @@ export default {
       for (let i = 0; i < length; i++) {
         output.push(matchUp);
       }
-      
-
       return output;
     },
 
     hasOddPants() {
       return this.$store.state.Participants.length % 2 == 1 ? true : false;
     },
+    isEditting(){
+      return true;
+    }
     
     
   },
@@ -232,6 +242,9 @@ export default {
         length++;
       }
       return length;
+    },
+    sendThemHome(){
+      this.$router.push('/')
     }
   },
 };
@@ -265,5 +278,14 @@ export default {
 img{
   height: 100%;
 }
-
+#sp-2{
+  width:100%;
+  height:20%;
+}
+input[type="text"]{
+  border-style: hidden ;
+}
+input[type="text"]:hover{
+  border-bottom:1px solid ;
+}
 </style>
