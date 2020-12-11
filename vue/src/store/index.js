@@ -53,6 +53,7 @@ export default new Vuex.Store({
           let Team = {
             id: "Team "+ (i+1),
             name:"",
+            edit:false
 
 
           };
