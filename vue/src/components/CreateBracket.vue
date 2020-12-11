@@ -11,7 +11,7 @@
       <div class="d-flex flex-row justify-content-around">
         <div class="matches round-1 d-flex flex-column justify-content-around  ">
             <div
-              class="match  border border-dark"
+              class="match  border border-dark team-block"
               v-for="(match, index) in this.constuctMatches"
               v-bind:key="match.index"
             >
@@ -24,9 +24,9 @@
                  -->
                     <span>
                       <div v-show ="teamsArray[index].edit == false">
-                        <label @click ="teamsArray[index].edit = true"> {{teamsArray[index].name==''? teamsArray[index].id :teamsArray[index].name}} </label>
+                        <label class="team-input" @click ="teamsArray[index].edit = true"> {{teamsArray[index].name==''? teamsArray[index].id :teamsArray[index].name}} </label>
                       </div>
-                      <input v-show ="teamsArray[index].edit == true" v-model="teamsArray[index].name"
+                      <input class="input-box" v-show ="teamsArray[index].edit == true" v-model="teamsArray[index].name"
                       v-on:blur="teamsArray[index].edit=false; $emit('update')"
                       @keyup.enter ="teamsArray[index].edit=false; $emit('update')">
                   </span>
@@ -48,9 +48,9 @@
                 -->
                  <span>
                     <div v-show ="teamsArray[teamsArray.length - index - 1].edit == false">
-                      <label @click ="teamsArray[teamsArray.length - index - 1].edit = true"> {{teamsArray[teamsArray.length - index - 1].name == '' ? teamsArray[teamsArray.length - index - 1].id : teamsArray[teamsArray.length - index - 1].name }} </label>
+                      <label class="team-input" @click ="teamsArray[teamsArray.length - index - 1].edit = true"> {{teamsArray[teamsArray.length - index - 1].name == '' ? teamsArray[teamsArray.length - index - 1].id : teamsArray[teamsArray.length - index - 1].name }} </label>
                     </div>
-                    <input v-show ="teamsArray[teamsArray.length - index - 1].edit == true" v-model="teamsArray[teamsArray.length - index - 1].name"
+                    <input class="input-box" v-show ="teamsArray[teamsArray.length - index - 1].edit == true" v-model="teamsArray[teamsArray.length - index - 1].name"
                     v-on:blur="teamsArray[teamsArray.length- index - 1].edit=false; $emit('update')"
                     @keyup.enter ="teamsArray[teamsArray.length - index - 1].edit=false; $emit('update')">
                  </span>
@@ -124,16 +124,16 @@
             </div>
           </div>
           <div class= "CHAMPION d-flex flex-column justify-content-center">
-            <div class="border border-dark d-flex flex-column justify-content-center"><span>WInner winner chicken dinner</span></div>
+            <div class="border border-dark d-flex flex-column justify-content-center"><span class="champion">WInner winner chicken dinner</span></div>
           </div>
         </div>
       
     </div>
     <br/>
     <br/>
-    <button v-on:click="shuffleStore">Randomize</button>
-    <button>Add Teams</button>
-    <button v-on:click="sendThemHome"  >Generate New Bracket</button>
+    <div class="button-margin"><button v-on:click="shuffleStore">Randomize</button></div>
+    <div class="button-margin"><button>Add Teams</button></div>
+    <div class="button-margin"><button v-on:click="sendThemHome"  >Generate New Bracket</button></div>
   </div>
 </template>
 
@@ -362,5 +362,5 @@ input[type="text"]{
 /* input[type="text"]:hover{
   border-bottom:1px solid ;
 }
-
+*/
 </style>
