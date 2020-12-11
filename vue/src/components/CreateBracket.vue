@@ -17,17 +17,24 @@
             >
               <div class="team-top border-bottom border-dark">
 
-                <input v-if="isEditting"
+               <!-- <input 
                   type="text" v-model="team[index]"
                   :placeholder="[[$store.state.Participants[index].id]]"
                 />
-                <p v-else>{{this.$store.state.Participants[index].id}}</p>
-
+                 -->
+                    <span>
+                      <div v-show ="teamsArray[index].edit == false">
+                        <label @click ="teamsArray[index].edit = true"> {{teamsArray[index].id}} </label>
+                      </div>
+                      <input v-show ="teamsArray[index].edit == true" v-model="teamsArray[index].name"
+                      v-on:blur="teamsArray[index].edit=false; $emit('update')"
+                      @keyup.enter ="teamsArray[index].edit=false; $emit('update')">
+                  </span>
 
               </div>
               
               <div v-if="isLastOddElement(index)" class="team-bottom">
-                <input
+               <!-- <input
                 
                   type="text" v-model="team[$store.state.Participants.length - index - 1]"
                   :placeholder="[
@@ -38,6 +45,16 @@
                     ],
                   ]"
                 />
+                -->
+                 <span>
+                    <div v-show ="teamsArray[teamsArray.length - index - 1].edit == false">
+                      <label @click ="teamsArray[teamsArray.length - index - 1].edit = true"> {{teamsArray[teamsArray.length - index - 1].id}} </label>
+                    </div>
+                    <input v-show ="teamsArray[teamsArray.length - index - 1].edit == true" v-model="teamsArray[teamsArray.length - index - 1].name"
+                    v-on:blur="teamsArray[teamsArray.length- index - 1].edit=false; $emit('update')"
+                    @keyup.enter ="teamsArray[teamsArray.length - index - 1].edit=false; $emit('update')">
+                 </span>
+
               </div>
               <br />
             </div>
@@ -133,7 +150,10 @@ export default {
       team: [],
       round2Matches:[],
       round3Matches:[],
-      round4Matches:[]
+      round4Matches:[],
+      teamsArray: this.$store.state.Participants,
+      editedTodo: null,
+
     };
   },
   computed: {
@@ -193,6 +213,9 @@ export default {
       this.shuffle(this.team);
       this.shuffle(this.$store.state.Participants);
     },
+     editTodo: function(todo) {
+      this.editedTodo = todo;
+    },
     addTeams(){
       
     },
@@ -209,7 +232,7 @@ export default {
       return output;
     },
     nextRoundMatches(){
-    let fullLength= this.$store.state.Participants.length;
+    let fullLength= this.teamsArray.length;
      if(fullLength>=13){
       this.round2Matches.push('','','','');
      }else if (fullLength<13 && fullLength>=9){
