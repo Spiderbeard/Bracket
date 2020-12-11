@@ -8,74 +8,105 @@
         </h3>
         <h3>CHAMPION</h3>
       </div>
-      <div class="matches round-1">
-        <div
-          class="match"
-          v-for="(match, index) in this.constuctMatches"
-          v-bind:key="match.index"
-        >
-          <div class="team-top">
-            <input
-              type="text" v-model="team[index]"
-              :placeholder="[[$store.state.Participants[index].id]]"
-            />
-          </div>
-          <div v-if="isLastOddElement(index)" class="team-bottom">
-            <input
+      <div class="d-flex flex-row">
+        <div class="matches round-1 d-flex flex-column justify-content-around  ">
+            <div
+              class="match w-25"
+              v-for="(match, index) in this.constuctMatches"
+              v-bind:key="match.index"
+            >
+              <div class="team-top">
+                <input
+                  type="text" v-model="team[index]"
+                  :placeholder="[[$store.state.Participants[index].id]]"
+                />
+              </div>
+              
+              <div v-if="isLastOddElement(index)" class="team-bottom">
+                <input
+                
+                  type="text" v-model="team[$store.state.Participants.length - index - 1]"
+                  :placeholder="[
+                    [
+                      $store.state.Participants[
+                        $store.state.Participants.length - index - 1
+                      ].id,
+                    ],
+                  ]"
+                />
+              </div>
+              <br />
+            </div>
             
-              type="text" v-model="team[$store.state.Participants.length - index - 1]"
-              :placeholder="[
-                [
-                  $store.state.Participants[
-                    $store.state.Participants.length - index - 1
-                  ].id,
-                ],
-              ]"
-            />
           </div>
-          <br />
+          <div class="d-flex flex-column " id="yep">
+            <div v-for="round in this.round2Matches" v-bind:key="round.id" class="d-flex flex-column  " id="sp" >
+              <div>
+                <img src="../assets/bracket.png"  class="img-fluid pt-4 pb-4" alt="">
+              </div>
+            </div>
+          </div> 
+          <div v-if="someRandomMethod() > 1" class="round-2 d-flex flex-column justify-content-around">
+            <div  class="matches w-100"   v-for="(match,index) in this.round2Matches" v-bind:key="index">        
+                <div class= "match border border-dark w-100 " >
+                    <div class = "team-top border-bottom border-dark ">
+                      <span>NIck 2 </span>
+                    </div>                       
+                    <div class = "team-botom ">
+                      <span>Jess 2</span>
+                    </div>
+                </div>   
+            </div>
+          </div>
+          <div class="d-flex flex-column " id="yep">
+            <div v-for="round in this.round3Matches" v-bind:key="round.id" class="d-flex flex-column justify-content-center  " id="sp" >
+              <div>
+              <img src="../assets/bracket.png"  class="img-fluid pt-4 pb-4" alt="">
+              </div>
+            </div>
+          </div>       
+          <div v-if="someRandomMethod() > 2" class="matches round-3 d-flex flex-column justify-content-around ">
+            <div  class="matches w-100"   v-for="(match,index) in this.round3Matches" v-bind:key="index">        
+                <div class= "match border border-dark w-100 d-flex flex-column justify-content-between" >
+                    <div class = "team-top border-bottom border-dark ">
+                      <span>NIck RD3 </span>
+                    </div>                       
+                    <div class = "team-botom ">
+                      <span>Jess RD3 </span>
+                    </div>
+                </div>   
+            </div>
+          </div>
+          <div class="d-flex flex-column " id="yep">
+            <div v-for="round in this.round4Matches" v-bind:key="round.id" class="d-flex flex-column justify-content-around " id="sp" >
+              <img src="../assets/bracket.png"  class="img-fluid pt-4 pb-4" alt="">
+              
+            </div>
+          </div> 
+            
+          <div v-if="someRandomMethod() > 3  " class="matches round-4 d-flex flex-colum justify-content-around">
+            <div  class="matches w-100 d-flex flex-column justify-content-center"   v-for="(match,index) in this.round4Matches" v-bind:key="index">        
+                <div class= "match border border-dark w-100" >
+                    <div class = "team-top border-bottom border-dark">
+                      <span> Nick RD4 </span>
+                    </div>                       
+                    <div class = "team-botom ">
+                      <span>Jess RD4 </span>
+                    </div>
+                </div>   
+            </div>
+          </div>
+          <div class="d-flex flex-column " id="yep">
+            <div class="d-flex flex-column  " id="sp" >
+              <img src="../assets/bracket.png"  class="img-fluid pt-4 pb-4" alt="">
+              
+            </div>
+          </div>
+          <div class= "CHAMPION d-flex flex-column justify-content-center">
+            <div class="border border-dark d-flex flex-column justify-content-center"><span>WInner winner chicken dinner</span></div>
+          </div>
         </div>
-        
-      </div>
-      <div v-if="someRandomMethod() > 1" class="round-2">
-        <div  class="matches"   v-for="(match,index) in this.round2Matches" v-bind:key="index">        
-            <div class= "match border border-dark" >
-                <div class = "team-top border-bottom border-dark">
-                  <h3>NIck </h3>
-                </div>                       
-                <div class = "team-botom ">
-                  <h3>Jess</h3>
-                </div>
-            </div>   
-        </div>
-      </div>      
-      <div v-if="someRandomMethod() > 2" class="matches round-3">
-        <div  class="matches"   v-for="(match,index) in this.round3Matches" v-bind:key="index">        
-            <div class= "match border border-dark" >
-                <div class = "team-top border-bottom border-dark">
-                  <h3>NIck RD3 </h3>
-                </div>                       
-                <div class = "team-botom ">
-                  <h3>Jess RD3 </h3>
-                </div>
-            </div>   
-        </div>
-      </div>
-      <div v-if="someRandomMethod() > 3  " class="matches round-4">
-        <div  class="matches"   v-for="(match,index) in this.round4Matches" v-bind:key="index">        
-            <div class= "match border border-dark" >
-                <div class = "team-top border-bottom border-dark">
-                  <h3>NIck RD3 </h3>
-                </div>                       
-                <div class = "team-botom ">
-                  <h3>Jess RD3 </h3>
-                </div>
-            </div>   
-        </div>
-      </div>
-      <div class= "CHAMPION">
-        <div class="border border-dark"><h1>WInner winner chicken dinner</h1></div>
-      </div>
+      
     </div>
     <button v-on:click="shuffleStore">Randomize</button>
     <button>Add Teams</button>
@@ -210,6 +241,16 @@ export default {
 /* .match:last-child .hide-this {
   display: none;
 } */
-
+#yep{
+  width: 10%;
+  height: 2%;
+}
+#sp{
+  width: 100%;
+  height: 20%;
+}
+img{
+  height: 100%;
+}
 
 </style>
