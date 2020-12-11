@@ -19,3 +19,13 @@ export default {
                                 
 };
 </script>
+
+<style>
+.home {
+  margin-left: 20px;
+}
+
+h1 {
+  padding-top: 10px;
+}
+</style>

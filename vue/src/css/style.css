@@ -1,0 +1,64 @@
+body {
+    background-color: #FFFFFF;
+}
+
+h3 {
+    color:#3A506B;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* adds spaces between buttons for aesthetic */
+.button-margin {
+    margin: 0px 2px 20px 10px;
+    display: inline-block;
+}
+
+/* adds spacing between the blocks of teams */
+.team-block {
+  margin-bottom: 15px;
+}
+
+/* color change on hover, prevent layout shifting on text input */
+.team-input {    
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    font: 120%;
+    padding: 5px 5px;
+}
+.team-input:hover {
+    display: inline-flex;
+    color: #FCA311;
+    font-weight: bold;
+}
+
+/* makes the input box the same size as the label block */
+.input-box {
+    border: 0px hidden transparent;
+    padding: 6px 4px;
+    max-width: 143px;
+    height: 41.5px;
+}
+
+/* class to be added to the winner of a round after an event */
+.winner {
+    font-weight: bold;
+}
+
+/* class to be added to the loser of a round after an event */
+.loser {
+    color: #A8A8A8;
+}
+
+/* crown icons to be added to the champion of the tournament after an event */
+.champion::before {
+    content: '✧♕ ';
+    color: #FCA311;
+    font-weight: bold;
+}
+.champion::after {
+    content: ' ♕✧';
+    color: #FCA311;
+    font-weight: bold;
+}

@@ -74,3 +74,9 @@ export default {
   }
 };
 </script>
+
+<style>
+/* .elements {
+  margin-bottom: 25%;
+} */
+</style>
