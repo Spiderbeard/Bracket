@@ -1,0 +1,43 @@
+body {
+    background-color: #FFFFFF;
+}
+
+h3 {
+    color:#3A506B;
+}
+
+.nav {
+    color:#3A506B;
+    text-decoration: none;
+}
+
+.nav:hover {
+    color: #FCA311;
+    text-decoration: underline;
+}
+
+.team-input {
+    display: flex;
+    text-decoration: none;
+    resize: none;
+}
+
+.team-input:hover {
+    display: inline-flex;
+    color: #FCA311;
+    font-weight: bold;
+
+}
+
+.input-fixed {
+    height: 0;
+    visibility: hidden;
+}
+
+.winner {
+    font-weight: bold;
+}
+
+.loser {
+    color: #A8A8A8;
+}

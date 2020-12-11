@@ -123,6 +123,8 @@
 
 
 <script>
+require('@/css/style.css')
+
 export default {
   created(){
     this.nextRoundMatches();
@@ -283,9 +285,9 @@ img{
   height:20%;
 }
 input[type="text"]{
-  border-style: hidden ;
+  border-color: transparent;
 }
-input[type="text"]:hover{
+/* input[type="text"]:hover{
   border-bottom:1px solid ;
-}
+} */
 </style>
