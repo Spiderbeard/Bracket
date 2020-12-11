@@ -39,8 +39,8 @@
             </div>
             
           </div>
-          <div class="d-flex flex-column " id="yep">
-            <div v-for="round in this.round2Matches" v-bind:key="round.id" class="d-flex flex-column  " id="sp" >
+          <div class="d-flex flex-column justify-content-around " id="yep">
+            <div v-for="round in this.round2Matches" v-bind:key="round.id" class="d-flex flex-column justfy-content-around  " id="sp" >
               <div>
                 <img src="../assets/bracket.png"  class="img-fluid pt-4 pb-4" alt="">
               </div>
@@ -58,7 +58,7 @@
                 </div>   
             </div>
           </div>
-          <div class="d-flex flex-column " id="yep">
+          <div class="d-flex flex-column justify-content-around " id="yep1">
             <div v-for="round in this.round3Matches" v-bind:key="round.id" class="d-flex flex-column justify-content-center  " id="sp" >
               <div>
               <img src="../assets/bracket.png"  class="img-fluid pt-4 pb-4" alt="">
@@ -77,8 +77,8 @@
                 </div>   
             </div>
           </div>
-          <div class="d-flex flex-column " id="yep">
-            <div v-for="round in this.round4Matches" v-bind:key="round.id" class="d-flex flex-column justify-content-around " id="sp" >
+          <div class="d-flex flex-column justify-content-center " id="yep2">
+            <div v-for="round in this.round4Matches" v-bind:key="round.id" class="d-flex flex-column justify-content-center " id="sp" >
               <img src="../assets/bracket.png"  class="img-fluid pt-4 pb-4" alt="">
               
             </div>
@@ -96,7 +96,7 @@
                 </div>   
             </div>
           </div>
-          <div class="d-flex flex-column " id="yep">
+          <div class="d-flex flex-column justify-content-center " id="yep3">
             <div class="d-flex flex-column  " id="sp" >
               <img src="../assets/bracket.png"  class="img-fluid pt-4 pb-4" alt="">
               
@@ -243,7 +243,20 @@ export default {
 } */
 #yep{
   width: 10%;
-  height: 2%;
+  height: 697px;
+
+}
+#yep1{
+  width: 10%;
+  height: 697px;
+}
+#yep2{
+  width: 10%;
+  height: 697px;
+}
+#yep3{
+  width: 10%;
+  height: 697px;
 }
 #sp{
   width: 100%;
