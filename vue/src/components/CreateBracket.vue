@@ -106,14 +106,11 @@
             </div>
           </div>
         </div>
-        <div
-          class="d-flex flex-column justify-content-around align-items-stretch "
-          id="yep"
-        >
+        <div class="d-flex flex-column justify-content-around  " id="yep">
           <div
             v-for="round in this.round2Matches"
             v-bind:key="round.id"
-            class="d-flex flex-column align-item-stetch  "
+            class="d-flex flex-column align-self-stetch  "
             id="sp"
           >
             <!-- <div>
@@ -190,7 +187,7 @@
             v-for="round in this.round4Matches"
             v-bind:key="round.id"
             class="d-flex flex-column  "
-            id="sp2"
+            id="sp"
           >
             <!-- <img src="../assets/bracket.png" class=" pt-4 pb-4" alt="" /> -->
             <fork />
@@ -230,7 +227,7 @@
           <div
             class="border border-dark d-flex flex-column justify-content-center"
           >
-            <span class="champion">WInner winner chicken dinner</span>
+            <span class="champion">WInner</span>
           </div>
         </div>
       </div>
@@ -446,11 +443,11 @@ export default {
   height: 816px;
 }
 #yep1 {
-  width: 10%;
+  width: 20%;
   height: 697px;
 }
 #yep2 {
-  width: 10%;
+  width: 20%;
   height: 697px;
 }
 #yep3 {
@@ -465,7 +462,7 @@ img {
   height: 100%;
 }
 #sp-2 {
-  width: 100%;
+  width: 107%;
   height: 20%;
 }
 input[type="text"] {
