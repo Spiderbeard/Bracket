@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex flex-row">
-    <div class="fork"></div>
+    <div class="fork"><br><br></div>
     <div class="d-flex align-items-end">
       <div class="line"></div>
     </div>
@@ -17,8 +17,8 @@ export default {};
   border-left: 0px;
   width: 100%;
   height: 100%;
-  margin-top: 6vh;
-  margin-bottom: 6vh;
+  margin-top: 2vh;
+  margin-bottom: 4vh;
 }
 
 .line {
@@ -26,5 +26,6 @@ export default {};
   border: 2px solid black;
   width: 3vw;
   height: 0vh;
+  margin-bottom:2.5vh;
 }
 </style>
