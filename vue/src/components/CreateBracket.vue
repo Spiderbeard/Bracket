@@ -106,7 +106,7 @@
             </div>
           </div>
         </div>
-        <div class="d-flex flex-column justify-content-around  " id="yep">
+        <div v-if="teamsArray.length>2" class="d-flex flex-column justify-content-around  " id="yep">
           <div
             v-for="round in this.round2Matches"
             v-bind:key="round.id"
@@ -144,7 +144,7 @@
             </div>
           </div>
         </div>
-        <div class="d-flex flex-column justify-content-around " id="yep1">
+        <div v-if="round2Matches.length>1" class="d-flex flex-column justify-content-around " id="yep1">
           <div
             v-for="round in this.round3Matches"
             v-bind:key="round.id"
@@ -158,7 +158,7 @@
                 alt=""
               />
             </div> -->
-            <fork />
+            <fork id="fork-round-3" />
           </div>
         </div>
         <div
@@ -182,7 +182,7 @@
             </div>
           </div>
         </div>
-        <div class="d-flex flex-column justify-content-center " id="yep2">
+        <div v-if="round4Matches.length===1" class="d-flex flex-column justify-content-center " id="yep2">
           <div
             v-for="round in this.round4Matches"
             v-bind:key="round.id"
@@ -213,7 +213,7 @@
             </div>
           </div>
         </div>
-        <div class="d-flex flex-column justify-content-center " id="yep3">
+        <div class="d-flex flex-column align-items-stretch justify-content-center " id="yep3">
           <div class="d-flex flex-column  " id="sp">
             <!-- <img
               src="../assets/bracket.png"
@@ -444,19 +444,20 @@ export default {
 }
 #yep1 {
   width: 20%;
-  height: 697px;
+  height: 816px;
 }
 #yep2 {
   width: 20%;
-  height: 697px;
+  height: 816px;
 }
 #yep3 {
   width: 10%;
   height: 697px;
 }
 #sp {
-  width: 100%;
+  width: 106%;
   height: 20%;
+  
 }
 img {
   height: 100%;
@@ -468,8 +469,12 @@ img {
 input[type="text"] {
   border-color: transparent;
 }
+#fork-round-3{
+
+}
 /* input[type="text"]:hover{
   border-bottom:1px solid ;
 }
+
 */
 </style>
