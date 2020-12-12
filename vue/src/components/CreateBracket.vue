@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div>
-      <div class="headers d-flex flex-row justify-content-between pl-3 pr-3">
+    <div class= "bracketVisualizer">
+      <div id="roundHeaders" class="headers d-flex flex-row justify-content-between pl-3 pr-3">
         <h3
           v-for="Round in this.getRoundTitles"
           v-bind:key="Round"
@@ -11,29 +11,15 @@
         </h3>
         <h3>CHAMPION</h3>
       </div>
-      <div class="d-flex flex-row justify-content-around">
-        <div
-          class="matches round-1 d-flex flex-column justify-content-around  "
-        >
-          <div
-            class="match  border border-dark team-block"
-            v-for="(match, index) in this.constuctMatches"
-            v-bind:key="match.index"
-          >
-            <div class="team-top border-bottom border-dark">
-              <!-- <input 
-                  type="text" v-model="team[index]"
-                  :placeholder="[[$store.state.Participants[index].id]]"
-                />
-                 -->
+      <div id="actualBracket" class="d-flex flex-row justify-content-around">
+        <div id="Round1" class="matches round-1 d-flex flex-column justify-content-around">
+          <div class="match  border border-dark team-block" v-for="(match, index) in this.constuctMatches" v-bind:key="match.index" >
+            <div class="team-top border-bottom border-dark">            
               <span>
                 <div v-show="teamsArray[index].edit == false">
-                  <label
-                    class="team-input"
-                    @click="teamsArray[index].edit = true"
-                  >
+                  <label class="team-input" @click="teamsArray[index].edit = true">
                     {{
-                      teamsArray[index].name == ""
+                        teamsArray[index].name == ""
                         ? teamsArray[index].id
                         : teamsArray[index].name
                     }}
@@ -45,11 +31,11 @@
                   v-model="teamsArray[index].name"
                   v-on:blur="
                     teamsArray[index].edit = false;
-                    $emit('update');
+                    
                   "
                   @keyup.enter="
                     teamsArray[index].edit = false;
-                    $emit('update');
+                   
                   "
                 />
               </span>
@@ -103,10 +89,11 @@
                   "
                 />
               </span>
+              
             </div>
           </div>
         </div>
-        <div v-if="teamsArray.length>2" class="d-flex flex-column justify-content-around  " id="yep">
+        <div id="yep" v-if="teamsArray.length>2" class="d-flex flex-column justify-content-around  " >
           <div
             v-for="round in this.round2Matches"
             v-bind:key="round.id"
@@ -123,10 +110,7 @@
             <fork />
           </div>
         </div>
-        <div
-          v-if="someRandomMethod() > 1"
-          class="round-2 d-flex flex-column justify-content-around"
-        >
+        <div v-if="someRandomMethod() > 1" class="round-2 d-flex flex-column justify-content-around">
           <div
             class="matches w-100"
             v-for="(match, index) in this.round2Matches"
@@ -144,7 +128,7 @@
             </div>
           </div>
         </div>
-        <div v-if="round2Matches.length>1" class="d-flex flex-column justify-content-around " id="yep1">
+        <div id="yep1" v-if="round2Matches.length>1" class="d-flex flex-column justify-content-around " >
           <div
             v-for="round in this.round3Matches"
             v-bind:key="round.id"
@@ -161,10 +145,7 @@
             <fork id="fork-round-3" />
           </div>
         </div>
-        <div
-          v-if="someRandomMethod() > 2"
-          class="matches round-3 d-flex flex-column justify-content-around "
-        >
+        <div v-if="someRandomMethod() > 2" class="matches round-3 d-flex flex-column justify-content-around " >
           <div
             class="matches w-100"
             v-for="(match, index) in this.round3Matches"
@@ -182,7 +163,7 @@
             </div>
           </div>
         </div>
-        <div v-if="round4Matches.length===1" class="d-flex flex-column justify-content-center " id="yep2">
+        <div id="yep2" v-if="round4Matches.length===1" class="d-flex flex-column justify-content-center " >
           <div
             v-for="round in this.round4Matches"
             v-bind:key="round.id"
@@ -193,11 +174,7 @@
             <fork />
           </div>
         </div>
-
-        <div
-          v-if="someRandomMethod() > 3"
-          class="matches round-4 d-flex flex-colum justify-content-around"
-        >
+        <div v-if="someRandomMethod() > 3" class="matches round-4 d-flex flex-colum justify-content-around" >
           <div
             class="matches w-100 d-flex flex-column justify-content-center"
             v-for="(match, index) in this.round4Matches"
@@ -213,33 +190,30 @@
             </div>
           </div>
         </div>
-        <div class="d-flex flex-column align-items-stretch justify-content-center " id="yep3">
-          <div class="d-flex flex-column  " id="sp">
-            <!-- <img
-              src="../assets/bracket.png"
-              class="img-fluid pt-4 pb-4"
-              alt=""
-            /> -->
-            <fork />
+        <div id="yep3" class="d-flex flex-column align-items-stretch justify-content-center " >
+          <div class="d-flex flex-column justify-content-center align-items-stretch " id="sp">
+            
+            <champion-line class="d-flex "/>
+            
           </div>
         </div>
         <div class="CHAMPION d-flex flex-column justify-content-center">
           <div
             class="border border-dark d-flex flex-column justify-content-center"
           >
-            <span class="champion">WInner</span>
+            <span class="champion">Winner</span>
           </div>
         </div>
       </div>
     </div>
-    <br />
-    <br />
-    <div class="button-margin">
-      <button v-on:click="shuffleStore">Randomize</button>
-    </div>
-    <div class="button-margin"><button>Add Teams</button></div>
-    <div class="button-margin">
-      <button v-on:click="sendThemHome">Generate New Bracket</button>
+    <div class= "motherFuckingButtons">
+      <div class="button-margin">
+        <button v-on:click="shuffleStore">Randomize</button>
+      </div>
+      <div class="button-margin"><button>Add Teams</button></div>
+      <div class="button-margin">
+        <button v-on:click="sendThemHome">Generate New Bracket</button>
+      </div>
     </div>
   </div>
 </template>
@@ -247,9 +221,17 @@
 <script>
 require("@/css/style.css");
 import fork from "@/components/fork";
+import HalfFork from "@/components/HalfFork";
+import ChampionLine from './ChampionLine.vue';
+
+
+
 
 export default {
-  components: { fork },
+  components: { fork,
+   // eslint-disable-next-line vue/no-unused-components
+   HalfFork ,
+   ChampionLine,  },
   created() {
     this.nextRoundMatches();
   },
@@ -312,37 +294,6 @@ export default {
       }
       return true;
     },
-    // nextRoundOddElement(index,array){
-    //   if( array.length == 1 ){
-    //     return true;
-    //   }else {
-    //     if (this.roundTwoAndRoundOneIsOdd() && index === array.length - 1) {
-
-    //       return false;
-
-    //     }
-    //     return true;
-    //   }
-
-    // },
-    // roundTwoAndRoundOneIsOdd(){
-    //   if( ((this.constuctMatches.length / 2) % 2 != 0) && ( this.round2Matches % 2  !=0  )){
-    //     return true;
-    //   }else {
-    //     return false;
-    //   }
-    // },
-    // iDontKnow(){
-    //   if((this.constuctMatches.length/2)%2 ===1){
-    //     return false
-    //   }else {
-    //     if(this.round2Matches%2 !=0 ){
-    //       return true;
-    //     }else {
-    //       return false
-    //     }
-    //   }
-    // },
     round2Bys(index) {
       if (
         (this.teamsArray.length === 5 ||
@@ -452,7 +403,7 @@ export default {
 }
 #yep3 {
   width: 10%;
-  height: 697px;
+  
 }
 #sp {
   width: 106%;
@@ -475,6 +426,8 @@ input[type="text"] {
 /* input[type="text"]:hover{
   border-bottom:1px solid ;
 }
-
 */
+span{
+  white-space: nowrap;
+}
 </style>
