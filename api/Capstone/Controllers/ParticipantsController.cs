@@ -9,7 +9,7 @@ namespace Capstone.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ParticipantController : ControllerBase
+    public class ParticipantsController : ControllerBase
     {
     }
 }
