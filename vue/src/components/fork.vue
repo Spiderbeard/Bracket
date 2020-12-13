@@ -1,14 +1,16 @@
 <template>
   <div id="something" class="d-flex flex-row">
-    <div class="fork"><br><br></div>
-    <div class="d-flex align-items-end">
+    <div v-bind:class="'fork ' + round"><br /><br /></div>
+    <div class="d-flex align-items-center">
       <div class="line"></div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["round"],
+};
 </script>
 
 <style>
@@ -16,9 +18,17 @@ export default {};
   border: 2px solid black;
   border-left: 0px;
   width: 100%;
-  height: 100%;
+}
+.two {
+  height: 106px;
   margin-top: 2vh;
-  margin-bottom: 4vh;
+}
+.three {
+  height: 211px;
+}
+.four {
+  height: 411px;
+  margin-top: 5vh;
 }
 
 .line {
@@ -26,7 +36,6 @@ export default {};
   border: 2px solid black;
   width: 3vw;
   height: 0vh;
-  margin-bottom:2.5vh;
+  margin-bottom: 2.5vh;
 }
-
 </style>

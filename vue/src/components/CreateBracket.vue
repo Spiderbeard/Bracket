@@ -120,7 +120,7 @@
                 alt=""
               />  </div>
               -->
-            <fork />
+            <fork round="two" />
           </div>
         </div>
         <div
@@ -162,7 +162,7 @@
                 alt=""
               />
             </div> -->
-            <fork id="fork-round-3" />
+            <fork round="three" />
           </div>
         </div>
         <div
@@ -204,7 +204,7 @@
             id="sp3"
           >
             <!-- <img src="../assets/bracket.png" class=" pt-4 pb-4" alt="" /> -->
-            <fork class="d-flex align-self-stretch" />
+            <fork round="four" />
           </div>
         </div>
         <div
