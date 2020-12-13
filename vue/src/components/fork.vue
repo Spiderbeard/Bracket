@@ -21,7 +21,7 @@ export default {
 }
 .two {
   height: 106px;
-  margin-top: 2vh;
+  margin-top: 23px;
 }
 .three {
   height: 211px;
@@ -30,8 +30,14 @@ export default {
   height: 411px;
   margin-top: 5vh;
 }
-.top {
-  margin-top: 41px;
+.sixteensecondround {
+  margin-top: 54px;
+}
+.sixteenthirdround {
+  margin-top: 64px;
+}
+.sixteenfourthround {
+  margin-top: 27px;
 }
 
 .line {

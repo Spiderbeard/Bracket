@@ -120,7 +120,7 @@
                 alt=""
               />  </div>
               -->
-            <fork round="two" roundline="top" />
+            <fork round="two" roundline="sixteensecondround" />
           </div>
         </div>
         <div
@@ -162,7 +162,7 @@
                 alt=""
               />
             </div> -->
-            <fork round="three" />
+            <fork round="three" roundline="sixteenthirdround" />
           </div>
         </div>
         <div
@@ -204,7 +204,7 @@
             id="sp3"
           >
             <!-- <img src="../assets/bracket.png" class=" pt-4 pb-4" alt="" /> -->
-            <fork round="four" />
+            <fork round="four" roundline="sixteenfourthround" />
           </div>
         </div>
         <div
