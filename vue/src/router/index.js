@@ -6,6 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import Tournament from '@/views/Tournament'
+import MyBrackets from '@/views/MyBrackets'
 
 Vue.use(Router)
 
@@ -60,6 +61,14 @@ const router = new Router({
       component: Tournament,
       meta: {
         requiresAuth: false
+      }
+    },
+    {
+      path: "/myBrackets",
+      name: "myBrackets",
+      component: MyBrackets,
+      meta:{
+        requiresAuth: true
       }
     }
   ]
