@@ -12,13 +12,8 @@
         role="alert"
         v-if="this.$route.query.registration"
       >Thank you for registering, please sign in.</div>
-<<<<<<< HEAD
-      
-      <label for="username" class="sr-only">Username</label>
-=======
       <div class="login-vis-update">
       <label for="username" class="sr-only ">Username</label>
->>>>>>> 86730118f24ddbec303b583ebe37d05be9a67d90
       <input
         type="text"
         id="username"
@@ -38,14 +33,9 @@
         v-model="user.password"
         required
       />
-<<<<<<< HEAD
-      
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
-=======
       </div>
       <div class="login-button">
       <router-link :to="{ name: 'register' }">Need an account? </router-link>
->>>>>>> 86730118f24ddbec303b583ebe37d05be9a67d90
       <button type="submit">Sign in</button>
       </div>
     </form>
