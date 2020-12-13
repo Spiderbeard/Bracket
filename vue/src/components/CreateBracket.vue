@@ -456,7 +456,7 @@ export default {
   height: 20%;
 }
 #sp2 {
-  height: 75%;
+  height: 74%;
 }
 img {
   height: 100%;
