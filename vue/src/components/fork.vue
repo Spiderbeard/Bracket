@@ -48,24 +48,30 @@ export default {
 .two150 {
   height: 112px;
   margin-top: 23px;
+  margin-bottom: -1px;
 }
 .two151 {
   height: 110px;
   margin-top: 35px;
+  margin-bottom: -13px;
 }
 .two152 {
   height: 113px;
   margin-top: 45px;
+  margin-bottom: -24px;
 }
 .two153 {
   height: 90px;
   margin-top: 56px;
+  margin-bottom: -10px;
 }
 .three150 {
   height: 206px;
+  margin-bottom: -1px;
 }
 .three151 {
   height: 205px;
+  margin-bottom: -2px;
 }
 .four150 {
   height: 411px;
@@ -74,14 +80,17 @@ export default {
 .two140 {
   height: 117px;
   margin-top: 31px;
+  margin-bottom: -10px;
 }
 .two141 {
   height: 119px;
   margin-top: 57px;
+  margin-bottom: -25px;
 }
 .two142 {
   height: 114px;
   margin-top: 90px;
+  margin-bottom: -43px;
 }
 .two143 {
   height: 114px;
@@ -106,14 +115,17 @@ export default {
 .two130 {
   height: 129px;
   margin-top: 31px;
+  margin-bottom: -20px;
 }
 .two131 {
   height: 127px;
   margin-top: 73px;
+  margin-bottom: -49px;
 }
 .two132 {
   height: 125px;
   margin-top: 115px;
+  margin-bottom: -39px;
 }
 .two133 {
   border: 0px;
@@ -135,18 +147,22 @@ export default {
 .two120 {
   height: 141px;
   margin-top: 4px;
+  margin-bottom: -13px;
 }
 .two121 {
   height: 140px;
   margin-top: 4px;
+  margin-bottom: -11px;
 }
 .two122 {
   height: 138px;
   margin-top: 6px;
+  margin-bottom: -12px;
 }
 .three120 {
   height: 274px;
   margin-top: 133px;
+  margin-bottom: 20px;
 }
 .three121 {
   height: 0px;
@@ -159,18 +175,22 @@ export default {
 .two110 {
   height: 145px;
   margin-top: 10px;
+  margin-bottom: -23px;
 }
 .two111 {
   height: 146px;
+  margin-bottom: -35px;
   margin-top: 23px;
 }
 .two112 {
   height: 127px;
   margin-top: 37px;
+  margin-bottom: -30px;
 }
 .three110 {
   height: 273px;
   margin-top: 136px;
+  margin-bottom: 14px;
 }
 .three111 {
   height: 0px;
@@ -182,10 +202,12 @@ export default {
 .two100 {
   height: 166px;
   margin-top: 19px;
+  margin-bottom: -43px;
 }
 .two101 {
   height: 166px;
   margin-top: 73px;
+  margin-bottom: -81px;
 }
 .two102 {
   height: 0px;
@@ -205,10 +227,12 @@ export default {
 .two90 {
   height: 174px;
   margin-top: 23px;
+  margin-bottom: -56px;
 }
 .two91 {
-  height: 175px;
-  margin-top: 94px;
+  height: 184px;
+  margin-top: 90px;
+  margin-bottom: -116px;
 }
 .two92 {
   height: 0px;
@@ -228,10 +252,12 @@ export default {
 .two80 {
   height: 207px;
   margin-top: -29px;
+  margin-bottom: -46px;
 }
 .two81 {
   height: 207px;
   margin-top: -29px;
+  margin-bottom: -44px;
 }
 .three80 {
   height: 411px;
@@ -240,10 +266,12 @@ export default {
 .two70 {
   height: 215px;
   margin-top: -22px;
+  margin-bottom: -59px;
 }
 .two71 {
   height: 199px;
   margin-top: -3px;
+  margin-bottom: -62px;
 }
 .three70 {
   height: 410px;
@@ -266,6 +294,7 @@ export default {
 .two50 {
   height: 289px;
   margin-top: 11px;
+  margin-bottom: -156px;
 }
 .two51 {
   height: 0px;
