@@ -1,6 +1,6 @@
 <template>
   <div id="something" class="d-flex flex-row">
-    <div v-bind:class="'fork ' + round + length"><br /><br /></div>
+    <div v-bind:class="'fork ' + round + length + location"><br /><br /></div>
     <div class="d-flex align-items-center">
       <div v-bind:class="'line ' + roundline"></div>
     </div>
@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  props: ["round", "roundline", "length"],
+  props: ["round", "roundline", "length", "location"],
 };
 </script>
 
@@ -19,7 +19,19 @@ export default {
   border-left: 0px;
   width: 100%;
 }
-.two16 {
+.two160 {
+  height: 106px;
+  margin-top: 23px;
+}
+.two161 {
+  height: 106px;
+  margin-top: 23px;
+}
+.two162 {
+  height: 106px;
+  margin-top: 23px;
+}
+.two163 {
   height: 106px;
   margin-top: 23px;
 }
@@ -68,7 +80,8 @@ export default {
   margin-top: 23px;
 }
 .three12 {
-  height: 211px;
+  height: 274px;
+  margin-top: 133px;
 }
 .four12 {
   height: 411px;
@@ -120,7 +133,7 @@ export default {
   margin-top: 23px;
 }
 .three7 {
-  height: 211px;
+  height: 410px;
 }
 
 .two6 {
@@ -128,7 +141,8 @@ export default {
   margin-top: 23px;
 }
 .three6 {
-  height: 211px;
+  height: 413px;
+  margin-top: 11px;
 }
 
 .two5 {
@@ -136,7 +150,8 @@ export default {
   margin-top: 23px;
 }
 .three5 {
-  height: 211px;
+  height: 415px;
+  margin-top: 13px;
 }
 
 .two4 {

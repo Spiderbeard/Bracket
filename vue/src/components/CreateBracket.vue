@@ -108,7 +108,7 @@
           class="d-flex flex-column justify-content-around  "
         >
           <div
-            v-for="round in this.round2Matches"
+            v-for="(round, index) in this.round2Matches"
             v-bind:key="round.id"
             class="d-flex flex-column align-self-stetch  "
             id="sp"
@@ -124,6 +124,7 @@
               round="two"
               roundline="sixteensecondround"
               :length="teamsArray.length"
+              :location="index"
             />
           </div>
         </div>
