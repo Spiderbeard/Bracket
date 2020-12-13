@@ -28,4 +28,8 @@ export default {
 h1 {
   padding-top: 10px;
 }
+
+p {
+  color:gray;
+}
 </style>

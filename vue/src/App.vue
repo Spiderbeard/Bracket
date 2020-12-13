@@ -1,11 +1,10 @@
 <template>
   <div id="app" class="layout">
-    <div id="nav" class="header-stripe">
+    <header id="nav" class="header-stripe">
       <router-link class="navigation" v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
       <router-link class="navigation" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
       <router-link class="navigation" v-bind:to="{ name: 'login' }" v-else>Login</router-link>
-
-    </div>
+    </header>
     <router-view class="main"/>
     <div class="footer-stripe">
       <footer>
