@@ -11,9 +11,10 @@ END
 CREATE DATABASE final_capstone
 GO
 
+
 USE [final_capstone]
 GO
-/****** Object:  Table [dbo].[match]    Script Date: 12/11/2020 6:14:06 PM ******/
+/****** Object:  Table [dbo].[match]    Script Date: 12/13/2020 4:58:08 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -23,8 +24,8 @@ CREATE TABLE [dbo].[match](
 	[isActive] [bit] NOT NULL,
 	[scoreteam1] [int] NULL,
 	[scoreteam2] [int] NULL,
-	[team1winner] [bit] NOT NULL,
-	[team2winner] [bit] NOT NULL,
+	[team1winner] [bit] NULL,
+	[team2winner] [bit] NULL,
 	[round_id] [int] NOT NULL,
 	[match_id] [int] IDENTITY(1,1) NOT NULL,
 	[team1] [int] NOT NULL,
@@ -35,7 +36,7 @@ CREATE TABLE [dbo].[match](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[participants]    Script Date: 12/11/2020 6:14:06 PM ******/
+/****** Object:  Table [dbo].[participants]    Script Date: 12/13/2020 4:58:08 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -50,7 +51,7 @@ CREATE TABLE [dbo].[participants](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[rounds]    Script Date: 12/11/2020 6:14:06 PM ******/
+/****** Object:  Table [dbo].[rounds]    Script Date: 12/13/2020 4:58:08 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -66,7 +67,7 @@ CREATE TABLE [dbo].[rounds](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tournament]    Script Date: 12/11/2020 6:14:06 PM ******/
+/****** Object:  Table [dbo].[tournament]    Script Date: 12/13/2020 4:58:08 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -83,7 +84,7 @@ CREATE TABLE [dbo].[tournament](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[users]    Script Date: 12/11/2020 6:14:06 PM ******/
+/****** Object:  Table [dbo].[users]    Script Date: 12/13/2020 4:58:08 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -102,6 +103,8 @@ CREATE TABLE [dbo].[users](
 GO
 ALTER TABLE [dbo].[match] ADD  CONSTRAINT [DF_match_isActive]  DEFAULT ((1)) FOR [isActive]
 GO
+ALTER TABLE [dbo].[rounds] ADD  CONSTRAINT [DF_rounds_isActive]  DEFAULT ((1)) FOR [isActive]
+GO
 ALTER TABLE [dbo].[match]  WITH CHECK ADD  CONSTRAINT [FK_match_participants_team1] FOREIGN KEY([team1])
 REFERENCES [dbo].[participants] ([participant_id])
 GO
@@ -111,6 +114,11 @@ ALTER TABLE [dbo].[match]  WITH CHECK ADD  CONSTRAINT [FK_match_participants_tea
 REFERENCES [dbo].[participants] ([participant_id])
 GO
 ALTER TABLE [dbo].[match] CHECK CONSTRAINT [FK_match_participants_team2]
+GO
+ALTER TABLE [dbo].[match]  WITH CHECK ADD  CONSTRAINT [FK_match_round] FOREIGN KEY([round_id])
+REFERENCES [dbo].[rounds] ([round_id])
+GO
+ALTER TABLE [dbo].[match] CHECK CONSTRAINT [FK_match_round]
 GO
 ALTER TABLE [dbo].[rounds]  WITH CHECK ADD  CONSTRAINT [FK_rounds_tournament] FOREIGN KEY([tournament_id])
 REFERENCES [dbo].[tournament] ([tournament_id])
