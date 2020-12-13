@@ -1,7 +1,7 @@
 <template>
-  <div id="login" class="text-center">
-    <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+  <div id="login" class="text-center page-margin">
+    <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+    <form class="form-signin login-vis-update" @submit.prevent="login">
       <div
         class="alert alert-danger"
         role="alert"
@@ -31,9 +31,9 @@
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit">Sign in</button>
     </form>
+    <router-link :to="{ name: 'register' }">Need an account?</router-link>
+    <button class="login-button" type="submit">Sign in</button>
   </div>
 </template>
 
@@ -76,7 +76,17 @@ export default {
 </script>
 
 <style>
-/* .elements {
-  margin-bottom: 25%;
-} */
+.page-margin {
+  margin-top: 2%;
+}
+
+.login-vis-update {
+  margin: 0% 20%;
+  border: 1.5px solid #CFCFCF;
+  border-radius: 5px;
+}
+
+.login-button {
+  margin: 2% 15px;
+}
 </style>

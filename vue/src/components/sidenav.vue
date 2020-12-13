@@ -1,21 +1,26 @@
 <template>
+<div>
   <form action="">
-    <div>
-      <label for="Title">Title</label>
-      <input type="text" placeholder="Enter Title" />
-    </div>
-    <div>
-      <label for="#ofthings">#placeholder</label>
-      <select v-model="selected" name="" id="">
-        <option v-for="option in options" v-bind:key="option">
+    <main>
+        <h2 class="header">Welcome to the tournament bracket generator!</h2><br/>
+        <div class="nav-input-boxes">
+          <label for="Title" style="padding-right: 5px;font-size: 18px;">Title: </label>
+          <input type="text" placeholder="Enter Tournament Title" style="border: 1px solid black;"/>
+        </div>
+        <div class="nav-input-boxes">
+          <label for="#ofthings" style="padding-right: 5px;font-size: 18px;">Number of participants:</label>
+          <select v-model="selected" name="" id="">
+          <option v-for="option in options" v-bind:key="option">
           {{ option }}
-        </option>
-      </select>
-    </div>
-    <div>
-      <button type="submit" @click.prevent="updatePants">Submit</button>
-    </div>
+          </option>
+          </select>
+        </div>
+      <div class="nav-input-boxes">
+        <button type="submit" @click.prevent="updatePants">Submit</button>
+      </div>
+    </main>
   </form>
+</div>
 </template>
 
 <script>
@@ -35,4 +40,15 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-input-boxes {
+  display: flex;
+  justify-content: center;
+  margin: 5px 0px 15px;
+}
+</style>

@@ -41,6 +41,10 @@ h3 {
     height: 41.5px;
 }
 
+.tournament-margins {
+    margin: 10px 40px 5px 20px;
+}
+
 /* class to be added to the winner of a round after an event */
 .winner {
     font-weight: bold;
