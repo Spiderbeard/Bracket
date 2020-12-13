@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="tournament-margins">
     <div class="bracketVisualizer">
       <div
         id="roundHeaders"
