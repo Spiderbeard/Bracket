@@ -103,9 +103,9 @@
           </div>
         </div>
         <div
-          id="yep"
           v-if="teamsArray.length > 2"
-          class="d-flex flex-column justify-content-around  "
+          class="d-flex flex-column justify-content-around round"
+          :class="`round2` + teamsArray.length"
         >
           <div
             v-for="(round, index) in this.round2Matches"
@@ -150,9 +150,9 @@
           </div>
         </div>
         <div
-          id="yep1"
           v-if="round2Matches.length > 1"
           class="d-flex flex-column justify-content-around "
+          :class="`round3` + teamsArray.length"
         >
           <div
             v-for="(round, index) in this.round3Matches"
@@ -203,9 +203,9 @@
           </div>
         </div>
         <div
-          id="yep2"
           v-if="round4Matches.length === 1"
           class="d-flex flex-column justify-content-center "
+          :class="`round4` + teamsArray.length"
         >
           <div
             v-for="(round, index) in this.round4Matches"
@@ -246,8 +246,8 @@
           </div>
         </div>
         <div
-          id="yep3"
           class="d-flex flex-column align-self-stretch justify-content-center "
+          :class="`roundchamp` + teamsArray.length"
         >
           <div
             class="d-flex flex-column justify-content-center align-items-stretch "
@@ -448,21 +448,188 @@ export default {
 </script>
 
 <style>
-
-#yep {
+.round216 {
+  width: 23%;
+  height: 816px;
+}
+.round316 {
+  width: 16%;
+  height: 816px;
+}
+.round416 {
+  width: 22%;
+  height: 816px;
+}
+.roundchamp16 {
+  width: 19%;
+}
+.round215 {
+  width: 27%;
+  height: 816px;
+}
+.round315 {
+  width: 22%;
+  height: 816px;
+}
+.round415 {
+  width: 22%;
+  height: 816px;
+}
+.roundchamp15 {
+  width: 25%;
+}
+.round214 {
+  width: 23%;
+  height: 816px;
+}
+.round314 {
   width: 18%;
   height: 816px;
 }
-#yep1 {
-  width: 20%;
+.round414 {
+  width: 22%;
   height: 816px;
 }
-#yep2 {
-  width: 20%;
+.roundchamp14 {
+  width: 22%;
+}
+.round213 {
+  width: 26%;
   height: 816px;
 }
-#yep3 {
+.round313 {
+  width: 23%;
+  height: 816px;
+}
+.round413 {
+  width: 22%;
+  height: 816px;
+}
+.roundchamp13 {
+  width: 22%;
+}
+.round212 {
+  width: 23%;
+  height: 816px;
+}
+.round312 {
+  width: 16%;
+  height: 816px;
+}
+.round412 {
+  width: 22%;
+  height: 816px;
+}
+.roundchamp12 {
+  width: 21%;
+}
+.round211 {
+  width: 23%;
+  height: 816px;
+}
+.round311 {
+  width: 16%;
+  height: 816px;
+}
+.round411 {
+  width: 22%;
+  height: 816px;
+}
+.roundchamp11 {
   width: 20%;
+}
+.round210 {
+  width: 23%;
+  height: 816px;
+}
+.round310 {
+  width: 16%;
+  height: 816px;
+}
+.round410 {
+  width: 22%;
+  height: 816px;
+}
+.roundchamp10 {
+  width: 20%;
+}
+.round29 {
+  width: 23%;
+  height: 816px;
+}
+.round39 {
+  width: 16%;
+  height: 816px;
+}
+.round49 {
+  width: 22%;
+  height: 816px;
+}
+.roundchamp9 {
+  width: 21%;
+}
+.round28 {
+  width: 23%;
+  height: 816px;
+}
+.round38 {
+  width: 21%;
+  height: 816px;
+}
+.roundchamp8 {
+  width: 25%;
+}
+.round27 {
+  width: 23%;
+  height: 816px;
+}
+.round37 {
+  width: 23%;
+  height: 816px;
+}
+.roundchamp7 {
+  width: 25%;
+}
+.round26 {
+  width: 23%;
+  height: 816px;
+}
+.round36 {
+  width: 21%;
+  height: 816px;
+}
+.roundchamp6 {
+  width: 26%;
+}
+.round25 {
+  width: 23%;
+  height: 816px;
+}
+.round35 {
+  width: 22%;
+  height: 816px;
+}
+.roundchamp5 {
+  width: 25%;
+}
+.round24 {
+  width: 32%;
+  height: 816px;
+}
+
+.roundchamp4 {
+  width: 35%;
+}
+.round23 {
+  width: 31%;
+  height: 816px;
+}
+
+.roundchamp3 {
+  width: 36%;
+}
+.roundchamp2 {
+  width: 78%;
 }
 #sp {
   width: 100%;
