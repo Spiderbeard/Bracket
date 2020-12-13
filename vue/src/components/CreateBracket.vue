@@ -155,7 +155,7 @@
           class="d-flex flex-column justify-content-around "
         >
           <div
-            v-for="round in this.round3Matches"
+            v-for="(round, index) in this.round3Matches"
             v-bind:key="round.id"
             class="d-flex flex-column justify-content-center align-self-stretch "
             id="sp2"
@@ -171,6 +171,7 @@
               round="three"
               roundline="sixteenthirdround"
               :length="teamsArray.length"
+              :location="index"
             />
           </div>
         </div>
@@ -207,7 +208,7 @@
           class="d-flex flex-column justify-content-center "
         >
           <div
-            v-for="round in this.round4Matches"
+            v-for="(round, index) in this.round4Matches"
             v-bind:key="round.id"
             class="d-flex flex-column justify-content-center "
             id="sp3"
@@ -217,6 +218,7 @@
               round="four"
               roundline="sixteenfourthround"
               :length="teamsArray.length"
+              :location="index"
             />
           </div>
         </div>
