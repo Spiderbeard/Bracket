@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Capstone.Models
+namespace Capstone.DAO
 {
-    public class Participant
+    interface IRoundsDAO
     {
     }
 }
