@@ -120,7 +120,11 @@
                 alt=""
               />  </div>
               -->
-            <fork round="two" roundline="sixteensecondround" />
+            <fork
+              round="two"
+              roundline="sixteensecondround"
+              :length="teamsArray.length"
+            />
           </div>
         </div>
         <div
@@ -162,7 +166,11 @@
                 alt=""
               />
             </div> -->
-            <fork round="three" roundline="sixteenthirdround" />
+            <fork
+              round="three"
+              roundline="sixteenthirdround"
+              :length="teamsArray.length"
+            />
           </div>
         </div>
         <div
@@ -204,7 +212,11 @@
             id="sp3"
           >
             <!-- <img src="../assets/bracket.png" class=" pt-4 pb-4" alt="" /> -->
-            <fork round="four" roundline="sixteenfourthround" />
+            <fork
+              round="four"
+              roundline="sixteenfourthround"
+              :length="teamsArray.length"
+            />
           </div>
         </div>
         <div
