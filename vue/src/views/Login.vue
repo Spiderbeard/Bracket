@@ -23,7 +23,8 @@
         required
         autofocus
       />
-      <label for="password" class="sr-only">Password</label>
+
+      <label for="password" class="sr-only">Password</label>     
       <input
         type="password"
         id="password"
@@ -51,7 +52,8 @@ export default {
     return {
       user: {
         username: "",
-        password: ""
+        password: "",
+        emailAddress:""
       },
       invalidCredentials: false
     };

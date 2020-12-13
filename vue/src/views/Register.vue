@@ -5,6 +5,15 @@
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
+      <label for="emailAddress" class="sr-only">Email Address</label>
+      <input
+        type="emailAddress"
+        id="emailAddress"
+        class="form-control"
+        placeholder="Email"
+        v-model="user.emailAddress"
+        required
+      />
       <label for="username" class="sr-only">Username</label>
       <input
         type="text"
@@ -78,6 +87,9 @@ export default {
             this.registrationErrors = true;
             if (response.status === 400) {
               this.registrationErrorMsg = 'Bad Request: Validation Errors';
+            }
+            if(response.status === 409){
+              this.registrationErrorMsg= response.data.message
             }
           });
       }

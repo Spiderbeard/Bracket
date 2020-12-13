@@ -85,7 +85,7 @@ namespace Capstone.DAO
                 using(SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    string sqlStatment = "SELECT atchnumber, isActive, scoreteam1, scoreteam2, team1winner, team2winner, round_id, team1, team2 WHERE match_id = @match_id";
+                    string sqlStatment = "SELECT matchnumber, isActive, scoreteam1, scoreteam2, team1winner, team2winner, round_id, team1, team2 WHERE match_id = @match_id";
                     SqlCommand cmd = new SqlCommand(sqlStatment, conn);
                     cmd.Parameters.AddWithValue("@match_id", matchId);
                     SqlDataReader reader = cmd.ExecuteReader();

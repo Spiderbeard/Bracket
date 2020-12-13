@@ -448,9 +448,7 @@ export default {
 </script>
 
 <style>
-/* .match:last-child .hide-this {
-  display: none;
-} */
+
 #yep {
   width: 18%;
   height: 816px;
