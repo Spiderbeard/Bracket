@@ -1,7 +1,11 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
+  <div class="home-text">
+    <h2>Home</h2>
+  </div>
+  <div class="home-text" style="font-size: 14px;">
+    <p style="font-size:13px;">You must be authenticated to see this</p>
+  </div>
     <sidenav />
   </div>
 </template>
@@ -23,10 +27,12 @@ export default {
 <style>
 .home {
   margin-left: 20px;
+  
 }
 
-h1 {
-  padding-top: 10px;
+.home-text {
+  display: flex;
+  justify-content: flex-start ;
 }
 
 p {
