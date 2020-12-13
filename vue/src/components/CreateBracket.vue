@@ -120,7 +120,7 @@
                 alt=""
               />  </div>
               -->
-            <fork round="two" />
+            <fork round="two" roundline="top" />
           </div>
         </div>
         <div
@@ -288,6 +288,10 @@ export default {
       teamsArray: this.$store.state.Participants,
       editedTodo: null,
       whatever: false,
+      forkline: {
+        round: "",
+        line: "",
+      },
     };
   },
   computed: {
