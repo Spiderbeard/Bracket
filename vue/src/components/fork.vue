@@ -2,14 +2,14 @@
   <div id="something" class="d-flex flex-row">
     <div v-bind:class="'fork ' + round"><br /><br /></div>
     <div class="d-flex align-items-center">
-      <div class="line"></div>
+      <div v-bind:class="'line ' + roundline"></div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["round"],
+  props: ["round", "roundline"],
 };
 </script>
 
@@ -30,12 +30,14 @@ export default {
   height: 411px;
   margin-top: 5vh;
 }
+.top {
+  margin-top: 41px;
+}
 
 .line {
   display: flex;
   border: 2px solid black;
   width: 3vw;
   height: 0vh;
-  margin-bottom: 2.5vh;
 }
 </style>
