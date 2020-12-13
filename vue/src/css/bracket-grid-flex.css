@@ -1,16 +1,33 @@
-#sixteen-grid {
+#user-tournament-grid {
     display: grid;
     grid-row-gap: 20px;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-areas:
-            "round-1 round-2 round-3 round-4 champion";
+            "header header"
+            "ongoing completed"
+            "ongoing completed"
+            "ongoing completed";
     align-items: center;
 }
 
-#round-one-grid {
+#ongoing-tournaments-grid {
     display: grid;
     grid-row-gap: 20px;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     justify-content: space-around;
     flex-direction: column;
+    grid-template-areas:
+            "header header"
+            "tournamentNumber result";
+}
+
+#completed-tournaments-grid {
+    display: grid;
+    grid-row-gap: 20px;
+    grid-template-rows: 1fr 1fr;
+    justify-content: space-around;
+    flex-direction: column;
+    grid-template-areas:
+            "header header"
+            "tournamentNumber result";
 }
