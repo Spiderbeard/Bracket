@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace Capstone.DAO
 {
-    public class TournamentSqlDao
+    public class TournamentSqlDao : ITournamentDAO
     {
+
     }
 }
