@@ -85,7 +85,7 @@ namespace Capstone.DAO
                 using(SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    string sqlStatment = "SELECT matchnumber, isActive, scoreteam1, scoreteam2, team1winner, team2winner, round_id, team1, team2 WHERE match_id = @match_id";
+                    string sqlStatment = "SELECT matchnumber, isActive, scoreteam1, scoreteam2, team1winner, team2winner, round_id, team1, team2 FROM match WHERE match_id = @match_id";
                     SqlCommand cmd = new SqlCommand(sqlStatment, conn);
                     cmd.Parameters.AddWithValue("@match_id", matchId);
                     SqlDataReader reader = cmd.ExecuteReader();
@@ -110,7 +110,7 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    string sqlStatment = "UPDATE mtch SET scoreteam1 = @scoreteam1 WHERE match_id = @match_id";
+                    string sqlStatment = "UPDATE match SET scoreteam1 = @scoreteam1 WHERE match_id = @match_id";
                     SqlCommand cmd = new SqlCommand(sqlStatment, conn);
                     cmd.Parameters.AddWithValue("@scoreteam1", updated.ScoreTeam1);
 
@@ -119,6 +119,29 @@ namespace Capstone.DAO
                     return (rowsAffected > 0);
                 }
                 
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public bool UpdateScoreTeamTwo(Match updated)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string sqlStatment = "UPDATE match SET scoreteam2 = @scoreteam2 WHERE match_id = @match_id";
+                    SqlCommand cmd = new SqlCommand(sqlStatment, conn);
+                    cmd.Parameters.AddWithValue("@scoreteam2", updated.ScoreTeam2);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    return (rowsAffected > 0);
+                }
+
             }
             catch (Exception e)
             {
@@ -144,5 +167,7 @@ namespace Capstone.DAO
 
             return m;
         }
+
+        
     }
 }
