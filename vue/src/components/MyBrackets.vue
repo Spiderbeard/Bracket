@@ -6,7 +6,7 @@
        <form>
            <div class="nav-input-boxes" style="justify-content: left;">
                 <label for="tournamentsToDisplay" style="padding-right: 5px;font-size: 18px;">Tournaments:</label>
-                <select v-model="selected" name="" id="">
+                <select v-model="selected" name="" id="" value="selected">
                 <option v-for="option in options" v-bind:key="option">
                 {{ option }}
                 </option>
@@ -97,4 +97,8 @@ export default {
 .userInfo{
     margin: 5px 3px
 }
+
+/* .hidden {
+    display: hidden;
+} */
 </style>
