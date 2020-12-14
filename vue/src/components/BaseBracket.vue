@@ -30,7 +30,7 @@
             <div class="team-top border-bottom border-dark">
               <span>
                 <div v-show="teamsArray[index].edit == false">
-                  <label class="team-input" @click="registeruser">
+                  <label class="team-input" @click="registerUser">
                     {{
                       teamsArray[index].name == ""
                         ? teamsArray[index].id
@@ -266,7 +266,7 @@
       <div class="button-margin">
         <button v-on:click="shuffleStore">Randomize</button>
       </div>
-      <div @click="registeruser" class="button-margin">
+      <div @click="registerUser" class="button-margin">
         <button>Add Teams</button>
       </div>
       <div class="button-margin">
@@ -441,7 +441,7 @@ export default {
     sendThemHome() {
       this.$router.push("/");
     },
-    registeruser() {
+    registerUser() {
       var r = confirm("Please Login to use this feature!");
       if (r == true) {
         this.$router.push("/login");
