@@ -1,6 +1,7 @@
 <template>
   <div class="tournament-margins">
     <div class="bracketVisualizer">
+      <h2 role="alert" class="alert alert-danger text-center "><u>You need to be logged in to access full functionality of this page.</u></h2>
       <div
         id="roundHeaders"
         class="headers d-flex flex-row justify-content-between pl-3 pr-3"
@@ -30,7 +31,10 @@
             <div class="team-top border-bottom border-dark">
               <span>
                 <div v-show="teamsArray[index].edit == false">
-                  <label class="team-input" @click="registerUser">
+                  <label
+                    class="team-input"
+                    @click="teamsArray[index].edit = true"
+                  >
                     {{
                       teamsArray[index].name == ""
                         ? teamsArray[index].id
@@ -266,9 +270,7 @@
       <div class="button-margin">
         <button v-on:click="shuffleStore">Randomize</button>
       </div>
-      <div @click="registerUser" class="button-margin">
-        <button>Add Teams</button>
-      </div>
+      <div class="button-margin"><button>Add Teams</button></div>
       <div class="button-margin">
         <button v-on:click="sendThemHome">Generate New Bracket</button>
       </div>
@@ -440,12 +442,6 @@ export default {
     },
     sendThemHome() {
       this.$router.push("/");
-    },
-    registerUser() {
-      var r = confirm("Please Login to use this feature!");
-      if (r == true) {
-        this.$router.push("/login");
-      }
     },
   },
 };

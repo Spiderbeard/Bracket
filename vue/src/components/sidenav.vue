@@ -43,7 +43,15 @@ export default {
   methods: {
     updatePants() {
       this.$store.commit("UPDATE_PARTICIPANTS", this.selected);
+
+    if(this.$store.state.token == ''){
       this.$router.push("/tournamentBase");
+    }else {
+      this.$router.push("/tournament")
+    }
+
+
+      
     },
   },
 };

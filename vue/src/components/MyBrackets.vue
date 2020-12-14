@@ -93,12 +93,7 @@ export default {
     display: inline-flex;    
     
 }
-
 .userInfo{
     margin: 5px 3px
 }
-
-/* .hidden {
-    display: hidden;
-} */
 </style>

@@ -49,6 +49,10 @@
                   @keyup.enter="teamsArray[index].edit = false"
                 />
               </span>
+              <!-- <div>
+                  <label for="Winner">Winner</label>
+                  <input type="checkbox" v-model:>
+              </div> -->
             </div>
 
             <div v-if="isLastOddElement(index)" class="team-bottom">
