@@ -3,9 +3,7 @@
   <div class="home-text">
     <h2>Home</h2>
   </div>
-  <div class="home-text" style="font-size: 14px;">
-    <p style="font-size:13px;">You must be authenticated to see this</p>
-  </div>
+  
     <sidenav />
   </div>
 </template>

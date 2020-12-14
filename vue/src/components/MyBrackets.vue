@@ -5,7 +5,7 @@
        </div>
        <div class="AllTournaments">
             <div class="OngoingTournaments">
-                <h3>OnGoing Tournaments</h3>
+                <h3 >OnGoing Tournaments</h3>
             </div>
             <div class="CompletedTournaments">
                 <h3>Completed Tournaments</h3>
@@ -24,16 +24,10 @@ export default {
 .myBrackets{
     display: flexbox;
 }
-.allTournaments>div{
-    display: inline-flexbox;    
-    
+.allTournaments{
+    display: flexbox;    
 }
-
 .userInfo{
     margin: 5px 3px
-}
-.OngoingTournaments,
-.CompletedTournaments{
-    width: 50%;
 }
 </style>
