@@ -2,6 +2,10 @@
   <div class="tournament-margins">
     <div class="bracketVisualizer">
       <h2 role="alert" class="alert alert-danger text-center "><u>You need to be logged in to access full functionality of this page.</u></h2>
+      
+      <br>
+      <h3>Tournament Name: {{this.$store.state.ActiveBracket.name}}</h3>
+      
       <div
         id="roundHeaders"
         class="headers d-flex flex-row justify-content-between pl-3 pr-3"

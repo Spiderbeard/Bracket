@@ -1,6 +1,10 @@
 <template>
   <div class="tournament-margins">
     <div class="bracketVisualizer">
+      <div>
+        <h3><u>Tournament Name: {{this.$store.state.ActiveBracket.name}}</u></h3>
+        <span class="d-flex flex-row"><p class="w-50">Number of Participants: {{this.$store.state.Participants.length}}</p><p>Number of matches: {{this.constuctMatches.length+this.round2Matches.length+this.round3Matches.length+ this.round4Matches.length}}</p></span>
+      </div>
       <div
         id="roundHeaders"
         class="headers d-flex flex-row justify-content-between pl-3 pr-3"
@@ -273,7 +277,7 @@
       <div class="button-margin">
         <button v-on:click="shuffleStore">Randomize</button>
       </div>
-      <div class="button-margin"><button>Add Teams</button></div>
+      <div class="button-margin"><button @click="updateActiveBracket">Add Teams</button></div>
       <div class="button-margin">
         <button v-on:click="sendThemHome">Generate New Bracket</button>
       </div>
@@ -293,6 +297,7 @@ export default {
     // eslint-disable-next-line vue/no-unused-components
     HalfFork,
     ChampionLine,
+
   },
   created() {
     this.nextRoundMatches();
@@ -447,6 +452,9 @@ export default {
     sendThemHome() {
       this.$router.push("/");
     },
+    updateActiveBracket(){
+      this.$store.commit('SET_BRACKET_PARTICIPANTS',this.teamsArray);
+    }
   },
 };
 </script>
