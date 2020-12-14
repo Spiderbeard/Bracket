@@ -6,10 +6,10 @@
        <form>
            <div class="nav-input-boxes" style="justify-content: left;">
                 <label for="tournamentsToDisplay" style="padding-right: 5px;font-size: 18px;">Tournaments:</label>
-                <select v-model="selected" name="" id="" value="selected">
-                <option v-for="option in options" v-bind:key="option">
-                {{ option }}
-                </option>
+                <select v-model="selected" name="" id="" >
+                    <option v-for="option in options" v-bind:key="option">
+                    {{ option }}
+                    </option>
                 </select>
             </div>
             <div class="user-tournament-margin">
@@ -53,7 +53,7 @@ export default {
 	data(){
     return{
         selected:"",
-        options:['Show All','Completed','Ongoing']
+        options:["Show All","Completed","Ongoing",4]
         };
     }
 }
