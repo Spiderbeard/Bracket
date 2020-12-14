@@ -12,6 +12,7 @@
             type="text"
             placeholder="Enter Tournament Title"
             style="border: 1px solid black;"
+            v-model="bracketName"
           />
         </div>
         <form>
@@ -40,13 +41,15 @@ export default {
     return {
       selected: "",
       options: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
-      isEmpty: true
+      isEmpty: true,
+      bracketName:''
     };
   },
   methods: {
     updatePants() {
       this.$store.commit("UPDATE_PARTICIPANTS", this.selected);
     // if(this.selected==="" ) {
+      this.$store.commit('SET_BRACKET_NAME',this.bracketName)
 
     // }
     if(this.$store.state.token == ''){
