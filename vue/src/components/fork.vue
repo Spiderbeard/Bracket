@@ -1,8 +1,8 @@
 <template>
   <div id="something" class="d-flex flex-row">
     <div v-bind:class="'fork ' + round + length + location"><br /><br /></div>
-    <div class="d-flex align-items-center">
-      <div v-bind:class="'line ' + roundline"></div>
+    <div class="d-flex align-items-center" v-bind:class="roundline + length">
+      <div v-bind:class="'line '"></div>
     </div>
   </div>
 </template>
@@ -324,13 +324,90 @@ export default {
   margin-bottom: -158px;
 }
 
-.sixteensecondround {
+.secondround16 {
   margin-top: 54px;
 }
-.sixteenthirdround {
-  margin-top: 64px;
+.thirdround16 {
+  margin-top: 24px;
 }
-.sixteenfourthround {
+
+.secondround15 {
+  margin-top: 27px;
+}
+.thirdround15 {
+  margin-top: 27px;
+}
+.secondround14 {
+  margin-top: 27px;
+}
+.thirdround14 {
+  margin-top: 27px;
+}
+.secondround13 {
+  margin-top: 27px;
+}
+.thirdround13 {
+  margin-top: 27px;
+}
+
+.secondround12 {
+  margin-top: 27px;
+}
+.thirdround12 {
+  margin-top: 20px;
+}
+
+.secondround11 {
+  margin-top: 27px;
+}
+.thirdround11 {
+  margin-top: 20px;
+}
+
+.secondround10 {
+  margin-top: 27px;
+}
+.thirdround10 {
+  margin-top: 20px;
+}
+
+.secondround9 {
+  margin-top: 27px;
+}
+.thirdround9 {
+  margin-top: 20px;
+}
+
+.secondround8 {
+  margin-top: 27px;
+}
+.thirdround8 {
+  margin-top: 20px;
+}
+.secondround7 {
+  margin-top: 27px;
+}
+.thirdround7 {
+  margin-top: 20px;
+}
+
+.secondround6 {
+  margin-top: 27px;
+}
+.thirdround6 {
+  margin-top: 20px;
+}
+
+.secondround5 {
+  margin-top: 27px;
+}
+.thirdround5 {
+  margin-top: 20px;
+}
+.secondround4 {
+  margin-top: 27px;
+}
+.secondround3 {
   margin-top: 27px;
 }
 

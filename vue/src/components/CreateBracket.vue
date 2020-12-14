@@ -2,8 +2,23 @@
   <div class="tournament-margins">
     <div class="bracketVisualizer">
       <div>
-        <h3><u>Tournament Name: {{this.$store.state.ActiveBracket.name}}</u></h3>
-        <span class="d-flex flex-row"><p class="w-50">Number of Participants: {{this.$store.state.Participants.length}}</p><p>Number of matches: {{this.constuctMatches.length+this.round2Matches.length+this.round3Matches.length+ this.round4Matches.length}}</p></span>
+        <h3>
+          <u>Tournament Name: {{ this.$store.state.ActiveBracket.name }}</u>
+        </h3>
+        <span class="d-flex flex-row"
+          ><p class="w-50">
+            Number of Participants: {{ this.$store.state.Participants.length }}
+          </p>
+          <p>
+            Number of matches:
+            {{
+              this.constuctMatches.length +
+                this.round2Matches.length +
+                this.round3Matches.length +
+                this.round4Matches.length
+            }}
+          </p></span
+        >
       </div>
       <div
         id="roundHeaders"
@@ -130,7 +145,7 @@
               -->
             <fork
               round="two"
-              roundline="sixteensecondround"
+              roundline="secondround"
               :length="teamsArray.length"
               :location="index"
             />
@@ -177,7 +192,7 @@
             </div> -->
             <fork
               round="three"
-              roundline="sixteenthirdround"
+              roundline="thirdround"
               :length="teamsArray.length"
               :location="index"
             />
@@ -224,7 +239,7 @@
             <!-- <img src="../assets/bracket.png" class=" pt-4 pb-4" alt="" /> -->
             <fork
               round="four"
-              roundline="sixteenfourthround"
+              roundline="fourthround"
               :length="teamsArray.length"
               :location="index"
             />
@@ -264,7 +279,10 @@
             <champion-line class="d-flex " />
           </div>
         </div>
-        <div class="CHAMPION d-flex flex-column justify-content-center">
+        <div
+          class="CHAMPION d-flex flex-column justify-content-center "
+          v-bind:class="` champ` + teamsArray.length"
+        >
           <div
             class="border border-dark d-flex flex-column justify-content-center"
           >
@@ -277,7 +295,9 @@
       <div class="button-margin">
         <button v-on:click="shuffleStore">Randomize</button>
       </div>
-      <div class="button-margin"><button @click="updateActiveBracket">Add Teams</button></div>
+      <div class="button-margin">
+        <button @click="updateActiveBracket">Add Teams</button>
+      </div>
       <div class="button-margin">
         <button v-on:click="sendThemHome">Generate New Bracket</button>
       </div>
@@ -297,7 +317,6 @@ export default {
     // eslint-disable-next-line vue/no-unused-components
     HalfFork,
     ChampionLine,
-
   },
   created() {
     this.nextRoundMatches();
@@ -452,9 +471,9 @@ export default {
     sendThemHome() {
       this.$router.push("/");
     },
-    updateActiveBracket(){
-      this.$store.commit('SET_BRACKET_PARTICIPANTS',this.teamsArray);
-    }
+    updateActiveBracket() {
+      this.$store.commit("SET_BRACKET_PARTICIPANTS", this.teamsArray);
+    },
   },
 };
 </script>
@@ -590,6 +609,7 @@ export default {
 }
 .roundchamp8 {
   width: 25%;
+  margin-top: 26px;
 }
 .round27 {
   width: 23%;
