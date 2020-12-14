@@ -24,12 +24,12 @@
             </option>
           </select>
         </div>
-        <div class="nav-input-boxes">
-          <button type="submit" @click.prevent="updatePants">Submit</button>
-        </div>
-      </main>
-    </form>
-  </div>
+      <div class="nav-input-boxes" style="font-size: 16px;">
+        <button type="submit" @click.prevent="updatePants">Submit</button>
+      </div>
+    </main>
+  </form>
+</div>
 </template>
 
 <script>
@@ -43,7 +43,15 @@ export default {
   methods: {
     updatePants() {
       this.$store.commit("UPDATE_PARTICIPANTS", this.selected);
+
+    if(this.$store.state.token == ''){
       this.$router.push("/tournamentBase");
+    }else {
+      this.$router.push("/tournament")
+    }
+
+
+      
     },
   },
 };

@@ -1,14 +1,9 @@
 <template>
   <div class="home">
-    <div class="home-text justify-content-center">
+    <div class="home-text">
       <h2>Home</h2>
     </div>
-    <div
-      class="home-text d-flex justify-content-center"
-      style="font-size: 14px;"
-    >
-      <p style="font-size:20px;">Welcome</p>
-    </div>
+
     <sidenav />
   </div>
 </template>
