@@ -1,29 +1,48 @@
 <template>
    <div id="user-tournament-page">
        <div class="userInfo"> 
-           <div>
-                <h4 class="user-info">Current User: Joe Howell</h4>
-                <div class="nav-input-boxes" style="justify-content: left;">
-                    <label for="tournamentsToDisplay" style="padding-right: 5px;font-size: 18px;">Tournaments:</label>
-                    <select v-model="selected" name="" id="" value="Show All">
-                    <option v-for="option in options" v-bind:key="option">
-                    {{ option }}
-                    </option>
-                    </select>
-                </div>		
+            <h4 class="user-info">Current User: Joe Howell</h4>		
+       </div>
+       <form>
+           <div class="nav-input-boxes" style="justify-content: left;">
+                <label for="tournamentsToDisplay" style="padding-right: 5px;font-size: 18px;">Tournaments:</label>
+                <select v-model="selected" name="" id="">
+                <option v-for="option in options" v-bind:key="option">
+                {{ option }}
+                </option>
+                </select>
             </div>
-       </div>
-       <div class="user-tournament-margin">
-        <div class="OngoingTournaments" v-if="option">
-            <h5>Ongoing Tournaments</h5>
-        </div>
-        <div class="CompletedTournaments" v-else-if="oh-boy">
-            <h5>Completed Tournaments</h5>
-        </div>
-        <div class="AllTournaments main" v-else>
-            <h5>All Tournaments</h5>
-        </div>
-       </div>
+            <div class="user-tournament-margin">
+            <div class="OngoingTournaments" v-if="selected='Ongoing'">
+                <h5>Ongoing Tournaments</h5>
+                <!-- <p v-for="tournament in tournaments"></p> -->
+                <div class="tournament-item">
+                    <p class="tournament-border">
+                        placeholder tournament <span class="match-result">72</span>
+                        <button class="tiny-button">Record a new match result</button>
+                    </p>
+                </div>
+            </div>
+            <div class="CompletedTournaments" v-else-if="selected='Completed'">
+                <h5>Completed Tournaments</h5>
+                <div class="tournament-item">
+                    <p class="tournament-border">
+                        placeholder tournament <span class="match-result">match result</span>
+                        <button class="tiny-button">Record a new match result</button>
+                    </p>
+                </div>
+            </div>
+            <div class="AllTournaments main" v-else>
+                <h5>All Tournaments</h5>
+                <div class="tournament-item">
+                    <p class="tournament-border">
+                        placeholder tournament <span class="match-result">match result</span>
+                        <button class="tiny-button">Record a new match result</button>
+                    </p>
+                </div>
+            </div>
+            </div>
+       </form>
    </div>
 </template>
 
@@ -33,9 +52,9 @@ require("@/css/style.css");
 export default {
 	data(){
     return{
-        selected:'',
+        selected:"",
         options:['Show All','Completed','Ongoing']
-        }
+        };
     }
 }
 </script>
@@ -44,6 +63,27 @@ export default {
 /* .myBrackets{
     display: flex;
 } */
+.tiny-button {
+    width: 100px;
+    height: 50px;
+    font-size: 14px;
+    float: right;
+    margin: -1.2%;
+}
+
+.tournament-item {
+    display: inline;
+}
+
+.match-result {
+    margin-left: 44em;
+    font-weight: bold;
+}
+
+.tournament-border {
+    border: 1px solid #CFCFCF;
+    padding: 20px;
+}
 
 .user-info {
     color: #3a506b;
@@ -56,10 +96,5 @@ export default {
 
 .userInfo{
     margin: 5px 3px
-}
-.OngoingTournaments,
-.CompletedTournaments{
-    width: 50%;
-    color: #3a506b;
 }
 </style>
