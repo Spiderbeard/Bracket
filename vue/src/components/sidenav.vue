@@ -5,10 +5,6 @@
         <h2 class="header">Welcome to the tournament bracket generator!</h2>
         <br />
         <div class="nav-input-boxes">
-<<<<<<< HEAD
-          <label for="Title" style="padding-right: 5px;font-size: 18px;">Title: </label>
-          <input type="text" placeholder=" Enter Tournament Title" style="border: 1px solid black;"/>
-=======
           <label for="Title" style="padding-right: 5px;font-size: 18px;"
             >Title:
           </label>
@@ -17,7 +13,6 @@
             placeholder="Enter Tournament Title"
             style="border: 1px solid black;"
           />
->>>>>>> master
         </div>
         <div class="nav-input-boxes">
           <label for="#ofthings" style="padding-right: 5px;font-size: 18px;"
@@ -29,21 +24,12 @@
             </option>
           </select>
         </div>
-<<<<<<< HEAD
       <div class="nav-input-boxes" style="font-size: 16px;">
         <button type="submit" @click.prevent="updatePants">Submit</button>
       </div>
     </main>
   </form>
 </div>
-=======
-        <div class="nav-input-boxes">
-          <button type="submit" @click.prevent="updatePants">Submit</button>
-        </div>
-      </main>
-    </form>
-  </div>
->>>>>>> master
 </template>
 
 <script>
