@@ -60,13 +60,6 @@
                     }}
                   </label>
                 </div>
-                <input
-                  class="input-box"
-                  v-show="teamsArray[index].edit == true"
-                  v-model="teamsArray[index].name"
-                  v-on:blur="teamsArray[index].edit = false"
-                  @keyup.enter="teamsArray[index].edit = false"
-                />
               </span>
               <!-- <div>
                   <label for="Winner">Winner</label>
@@ -433,6 +426,7 @@ export default {
       } while (length >= 1);
       return output;
     },
+    isWinner() {},
     nextRoundMatches() {
       let fullLength = this.teamsArray.length;
       if (fullLength >= 13) {
@@ -684,10 +678,6 @@ input[type="text"] {
 }
 #fork-round-3 {
 }
-/* input[type="text"]:hover{
-  border-bottom:1px solid ;
-}
-*/
 span {
   white-space: nowrap;
 }
