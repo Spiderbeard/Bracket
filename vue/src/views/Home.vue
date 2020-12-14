@@ -2,6 +2,7 @@
   <div class="home">
     <div class="home-text">
       <h2>Home</h2>
+      <h4>Welcome to the Bracket Builder 3000</h4>
     </div>
 
     <sidenav />
