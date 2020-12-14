@@ -22,28 +22,35 @@ export default {
 .two160 {
   height: 106px;
   margin-top: 23px;
+  margin-bottom: -20px;
 }
 .two161 {
   height: 106px;
   margin-top: 23px;
+  margin-bottom: -20px;
 }
 .two162 {
   height: 106px;
   margin-top: 23px;
+  margin-bottom: -20px;
 }
 .two163 {
   height: 106px;
   margin-top: 23px;
+  margin-bottom: -20px;
 }
 .three160 {
   height: 208px;
+  margin-bottom: -20px;
 }
 .three161 {
   height: 207px;
+  margin-bottom: -20px;
 }
 .four160 {
   height: 411px;
   margin-top: 5vh;
+  margin-bottom: -20px;
 }
 .two150 {
   height: 112px;
