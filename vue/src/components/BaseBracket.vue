@@ -1,11 +1,16 @@
 <template>
   <div class="tournament-margins">
     <div class="bracketVisualizer">
-      <h2 role="alert" class="alert alert-danger text-center "><u>You need to be logged in to access full functionality of this page.</u></h2>
-      
-      <br>
-      <h3>Tournament Name: {{this.$store.state.ActiveBracket.name}}</h3>
-      
+      <h2 role="alert" class="alert alert-danger text-center ">
+        <u
+          >You need to be logged in to access full functionality of this
+          page.</u
+        >
+      </h2>
+
+      <br />
+      <h3>Tournament Name: {{ this.$store.state.ActiveBracket.name }}</h3>
+
       <div
         id="roundHeaders"
         class="headers d-flex flex-row justify-content-between pl-3 pr-3"
@@ -35,10 +40,7 @@
             <div class="team-top border-bottom border-dark">
               <span>
                 <div v-show="teamsArray[index].edit == false">
-                  <label
-                    class="team-input"
-                    @click="registerUser"
-                  >
+                  <label class="team-input" @click="registerUser">
                     {{
                       teamsArray[index].name == ""
                         ? teamsArray[index].id
@@ -127,7 +129,7 @@
               -->
             <fork
               round="two"
-              roundline="sixteensecondround"
+              roundline="secondround"
               :length="teamsArray.length"
               :location="index"
             />
@@ -174,7 +176,7 @@
             </div> -->
             <fork
               round="three"
-              roundline="sixteenthirdround"
+              roundline="thirdround"
               :length="teamsArray.length"
               :location="index"
             />
@@ -221,7 +223,7 @@
             <!-- <img src="../assets/bracket.png" class=" pt-4 pb-4" alt="" /> -->
             <fork
               round="four"
-              roundline="sixteenfourthround"
+              roundline="fourthround"
               :length="teamsArray.length"
               :location="index"
             />
@@ -261,7 +263,10 @@
             <champion-line class="d-flex " />
           </div>
         </div>
-        <div class="CHAMPION d-flex flex-column justify-content-center">
+        <div
+          class="CHAMPION d-flex flex-column justify-content-center"
+          v-bind:class="`champ` + teamsArray.length"
+        >
           <div
             class="border border-dark d-flex flex-column justify-content-center"
           >
@@ -449,16 +454,13 @@ export default {
     sendThemHome() {
       this.$router.push("/");
     },
-    registerUser(){
+    registerUser() {
       var r = confirm("Please log-in to use this feature!");
 
-      if(r== true){
-        this.$router.push('/login');
+      if (r == true) {
+        this.$router.push("/login");
       }
-
-
-      
-    }
+    },
   },
 };
 </script>
@@ -605,6 +607,7 @@ export default {
 }
 .roundchamp7 {
   width: 25%;
+  margin-top: 26px;
 }
 .round26 {
   width: 23%;
@@ -616,6 +619,7 @@ export default {
 }
 .roundchamp6 {
   width: 26%;
+  margin-top: 26px;
 }
 .round25 {
   width: 23%;
@@ -627,6 +631,7 @@ export default {
 }
 .roundchamp5 {
   width: 25%;
+  margin-top: 26px;
 }
 .round24 {
   width: 32%;
@@ -646,6 +651,7 @@ export default {
 }
 .roundchamp2 {
   width: 78%;
+  margin-bottom: 13px;
 }
 #sp {
   width: 100%;
@@ -664,12 +670,21 @@ export default {
 input[type="text"] {
   border-color: transparent;
 }
-#fork-round-3 {
+.champ8 {
+  margin-top: 26px;
 }
-/* input[type="text"]:hover{
-  border-bottom:1px solid ;
+.champ7 {
+  margin-top: 26px;
 }
-*/
+.champ6 {
+  margin-top: 26px;
+}
+.champ5 {
+  margin-top: 26px;
+}
+.champ2 {
+  margin-bottom: 16px;
+}
 span {
   white-space: nowrap;
 }
