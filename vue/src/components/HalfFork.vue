@@ -7,7 +7,7 @@
           <div class="bottombox"></div>
         </div>
         <div class="linebox">
-          <div class="line"></div>
+          <div class="line2"></div>
         </div>
       </div>
     </div>
@@ -44,7 +44,7 @@ export default {};
   width: 97%;
 }
 
-.line {
+.line2 {
   display: flex;
   border: 2px solid black;
   width: 100%;
