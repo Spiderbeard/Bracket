@@ -2,7 +2,7 @@
   <div>
     <form action="">
       <main>
-        
+        <h2 class="header">Welcome to the tournament bracket generator!</h2>
         <br />
         <div class="nav-input-boxes">
           <label for="Title" style="padding-right: 5px;font-size: 18px;"
