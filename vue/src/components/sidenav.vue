@@ -14,19 +14,21 @@
             style="border: 1px solid black;"
           />
         </div>
-        <div class="nav-input-boxes">
-          <label for="#ofthings" style="padding-right: 5px;font-size: 18px;"
-            >Number of participants:</label
-          >
-          <select v-model="selected" name="" id="">
-            <option v-for="option in options" v-bind:key="option">
-              {{ option }}
-            </option>
-          </select>
-        </div>
-      <div class="nav-input-boxes" style="font-size: 16px;">
-        <button type="submit" @click.prevent="updatePants">Submit</button>
-      </div>
+        <form>
+          <div class="nav-input-boxes">
+            <label for="#ofthings" style="padding-right: 5px;font-size: 18px;"
+              >Number of participants:</label>
+            <select v-model="selected" name="" id="" @change="checkForm" required>
+              <option v-for="option in options" v-bind:key="option">
+                {{ option }}
+              </option>
+            </select>
+          </div>
+          <p v-if="isEmpty" class="no-pants-error">* Please select a number of participants.</p>
+          <div class="nav-input-boxes" style="font-size: 16px;">
+            <button type="submit" @click.prevent="updatePants">Submit</button>
+          </div>
+        </form>
     </main>
   </form>
 </div>
@@ -38,21 +40,30 @@ export default {
     return {
       selected: "",
       options: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+      isEmpty: true
     };
   },
   methods: {
     updatePants() {
       this.$store.commit("UPDATE_PARTICIPANTS", this.selected);
+    // if(this.selected==="" ) {
 
+    // }
     if(this.$store.state.token == ''){
       this.$router.push("/tournamentBase");
-    }else {
+      } else {
       this.$router.push("/tournament")
-    }
-
-
-      
+      }  
     },
+
+    checkForm:function(exception) {
+      if(this.selected==="" || this.selected==null) {
+        exception.preventDefault();
+        this.isEmpty = true;
+      } else {
+        this.isEmpty = false;
+      }
+    }
   },
 };
 </script>
@@ -67,5 +78,12 @@ export default {
   display: flex;
   justify-content: center;
   margin: 5px 0px 15px;
+}
+
+.no-pants-error {
+  display: flex;
+  justify-content: center;
+  color: #F38181;
+  font-weight: bold;
 }
 </style>

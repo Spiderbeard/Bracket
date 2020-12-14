@@ -61,8 +61,12 @@ h3 {
 }
 
 /* class to be added to the loser of a round after an event */
-.loser {
+.loser, .forfeit {
     color: #A8A8A8;
+}
+
+.forfeit {
+    text-decoration-line: line-through;
 }
 
 /* crown icons to be added to the champion of the tournament after an event */
