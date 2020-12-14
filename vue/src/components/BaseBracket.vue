@@ -30,10 +30,7 @@
             <div class="team-top border-bottom border-dark">
               <span>
                 <div v-show="teamsArray[index].edit == false">
-                  <label
-                    class="team-input"
-                    @click="teamsArray[index].edit = true"
-                  >
+                  <label class="team-input" @click="registerUser">
                     {{
                       teamsArray[index].name == ""
                         ? teamsArray[index].id
@@ -269,7 +266,9 @@
       <div class="button-margin">
         <button v-on:click="shuffleStore">Randomize</button>
       </div>
-      <div class="button-margin"><button>Add Teams</button></div>
+      <div @click="registerUser" class="button-margin">
+        <button>Add Teams</button>
+      </div>
       <div class="button-margin">
         <button v-on:click="sendThemHome">Generate New Bracket</button>
       </div>
@@ -441,6 +440,12 @@ export default {
     },
     sendThemHome() {
       this.$router.push("/");
+    },
+    registerUser() {
+      var r = confirm("Please Login to use this feature!");
+      if (r == true) {
+        this.$router.push("/login");
+      }
     },
   },
 };
