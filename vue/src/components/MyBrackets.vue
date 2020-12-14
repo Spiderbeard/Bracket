@@ -7,13 +7,15 @@
            <div class="nav-input-boxes" style="justify-content: left;">
                 <label for="tournamentsToDisplay" style="padding-right: 5px;font-size: 18px;">Tournaments:</label>
                 <select v-model="selected" name="" id="" >
-                    <option v-for="option in options" v-bind:key="option">
-                    {{ option }}
-                    </option>
+                    <option selected value="Show All">Show All</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Ongoing">Ongoing</option>
                 </select>
             </div>
+
+
             <div class="user-tournament-margin">
-            <div class="OngoingTournaments" v-if="selected='Ongoing'">
+            <div class="OngoingTournaments" v-show="this.selected =='Ongoing'">
                 <h5>Ongoing Tournaments</h5>
                 <!-- <p v-for="tournament in tournaments"></p> -->
                 <div class="tournament-item">
@@ -23,7 +25,7 @@
                     </p>
                 </div>
             </div>
-            <div class="CompletedTournaments" v-else-if="selected='Completed'">
+            <div class="CompletedTournaments" v-show="this.selected =='Completed'">
                 <h5>Completed Tournaments</h5>
                 <div class="tournament-item">
                     <p class="tournament-border">
@@ -32,7 +34,7 @@
                     </p>
                 </div>
             </div>
-            <div class="AllTournaments main" v-else>
+            <div class="AllTournaments main" v-show="this.selected =='Show All'">
                 <h5>All Tournaments</h5>
                 <div class="tournament-item">
                     <p class="tournament-border">
