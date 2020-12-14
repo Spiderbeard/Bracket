@@ -642,9 +642,7 @@ export default {
 #sp2 {
   height: 74%;
 }
-img {
-  height: 100%;
-}
+
 #sp3 {
   height: 100%;
 }
