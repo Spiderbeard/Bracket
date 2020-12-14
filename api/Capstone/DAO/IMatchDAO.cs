@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Capstone.DAO
 {
-    interface IMatchDAO
+    public interface IMatchDAO
     {
         Match AddMatch(Match match);
         List<Match> GetAllMatches();
