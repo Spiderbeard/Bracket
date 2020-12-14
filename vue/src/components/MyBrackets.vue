@@ -1,31 +1,97 @@
 <template>
-   <div class="myBrackets">
+   <div id="user-tournament-page">
        <div class="userInfo"> 
-           <div class="display-3">Current User: Joe Howell</div>
+            <h4 class="user-info">Current User: Joe Howell</h4>		
        </div>
-       <div class="AllTournaments">
-            <div class="OngoingTournaments">
-                <h3 >OnGoing Tournaments</h3>
+       <form>
+           <div class="nav-input-boxes" style="justify-content: left;">
+                <label for="tournamentsToDisplay" style="padding-right: 5px;font-size: 18px;">Tournaments:</label>
+                <select v-model="selected" name="" id="" value="selected">
+                <option v-for="option in options" v-bind:key="option">
+                {{ option }}
+                </option>
+                </select>
             </div>
-            <div class="CompletedTournaments">
-                <h3>Completed Tournaments</h3>
+            <div class="user-tournament-margin">
+            <div class="OngoingTournaments" v-if="selected='Ongoing'">
+                <h5>Ongoing Tournaments</h5>
+                <!-- <p v-for="tournament in tournaments"></p> -->
+                <div class="tournament-item">
+                    <p class="tournament-border">
+                        placeholder tournament <span class="match-result">72</span>
+                        <button class="tiny-button">Record a new match result</button>
+                    </p>
+                </div>
             </div>
-       </div>
+            <div class="CompletedTournaments" v-else-if="selected='Completed'">
+                <h5>Completed Tournaments</h5>
+                <div class="tournament-item">
+                    <p class="tournament-border">
+                        placeholder tournament <span class="match-result">match result</span>
+                        <button class="tiny-button">Record a new match result</button>
+                    </p>
+                </div>
+            </div>
+            <div class="AllTournaments main" v-else>
+                <h5>All Tournaments</h5>
+                <div class="tournament-item">
+                    <p class="tournament-border">
+                        placeholder tournament <span class="match-result">match result</span>
+                        <button class="tiny-button">Record a new match result</button>
+                    </p>
+                </div>
+            </div>
+            </div>
+       </form>
    </div>
 </template>
 
 <script>
-export default {
+require("@/css/style.css");
 
+export default {
+	data(){
+    return{
+        selected:"",
+        options:['Show All','Completed','Ongoing']
+        };
+    }
 }
 </script>
 
 <style>
-.myBrackets{
-    display: flexbox;
+/* .myBrackets{
+    display: flex;
+} */
+.tiny-button {
+    width: 100px;
+    height: 50px;
+    font-size: 14px;
+    float: right;
+    margin: -1.2%;
 }
-.allTournaments{
-    display: flexbox;    
+
+.tournament-item {
+    display: inline;
+}
+
+.match-result {
+    margin-left: 44em;
+    font-weight: bold;
+}
+
+.tournament-border {
+    border: 1px solid #CFCFCF;
+    padding: 20px;
+}
+
+.user-info {
+    color: #3a506b;
+}
+
+.allTournaments>div{
+    display: inline-flex;    
+    
 }
 .userInfo{
     margin: 5px 3px
