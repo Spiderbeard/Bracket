@@ -14,7 +14,7 @@
       <router-link class="navigation-link" v-bind:to="{name: ''}"> Active Tournaments</router-link>&nbsp;|&nbsp;
       <router-link class="navigation-link" v-bind:to="{name: ''}"> Completed Tournaments</router-link>&nbsp;|&nbsp; -->
       
-      <router-link class="navigation" v-bind:to="{ name:'myBrackets'}">My Tournaments</router-link>&nbsp;|&nbsp;
+      <router-link class="navigation-link" v-bind:to="{ name:'myBrackets'}">My Tournaments</router-link>&nbsp;|&nbsp;
       
       <!-- v-if and v-else for login/logout links -->
       <router-link class="navigation-link" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>

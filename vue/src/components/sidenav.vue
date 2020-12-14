@@ -9,7 +9,7 @@
         </div>
         <div class="nav-input-boxes">
           <label for="#ofthings" style="padding-right: 5px;font-size: 18px;">Number of participants:</label>
-          <select v-model="selected" name="" id="">
+          <select v-model="selected" name="" id="" value="2">
           <option v-for="option in options" v-bind:key="option">
           {{ option }}
           </option>
