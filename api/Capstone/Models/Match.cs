@@ -17,5 +17,9 @@ namespace Capstone.Models
         public int MatchId { get; set; }
         public int Team1 { get; set; }
         public int Team2 { get; set; }
+
+        public Participants participant1 { get; set; } = new Participants();
+
+        public Participants participant2 { get; set; } = new Participants();
     }
 }
