@@ -34,15 +34,16 @@
         required
       />
       </div>
-      <div class="login-button">
+      <div class="button-margins">
       <router-link :to="{ name: 'register' }">Need an account? </router-link>
-      <button type="submit">Sign in</button>
+      <button type="submit" class="login-button btn btn-lg btn-primary btn-block">Sign in</button>
       </div>
     </form>
   </div>
 </template>
 
 <script>
+require("@/css/style.css");
 import authService from "../services/AuthService";
 
 export default {
@@ -82,7 +83,7 @@ export default {
 </script>
 
 <style>
-.page-margin {
+/* .page-margin {
   margin-top: 2%;
 }
 
@@ -94,5 +95,5 @@ export default {
   margin: 0% 20%;
   border: 1.5px solid #CFCFCF;
   border-radius: 5px;
-}
+} */
 </style>
