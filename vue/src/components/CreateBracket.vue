@@ -700,12 +700,7 @@ img {
 input[type="text"] {
   border-color: transparent;
 }
-#fork-round-3 {
-}
-/* input[type="text"]:hover{
-  border-bottom:1px solid ;
-}
-*/
+
 span {
   white-space: nowrap;
 }
