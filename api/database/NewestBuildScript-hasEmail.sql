@@ -124,3 +124,12 @@ REFERENCES [dbo].[users] ([user_id])
 GO
 ALTER TABLE [dbo].[tournament] CHECK CONSTRAINT [FK_tournament_users1]
 GO
+ALTER TABLE [dbo].[match]  WITH CHECK ADD  CONSTRAINT [FK_match_round] FOREIGN KEY([round_id])
+REFERENCES [dbo].[rounds] ([round_id])
+GO
+
+--populate default data
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
+
+GO
