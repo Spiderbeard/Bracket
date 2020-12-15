@@ -320,6 +320,7 @@ export default {
   },
   created() {
     this.nextRoundMatches();
+    this.buidMatchArray();
   },
   data() {
     return {
@@ -335,6 +336,9 @@ export default {
         round: "",
         line: "",
       },
+      wonIndex: 0,
+
+      matchArray: [],
     };
   },
   computed: {
@@ -472,7 +476,21 @@ export default {
       this.$router.push("/");
     },
     updateActiveBracket() {
+      for (let i = 0; i < this.matchArray.length; i++) {
+        this.matchArray[i].Participants1.name = this.teamsArray[i].name;
+        this.matchArray[i].Participants2.name = this.teamsArray[i + 1].name;
+      }
       this.$store.commit("SET_BRACKET_PARTICIPANTS", this.teamsArray);
+    },
+    buidMatchArray() {
+      this.wonIndex =
+        this.constuctMatches.length +
+        this.round2Matches.length +
+        this.round3Matches.length +
+        this.round4Matches.length;
+      for (let i = 0; i < this.wonIndex; i++) {
+        this.matchArray.push(this.$store.state.match);
+      }
     },
   },
 };

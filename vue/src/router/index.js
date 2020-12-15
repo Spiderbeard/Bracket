@@ -8,6 +8,7 @@ import store from '../store/index'
 import Tournament from '@/views/Tournament'
 import MyBrackets from '@/views/MyBrackets'
 import Tournamentbase from '@/views/Tournamentbase'
+import Runningtournament from "@/views/Runningtournament"
 
 Vue.use(Router)
 
@@ -78,6 +79,14 @@ const router = new Router({
       component: Tournamentbase,
       meta:{
         requiresAuth: false
+      }
+    },
+    {
+      path: "/runningTournament",
+      name: "Running",
+      component: Runningtournament,
+      meta:{
+        requiresAuth: true
       }
     }
   ]

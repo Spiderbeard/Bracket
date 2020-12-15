@@ -6,7 +6,7 @@ using Capstone.Models;
 
 namespace Capstone.DAO
 {
-    interface IRoundsDAO
+    public interface IRoundsDAO
     {
         Rounds AddRound(Rounds round);
         List<Rounds> GetAllRounds();
