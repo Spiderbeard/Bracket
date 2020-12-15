@@ -1,17 +1,13 @@
 <template>
   <div id="login" class="text-center">
-    <form class="form-signin page-margin " @submit.prevent="login">
+    <div class="well"/>
+    <form class="form-signin login-page-margin" @submit.prevent="login">
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div
-        class="alert alert-danger"
-        role="alert"
+        class="no-pants-text"
         v-if="invalidCredentials"
+        @click.prevent="showText()"
       >Invalid username and password!</div>
-      <div
-        class="alert alert-success"
-        role="alert"
-        v-if="this.$route.query.registration"
-      >Thank you for registering, please sign in.</div>
       <div class="login-vis-update">
       <label for="username" class="sr-only ">Username</label>
       <input
@@ -39,6 +35,11 @@
       <button type="submit" class="login-button btn btn-lg btn-primary btn-block">Sign in</button>
       </div>
     </form>
+          <div
+        class="you-did-good-text"
+        v-if="this.$route.query.registration"
+      >Thank you for registering, please sign in.</div>
+
   </div>
 </template>
 
@@ -77,12 +78,59 @@ export default {
             this.invalidCredentials = true;
           }
         });
+    },
+
+    showText() {
+      let text = document.getElementById("no-pants-text");
+      text.style.display = "block";
     }
   }
 };
 </script>
 
 <style>
+.login-page-margin {
+  margin-top: 5%;
+}
+
+.alert-adjustment {
+  display: flex;
+  justify-content: center;
+}
+
+.no-pants-text {
+  color: #F38181;
+  font-weight: bold;
+  margin-bottom: 2%;
+  background-color: #FBDADA;
+  width: 20%;
+  height: auto;
+  padding: 5Px;
+  border-radius: 5px;
+  border: 1px solid  #F38181;
+  margin-left: 40%;
+}
+
+.you-did-good-text {
+  color: #91D384;
+  font-weight: bold;
+  margin-bottom: 2%;
+  background-color: #E0FFDA;
+  width: 20%;
+  height: auto;
+  padding: 5Px;
+  border-radius: 5px;
+  border: 1px solid  #91D384;
+  margin-left: 40%;
+  animation: hide 1s linear 2s 1 forwards;
+}
+
+@keyframes hide {
+  to {
+    opacity: 0;
+  }
+}
+
 /* .page-margin {
   margin-top: 2%;
 }

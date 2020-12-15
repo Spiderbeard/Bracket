@@ -1,16 +1,18 @@
 <template>
   <div class="tournament-margins">
     <div class="bracketVisualizer">
-      <h2 role="alert" class="alert alert-danger text-center ">
+      <!-- <h2 role="alert" class="alert alert-danger text-center ">
         <u
           >You need to be logged in to access full functionality of this
           page.</u
         >
-      </h2>
+      </h2> -->
 
       <br />
       <h3>Tournament Name: {{ this.$store.state.ActiveBracket.name }}</h3>
-
+      <p v-if="!isSelected" id="no-edit-text" style="display:none">
+        * You must be a registered user to do this!
+      </p>
       <div
         id="roundHeaders"
         class="headers d-flex flex-row justify-content-between pl-3 pr-3"
@@ -28,6 +30,7 @@
         id="actualBracket"
         class="d-flex flex-row align-items-stretch pl-3 pr-3"
       >
+
         <div
           id="Round1"
           class="matches round-1 d-flex flex-column justify-content-around"
@@ -40,7 +43,7 @@
             <div class="team-top border-bottom border-dark">
               <span>
                 <div v-show="teamsArray[index].edit == false">
-                  <label class="team-input" @click="registerUser">
+                  <label class="team-input" @click="showNoEditText(); scrollTop()">
                     {{
                       teamsArray[index].name == ""
                         ? teamsArray[index].id
@@ -80,7 +83,7 @@
                   <label
                     class="team-input"
                     @click="
-                      teamsArray[teamsArray.length - index - 1].edit = true
+                      showNoEditText(); scrollTop()
                     "
                   >
                     {{
@@ -275,11 +278,14 @@
         </div>
       </div>
     </div>
+    <p v-if="!isSelected" id="no-pants-text" style="display:none">
+      * You must be a registered user to do this!
+    </p>
     <div class="motherFuckingButtons">
       <div class="button-margin">
         <button v-on:click="shuffleStore">Randomize</button>
       </div>
-      <div @click="registerUser" class="button-margin">
+      <div @click="showText()" class="button-margin">
         <button>Add Teams</button>
       </div>
       <div class="button-margin">
@@ -470,6 +476,19 @@ export default {
         this.$router.push("/login");
       }
     },
+    showNoEditText() {
+      let text = document.getElementById("no-edit-text");
+      text.style.display = "block";
+    },
+
+    showText() {
+      let text = document.getElementById("no-pants-text");
+      text.style.display = "block";
+    },
+
+    scrollTop() {
+      window.scrollTo(0, 0);
+    } 
   },
 };
 </script>
@@ -697,4 +716,22 @@ input[type="text"] {
 span {
   white-space: nowrap;
 }
+
+#no-pants-text {
+  /* align-content: center;
+  display: flex;
+  justify-content: center; */
+  color: #F38181;
+  font-weight: bold;
+}
+
+#no-edit-text {
+  /* align-content: center;
+  display: flex;
+  justify-content: center; */
+  color: #F38181;
+  font-weight: bold;
+}
+
+
 </style>
