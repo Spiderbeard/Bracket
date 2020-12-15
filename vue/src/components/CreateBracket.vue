@@ -144,10 +144,18 @@
               />  </div>
               -->
             <fork
+              v-if="round2Bys(index)"
               round="two"
               roundline="secondround"
               :length="teamsArray.length"
               :location="index"
+            />
+            <half-fork
+              roundby="twoby"
+              roundbyline="twolineby"
+              :length="teamsArray.length"
+              :location="index"
+              v-else
             />
           </div>
         </div>
@@ -191,10 +199,18 @@
               />
             </div> -->
             <fork
+              v-if="round3Bys(index)"
               round="three"
               roundline="thirdround"
               :length="teamsArray.length"
               :location="index"
+            />
+            <half-fork
+              roundby="threeby"
+              roundbyline="threelineby"
+              :length="teamsArray.length"
+              :location="index"
+              v-else
             />
           </div>
         </div>
@@ -314,7 +330,7 @@ import ChampionLine from "./ChampionLine.vue";
 export default {
   components: {
     fork,
-    // eslint-disable-next-line vue/no-unused-components
+
     HalfFork,
     ChampionLine,
   },
