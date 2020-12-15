@@ -6,14 +6,14 @@
        <form>
            <div class="nav-input-boxes" style="justify-content: left;">
                 <label for="tournamentsToDisplay" style="padding-right: 5px;font-size: 18px;">Tournaments:</label>
-                <select v-model="selected" name="" id="" >
-                    <option selected value="Show All">Show All</option>
-                    <option value="Completed">Completed</option>
-                    <option value="Ongoing">Ongoing</option>
+                <select v-model="selected" name="" id="">
+                    <option v-for="option in options" v-bind:key="option">
+                        {{option}}
+                    </option>
+                    <!-- <option value="Completed">Completed</option>
+                    <option value="Ongoing">Ongoing</option> -->
                 </select>
             </div>
-
-
             <div class="user-tournament-margin">
             <div class="OngoingTournaments" v-show="this.selected =='Ongoing'">
                 <h5>Ongoing Tournaments</h5>
@@ -54,8 +54,8 @@ require("@/css/style.css");
 export default {
 	data(){
     return{
-        selected:"",
-        options:["Show All","Completed","Ongoing",4]
+        selected:"Show All",
+        options:["Show All","Completed","Ongoing"]
         };
     }
 }

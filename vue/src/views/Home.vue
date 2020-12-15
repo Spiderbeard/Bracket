@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="home-text">
-      <h2>Home</h2>
+      <!-- <h2>Home</h2> -->
     </div>
 
     <sidenav />
@@ -24,6 +24,7 @@ export default {
 <style>
 .home {
   margin-left: 20px;
+  margin-top: 2%;
 }
 
 .home-text {
