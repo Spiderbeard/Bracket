@@ -30,7 +30,6 @@
         id="actualBracket"
         class="d-flex flex-row align-items-stretch pl-3 pr-3"
       >
-
         <div
           id="Round1"
           class="matches round-1 d-flex flex-column justify-content-around"
@@ -43,7 +42,13 @@
             <div class="team-top border-bottom border-dark">
               <span>
                 <div v-show="teamsArray[index].edit == false">
-                  <label class="team-input" @click="showNoEditText(); scrollTop()">
+                  <label
+                    class="team-input"
+                    @click="
+                      showNoEditText();
+                      scrollTop();
+                    "
+                  >
                     {{
                       teamsArray[index].name == ""
                         ? teamsArray[index].id
@@ -83,7 +88,8 @@
                   <label
                     class="team-input"
                     @click="
-                      showNoEditText(); scrollTop()
+                      showNoEditText();
+                      scrollTop();
                     "
                   >
                     {{
@@ -506,7 +512,7 @@ export default {
 
     scrollTop() {
       window.scrollTo(0, 0);
-    } 
+    },
   },
 };
 </script>
@@ -739,7 +745,7 @@ span {
   /* align-content: center;
   display: flex;
   justify-content: center; */
-  color: #F38181;
+  color: #f38181;
   font-weight: bold;
 }
 
@@ -747,9 +753,7 @@ span {
   /* align-content: center;
   display: flex;
   justify-content: center; */
-  color: #F38181;
+  color: #f38181;
   font-weight: bold;
 }
-
-
 </style>

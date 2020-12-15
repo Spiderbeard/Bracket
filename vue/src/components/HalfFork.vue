@@ -76,6 +76,7 @@ export default {
   width: 75%;
   height: 100px;
 }
+
 .twoby212 {
   height: 67px;
 
@@ -109,5 +110,47 @@ export default {
 }
 .threeby111 {
   height: 50px;
+}
+.threelineby111 {
+  margin-top: 27px;
+}
+.threeby110 {
+  height: 60px;
+}
+.threelineby110 {
+  margin-top: 27px;
+}
+.twolineby29 {
+  margin-top: 34px;
+}
+.twolineby9 {
+  height: 88px;
+}
+.twoby29 {
+  height: 61px;
+}
+.threeby19 {
+  height: 61px;
+}
+.threelineby19 {
+  margin-top: 24px;
+}
+.twolineby6 {
+  height: 86px;
+}
+.twoby16 {
+  height: 58px;
+}
+.twolineby16 {
+  margin-top: 32px;
+}
+.twolineby5 {
+  height: 86px;
+}
+.twoby15 {
+  height: 73px;
+}
+.twolineby15 {
+  margin-top: 17px;
 }
 </style>

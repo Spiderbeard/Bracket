@@ -204,7 +204,7 @@ export default {
 }
 .four110 {
   height: 411px;
-  margin-top: 57px;
+  margin-top: 38px;
 }
 .two100 {
   height: 166px;
@@ -229,7 +229,7 @@ export default {
 }
 .four100 {
   height: 411px;
-  margin-top: 58px;
+  margin-top: 39px;
 }
 .two90 {
   height: 174px;
