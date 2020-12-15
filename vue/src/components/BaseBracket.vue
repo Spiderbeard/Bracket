@@ -128,10 +128,18 @@
               />  </div>
               -->
             <fork
+              v-if="round2Bys(index)"
               round="two"
               roundline="secondround"
               :length="teamsArray.length"
               :location="index"
+            />
+            <half-fork
+              roundby="twoby"
+              roundbyline="twolineby"
+              :length="teamsArray.length"
+              :location="index"
+              v-else
             />
           </div>
         </div>
@@ -175,10 +183,18 @@
               />
             </div> -->
             <fork
+              v-if="round3Bys(index)"
               round="three"
               roundline="thirdround"
               :length="teamsArray.length"
               :location="index"
+            />
+            <half-fork
+              roundby="threeby"
+              roundbyline="threelineby"
+              :length="teamsArray.length"
+              :location="index"
+              v-else
             />
           </div>
         </div>
@@ -294,12 +310,13 @@ require("@/css/style.css");
 import fork from "@/components/fork";
 import HalfFork from "@/components/HalfFork";
 import ChampionLine from "./ChampionLine.vue";
+
 export default {
   components: {
     fork,
-    // eslint-disable-next-line vue/no-unused-components
-    HalfFork,
+
     ChampionLine,
+    HalfFork,
   },
   created() {
     this.nextRoundMatches();
@@ -441,6 +458,7 @@ export default {
 
       return length;
     },
+
     ifOddMinusOne(length) {
       if (length % 2 === 1) {
         length--;
