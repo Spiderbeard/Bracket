@@ -29,6 +29,30 @@ export default new Vuex.Store({
       name:'',
       teams: [],
     },
+    match: {
+      MatchNumber: 0,
+      isactive: false,
+      scoreTeam1: 0,
+      socreTeam2: 0,
+      team1winner: false,
+      team2winner: false,
+      roundId: 0,
+      matchId: 0,
+      Participants1: {
+        participantId: 0,
+        name: '',
+        isactive: false
+
+      },
+      Participants2: {
+        participantId: 0,
+        name: '',
+        isactive: false
+
+      },
+      matchInfo:[{}]
+
+    }
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
