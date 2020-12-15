@@ -41,15 +41,15 @@ export default {
 }
 .three160 {
   height: 208px;
-  margin-bottom: -20px;
+  margin-bottom: -1px;
 }
 .three161 {
   height: 207px;
-  margin-bottom: -20px;
+  margin-bottom: -3px;
 }
 .four160 {
   height: 411px;
-  margin-top: 5vh;
+  margin-top: 6px;
   margin-bottom: -20px;
 }
 .two150 {
@@ -254,7 +254,7 @@ export default {
 }
 .four90 {
   height: 411px;
-  margin-top: 56px;
+  margin-top: 43px;
 }
 .two80 {
   height: 207px;
@@ -382,24 +382,24 @@ export default {
   margin-top: 27px;
 }
 .thirdround8 {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 .secondround7 {
   margin-top: 27px;
 }
 .thirdround7 {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .secondround6 {
   margin-top: 27px;
 }
 .thirdround6 {
-  margin-top: 20px;
+  margin-top: 29px;
 }
 
 .secondround5 {
-  margin-top: 27px;
+  margin-top: 32px;
 }
 .thirdround5 {
   margin-top: 20px;
