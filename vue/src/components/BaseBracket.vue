@@ -303,6 +303,7 @@ export default {
   },
   created() {
     this.nextRoundMatches();
+    this.buildWonIndex();
   },
   data() {
     return {
@@ -314,6 +315,7 @@ export default {
       teamsArray: this.$store.state.Participants,
       editedTodo: null,
       whatever: false,
+      wonIndex: 0,
       forkline: {
         round: "",
         line: "",
@@ -453,6 +455,13 @@ export default {
     },
     sendThemHome() {
       this.$router.push("/");
+    },
+    buildWonIndex() {
+      this.wonIndex =
+        this.teamsArray.length +
+        this.round2Matches.length * 2 +
+        this.round3Matches.length * 2 +
+        this.round4Matches.length * 2;
     },
     registerUser() {
       var r = confirm("Please log-in to use this feature!");

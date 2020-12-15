@@ -49,10 +49,7 @@
             <div class="team-top border-bottom border-dark">
               <span>
                 <div v-show="teamsArray[index].edit == false">
-                  <label
-                    class="team-input"
-                    @click="teamsArray[index].edit = true"
-                  >
+                  <label class="team-input">
                     {{
                       teamsArray[index].name == ""
                         ? teamsArray[index].id
@@ -110,7 +107,9 @@
                     $emit('update');
                   "
                   @keyup.enter="
+                    updatmatcharray(index);
                     teamsArray[teamsArray.length - index - 1].edit = false;
+                    updatmatcharray;
                     $emit('update');
                   "
                 />
@@ -313,6 +312,7 @@ export default {
   },
   created() {
     this.nextRoundMatches();
+    this.buidMatchArray();
   },
   data() {
     return {
@@ -323,11 +323,17 @@ export default {
       round4Matches: [],
       teamsArray: this.$store.state.Participants,
       editedTodo: null,
+      wonIndex:
+        this.constuctMatches.length +
+        this.round2Matches.length +
+        this.round3Matches.length +
+        this.round4Matches.length,
       whatever: false,
       forkline: {
         round: "",
         line: "",
       },
+      matchArray: [],
     };
   },
   computed: {
@@ -376,6 +382,9 @@ export default {
         return false;
       }
       return true;
+    },
+    updatmatcharray(index, name) {
+      this.matchArray[index].name = name;
     },
     round2Bys(index) {
       if (
@@ -466,7 +475,16 @@ export default {
       this.$router.push("/");
     },
     updateActiveBracket() {
+      for (let i = 0; i < this.teamsArray.length - 1; i++) {
+        this.matchArray[i].Participants1.name = this.teamsArray[i].name;
+        this.matchArray[i + 1].Participants2.name = this.teamsArray[i + 1].name;
+      }
       this.$store.commit("SET_BRACKET_PARTICIPANTS", this.teamsArray);
+    },
+    buidMatchArray() {
+      for (let i = 0; i < this.wonIndex; i++) {
+        this.matchArray.push(this.$store.state.match);
+      }
     },
   },
 };
