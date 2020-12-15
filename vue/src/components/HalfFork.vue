@@ -153,4 +153,13 @@ export default {
 .twolineby15 {
   margin-top: 17px;
 }
+.twoby314 {
+  height: 30px;
+}
+.twolineby14 {
+  height: 89px;
+}
+.twolineby314 {
+  margin-top: 63px;
+}
 </style>
