@@ -1,6 +1,7 @@
 <template>
   <div>
-    <form action="">
+    <div class="well"/>
+    <form action="" class="page-margin">
       <main>
         <h2 class="header">Welcome to the tournament bracket generator!</h2>
         <br />
@@ -11,7 +12,7 @@
           <input
             type="text"
             placeholder=" Enter Tournament Title"
-            style="border: 1px solid black;"
+            style="border: 1px solid black; height: 40px; width:19%; font-size: 18px;"
             v-model="bracketName"
           />
         </div>
@@ -32,8 +33,14 @@
           </p>
           </div>
           <div class="nav-input-boxes" style="font-size: 16px;">
-            <button v-if="isSelected" type="submit" @click.prevent="updatePants">Submit</button>
-            <button v-else type="submit" @click.prevent="checkForm; showText()">Submit</button>
+            <button v-if="isSelected" type="submit" @click.prevent="updatePants"
+            class="btn btn-lg btn-primary ">
+              Submit
+            </button>
+            <button v-else type="submit" @click.prevent="checkForm; showText()"
+            class="btn btn-lg btn-primary ">
+              Submit
+            </button>
           </div>
         </form>
     </main>
@@ -90,7 +97,7 @@ export default {
 .nav-input-boxes {
   display: flex;
   justify-content: center;
-  margin: 5px 0px 3%;
+  margin: 5px 0px 2%;
 }
 
 #no-pants-text {

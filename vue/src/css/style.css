@@ -18,6 +18,20 @@ h3 {
     margin-left: 5%;
 }
 
+.well {
+    background-color: #EEEEEE;
+    border-radius: 10px;
+    width: 70%;
+    height: 370px;
+    position:absolute;
+    left: 15%;
+    right: 10%;
+    top: 12%;
+    bottom: auto;
+    z-index: -1;
+    border: 2px solid #CFCFCF;
+}
+
 /* adds spaces between bracket page buttons for aesthetic */
 .button-margin {
     margin: 0px 2px 20px 10px;
@@ -84,28 +98,28 @@ h3 {
 /* login and register styling */
 .page-margin {
     margin-top: 2%;
-  }
+}
   
-  .button-margins {
-      display: flex;
-      margin: 2% 20%;
-      align-items: center;
-      justify-content: space-between;
-  }
+.button-margins {
+    display: flex;
+    margin: 2% 20%;
+    align-items: center;
+    justify-content: space-between;
+}
 
-  .login-button {
-    max-width: 15%;
-    max-height: 7%;
-  }
+.login-button {
+  max-width: 15%;
+  max-height: 7%;
+}
 
-  .create-account-button {
-    max-width: 25%;
-    max-height: 7%;     
-  }
+.create-account-button {
+  max-width: 25%;
+  max-height: 7%;     
+}
 
-  .login-vis-update {
-    margin: 0% 20%;
-    border: 1.5px solid #CFCFCF;
-    border-radius: 5px;
-  }
+.login-vis-update {
+  margin: 0% 20%;
+  border: 1.5px solid #CFCFCF;
+  border-radius: 5px;
+}
   

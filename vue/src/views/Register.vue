@@ -1,5 +1,7 @@
 <template>
-  <div id="register" class="text-center page-margin">
+  <div id="register" class="text-center">
+    <div class="well"/>
+    <div class="page-margin">
     <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
     <form class="form-register login-vis-update" @submit.prevent="register">
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
@@ -44,15 +46,17 @@
     </form>
     <div class="button-margins">
       <router-link :to="{ name: 'login' }">Have an account?</router-link>
-      <button class="create-account-button btn btn-lg btn-primary btn-block" type="submit">
+      <button class="create-account-button btn btn-lg btn-primary btn-block" type="submit" @click="register">
         Create Account
       </button>
+    </div>
     </div>
   </div>
 </template>
 
 <script>
 import authService from '../services/AuthService';
+require('@/css/style.css');
 
 export default {
   name: 'register',
