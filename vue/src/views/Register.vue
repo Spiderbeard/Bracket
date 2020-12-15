@@ -1,7 +1,9 @@
 <template>
   <div id="register" class="text-center">
-    <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+    <div class="well"/>
+    <div class="page-margin">
+    <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+    <form class="form-register login-vis-update" @submit.prevent="register">
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -41,16 +43,20 @@
         v-model="user.confirmPassword"
         required
       />
+    </form>
+    <div class="button-margins">
       <router-link :to="{ name: 'login' }">Have an account?</router-link>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
+      <button class="create-account-button btn btn-lg btn-primary btn-block" type="submit" @click="register">
         Create Account
       </button>
-    </form>
+    </div>
+    </div>
   </div>
 </template>
 
 <script>
 import authService from '../services/AuthService';
+require('@/css/style.css');
 
 export default {
   name: 'register',

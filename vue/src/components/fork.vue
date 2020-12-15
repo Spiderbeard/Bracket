@@ -1,8 +1,8 @@
 <template>
   <div id="something" class="d-flex flex-row">
     <div v-bind:class="'fork ' + round + length + location"><br /><br /></div>
-    <div class="d-flex align-items-center">
-      <div v-bind:class="'line ' + roundline"></div>
+    <div class="d-flex align-items-center" v-bind:class="roundline + length">
+      <div v-bind:class="'line '"></div>
     </div>
   </div>
 </template>
@@ -22,28 +22,35 @@ export default {
 .two160 {
   height: 106px;
   margin-top: 23px;
+  margin-bottom: -20px;
 }
 .two161 {
   height: 106px;
   margin-top: 23px;
+  margin-bottom: -20px;
 }
 .two162 {
   height: 106px;
   margin-top: 23px;
+  margin-bottom: -20px;
 }
 .two163 {
   height: 106px;
   margin-top: 23px;
+  margin-bottom: -20px;
 }
 .three160 {
   height: 208px;
+  margin-bottom: -20px;
 }
 .three161 {
   height: 207px;
+  margin-bottom: -20px;
 }
 .four160 {
   height: 411px;
   margin-top: 5vh;
+  margin-bottom: -20px;
 }
 .two150 {
   height: 112px;
@@ -170,7 +177,7 @@ export default {
 }
 .four120 {
   height: 411px;
-  margin-top: 57px;
+  margin-top: 39px;
 }
 .two110 {
   height: 145px;
@@ -197,7 +204,7 @@ export default {
 }
 .four110 {
   height: 411px;
-  margin-top: 57px;
+  margin-top: 38px;
 }
 .two100 {
   height: 166px;
@@ -222,7 +229,7 @@ export default {
 }
 .four100 {
   height: 411px;
-  margin-top: 58px;
+  margin-top: 39px;
 }
 .two90 {
   height: 174px;
@@ -317,13 +324,90 @@ export default {
   margin-bottom: -158px;
 }
 
-.sixteensecondround {
+.secondround16 {
   margin-top: 54px;
 }
-.sixteenthirdround {
-  margin-top: 64px;
+.thirdround16 {
+  margin-top: 24px;
 }
-.sixteenfourthround {
+
+.secondround15 {
+  margin-top: 27px;
+}
+.thirdround15 {
+  margin-top: 27px;
+}
+.secondround14 {
+  margin-top: 27px;
+}
+.thirdround14 {
+  margin-top: 27px;
+}
+.secondround13 {
+  margin-top: 27px;
+}
+.thirdround13 {
+  margin-top: 27px;
+}
+
+.secondround12 {
+  margin-top: 27px;
+}
+.thirdround12 {
+  margin-top: 20px;
+}
+
+.secondround11 {
+  margin-top: 27px;
+}
+.thirdround11 {
+  margin-top: 20px;
+}
+
+.secondround10 {
+  margin-top: 27px;
+}
+.thirdround10 {
+  margin-top: 20px;
+}
+
+.secondround9 {
+  margin-top: 27px;
+}
+.thirdround9 {
+  margin-top: 20px;
+}
+
+.secondround8 {
+  margin-top: 27px;
+}
+.thirdround8 {
+  margin-top: 20px;
+}
+.secondround7 {
+  margin-top: 27px;
+}
+.thirdround7 {
+  margin-top: 20px;
+}
+
+.secondround6 {
+  margin-top: 27px;
+}
+.thirdround6 {
+  margin-top: 20px;
+}
+
+.secondround5 {
+  margin-top: 27px;
+}
+.thirdround5 {
+  margin-top: 20px;
+}
+.secondround4 {
+  margin-top: 27px;
+}
+.secondround3 {
   margin-top: 27px;
 }
 

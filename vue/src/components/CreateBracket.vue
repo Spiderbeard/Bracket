@@ -2,8 +2,23 @@
   <div class="tournament-margins">
     <div class="bracketVisualizer">
       <div>
-        <h3><u>Tournament Name: {{this.$store.state.ActiveBracket.name}}</u></h3>
-        <span class="d-flex flex-row"><p class="w-50">Number of Participants: {{this.$store.state.Participants.length}}</p><p>Number of matches: {{this.constuctMatches.length+this.round2Matches.length+this.round3Matches.length+ this.round4Matches.length}}</p></span>
+        <h3>
+          <u>Tournament Name: {{ this.$store.state.ActiveBracket.name }}</u>
+        </h3>
+        <span class="d-flex flex-row"
+          ><p class="w-50">
+            Number of Participants: {{ this.$store.state.Participants.length }}
+          </p>
+          <p>
+            Number of matches:
+            {{
+              this.constuctMatches.length +
+                this.round2Matches.length +
+                this.round3Matches.length +
+                this.round4Matches.length
+            }}
+          </p></span
+        >
       </div>
       <div
         id="roundHeaders"
@@ -129,10 +144,18 @@
               />  </div>
               -->
             <fork
+              v-if="round2Bys(index)"
               round="two"
-              roundline="sixteensecondround"
+              roundline="secondround"
               :length="teamsArray.length"
               :location="index"
+            />
+            <half-fork
+              roundby="twoby"
+              roundbyline="twolineby"
+              :length="teamsArray.length"
+              :location="index"
+              v-else
             />
           </div>
         </div>
@@ -176,10 +199,18 @@
               />
             </div> -->
             <fork
+              v-if="round3Bys(index)"
               round="three"
-              roundline="sixteenthirdround"
+              roundline="thirdround"
               :length="teamsArray.length"
               :location="index"
+            />
+            <half-fork
+              roundby="threeby"
+              roundbyline="threelineby"
+              :length="teamsArray.length"
+              :location="index"
+              v-else
             />
           </div>
         </div>
@@ -224,7 +255,7 @@
             <!-- <img src="../assets/bracket.png" class=" pt-4 pb-4" alt="" /> -->
             <fork
               round="four"
-              roundline="sixteenfourthround"
+              roundline="fourthround"
               :length="teamsArray.length"
               :location="index"
             />
@@ -264,7 +295,10 @@
             <champion-line class="d-flex " />
           </div>
         </div>
-        <div class="CHAMPION d-flex flex-column justify-content-center">
+        <div
+          class="CHAMPION d-flex flex-column justify-content-center "
+          v-bind:class="` champ` + teamsArray.length"
+        >
           <div
             class="border border-dark d-flex flex-column justify-content-center"
           >
@@ -277,7 +311,9 @@
       <div class="button-margin">
         <button v-on:click="shuffleStore">Randomize</button>
       </div>
-      <div class="button-margin"><button @click="updateActiveBracket">Add Teams</button></div>
+      <div class="button-margin">
+        <button @click="updateActiveBracket">Add Teams</button>
+      </div>
       <div class="button-margin">
         <button v-on:click="sendThemHome">Generate New Bracket</button>
       </div>
@@ -294,13 +330,13 @@ import ChampionLine from "./ChampionLine.vue";
 export default {
   components: {
     fork,
-    // eslint-disable-next-line vue/no-unused-components
+
     HalfFork,
     ChampionLine,
-
   },
   created() {
     this.nextRoundMatches();
+    this.buidMatchArray();
   },
   data() {
     return {
@@ -316,6 +352,9 @@ export default {
         round: "",
         line: "",
       },
+      wonIndex: 0,
+
+      matchArray: [],
     };
   },
   computed: {
@@ -452,9 +491,23 @@ export default {
     sendThemHome() {
       this.$router.push("/");
     },
-    updateActiveBracket(){
-      this.$store.commit('SET_BRACKET_PARTICIPANTS',this.teamsArray);
-    }
+    updateActiveBracket() {
+      for (let i = 0; i < this.matchArray.length; i++) {
+        this.matchArray[i].Participants1.name = this.teamsArray[i].name;
+        this.matchArray[i].Participants2.name = this.teamsArray[i + 1].name;
+      }
+      this.$store.commit("SET_BRACKET_PARTICIPANTS", this.teamsArray);
+    },
+    buidMatchArray() {
+      this.wonIndex =
+        this.constuctMatches.length +
+        this.round2Matches.length +
+        this.round3Matches.length +
+        this.round4Matches.length;
+      for (let i = 0; i < this.wonIndex; i++) {
+        this.matchArray.push(this.$store.state.match);
+      }
+    },
   },
 };
 </script>
@@ -590,6 +643,7 @@ export default {
 }
 .roundchamp8 {
   width: 25%;
+  margin-top: 26px;
 }
 .round27 {
   width: 23%;
@@ -662,12 +716,7 @@ img {
 input[type="text"] {
   border-color: transparent;
 }
-#fork-round-3 {
-}
-/* input[type="text"]:hover{
-  border-bottom:1px solid ;
-}
-*/
+
 span {
   white-space: nowrap;
 }

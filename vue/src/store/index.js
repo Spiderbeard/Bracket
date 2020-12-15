@@ -11,8 +11,8 @@ Vue.use(Vuex)
  */
 const currentToken = localStorage.getItem('token')
 const currentUser = JSON.parse(localStorage.getItem('user'));
-const initialPants=0;
-const initialParticipants = [];
+
+const Participants = localStorage.getItem('Participants')
 
 
 if(currentToken != null) {
@@ -23,12 +23,36 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    numberOfParticipants: initialPants,
-    Participants: initialParticipants,
+   
+    Participants: Participants || [],
     ActiveBracket: {
       name:'',
       teams: [],
     },
+    match: {
+      MatchNumber: 0,
+      isactive: false,
+      scoreTeam1: 0,
+      scoreTeam2: 0,
+      team1winner: false,
+      team2winner: false,
+      roundId: 0,
+      matchId: 0,
+      Participants1: {
+        participantId: 0,
+        name: '',
+        isactive: false
+
+      },
+      Participants2: {
+        participantId: 0,
+        name: '',
+        isactive: false
+
+      },
+      matchInfo:[{}]
+
+    }
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -64,7 +88,7 @@ export default new Vuex.Store({
     SET_BRACKET_NAME(state,name){
       state.ActiveBracket.name = name;
     },
-    SET_BRACKET_PARTICIPANTS(state,teamsArray){
+    SET_PARTICIPANTS(state,teamsArray){
       state.ActiveBracket.team=teamsArray;
     }
 

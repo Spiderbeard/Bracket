@@ -1,18 +1,25 @@
 <template>
   <div class="tournament-margins">
     <div class="bracketVisualizer">
-      <!-- <h2 role="alert" class="alert alert-danger text-center ">
-        <u
-          >You need to be logged in to access full functionality of this
-          page.</u
+      <div>
+        <h3>
+          <u>Tournament Name: {{ this.$store.state.ActiveBracket.name }}</u>
+        </h3>
+        <span class="d-flex flex-row"
+          ><p class="w-50">
+            Number of Participants: {{ this.$store.state.Participants.length }}
+          </p>
+          <p>
+            Number of matches:
+            {{
+              this.constuctMatches.length +
+                this.round2Matches.length +
+                this.round3Matches.length +
+                this.round4Matches.length
+            }}
+          </p></span
         >
-      </h2> -->
-
-      <br />
-      <h3>Tournament Name: {{ this.$store.state.ActiveBracket.name }}</h3>
-      <p v-if="!isSelected" id="no-edit-text" style="display:none">
-        * You must be a registered user to do this!
-      </p>
+      </div>
       <div
         id="roundHeaders"
         class="headers d-flex flex-row justify-content-between pl-3 pr-3"
@@ -42,13 +49,7 @@
             <div class="team-top border-bottom border-dark">
               <span>
                 <div v-show="teamsArray[index].edit == false">
-                  <label
-                    class="team-input"
-                    @click="
-                      showNoEditText();
-                      scrollTop();
-                    "
-                  >
+                  <label class="team-input">
                     {{
                       teamsArray[index].name == ""
                         ? teamsArray[index].id
@@ -56,14 +57,11 @@
                     }}
                   </label>
                 </div>
-                <input
-                  class="input-box"
-                  v-show="teamsArray[index].edit == true"
-                  v-model="teamsArray[index].name"
-                  v-on:blur="teamsArray[index].edit = false"
-                  @keyup.enter="teamsArray[index].edit = false"
-                />
               </span>
+              <!-- <div>
+                  <label for="Winner">Winner</label>
+                  <input type="checkbox" v-model:>
+              </div> -->
             </div>
 
             <div v-if="isLastOddElement(index)" class="team-bottom">
@@ -88,8 +86,7 @@
                   <label
                     class="team-input"
                     @click="
-                      showNoEditText();
-                      scrollTop();
+                      teamsArray[teamsArray.length - index - 1].edit = true
                     "
                   >
                     {{
@@ -110,7 +107,9 @@
                     $emit('update');
                   "
                   @keyup.enter="
+                    updatmatcharray(index);
                     teamsArray[teamsArray.length - index - 1].edit = false;
+                    updatmatcharray;
                     $emit('update');
                   "
                 />
@@ -289,8 +288,8 @@
           </div>
         </div>
         <div
-          class="CHAMPION d-flex flex-column justify-content-center"
-          v-bind:class="`champ` + teamsArray.length"
+          class="CHAMPION d-flex flex-column justify-content-center "
+          v-bind:class="` champ` + teamsArray.length"
         >
           <div
             class="border border-dark d-flex flex-column justify-content-center"
@@ -300,15 +299,12 @@
         </div>
       </div>
     </div>
-    <p v-if="!isSelected" id="no-pants-text" style="display:none">
-      * You must be a registered user to do this!
-    </p>
     <div class="motherFuckingButtons">
       <div class="button-margin">
         <button v-on:click="shuffleStore">Randomize</button>
       </div>
-      <div @click="showText()" class="button-margin">
-        <button>Add Teams</button>
+      <div class="button-margin">
+        <button @click="updateActiveBracket">Add Teams</button>
       </div>
       <div class="button-margin">
         <button v-on:click="sendThemHome">Generate New Bracket</button>
@@ -327,12 +323,12 @@ export default {
   components: {
     fork,
 
-    ChampionLine,
     HalfFork,
+    ChampionLine,
   },
   created() {
     this.nextRoundMatches();
-    this.buildWonIndex();
+    this.buidMatchArray();
   },
   data() {
     return {
@@ -343,12 +339,17 @@ export default {
       round4Matches: [],
       teamsArray: this.$store.state.Participants,
       editedTodo: null,
+      wonIndex:
+        this.constuctMatches.length +
+        this.round2Matches.length +
+        this.round3Matches.length +
+        this.round4Matches.length,
       whatever: false,
-      wonIndex: 0,
       forkline: {
         round: "",
         line: "",
       },
+      matchArray: [],
     };
   },
   computed: {
@@ -397,6 +398,9 @@ export default {
         return false;
       }
       return true;
+    },
+    updatmatcharray(index, name) {
+      this.matchArray[index].name = name;
     },
     round2Bys(index) {
       if (
@@ -447,6 +451,7 @@ export default {
       } while (length >= 1);
       return output;
     },
+    isWinner() {},
     nextRoundMatches() {
       let fullLength = this.teamsArray.length;
       if (fullLength >= 13) {
@@ -470,7 +475,6 @@ export default {
 
       return length;
     },
-
     ifOddMinusOne(length) {
       if (length % 2 === 1) {
         length--;
@@ -486,32 +490,17 @@ export default {
     sendThemHome() {
       this.$router.push("/");
     },
-    buildWonIndex() {
-      this.wonIndex =
-        this.teamsArray.length +
-        this.round2Matches.length * 2 +
-        this.round3Matches.length * 2 +
-        this.round4Matches.length * 2;
-    },
-    registerUser() {
-      var r = confirm("Please log-in to use this feature!");
-
-      if (r == true) {
-        this.$router.push("/login");
+    updateActiveBracket() {
+      for (let i = 0; i < this.teamsArray.length - 1; i++) {
+        this.matchArray[i].Participants1.name = this.teamsArray[i].name;
+        this.matchArray[i + 1].Participants2.name = this.teamsArray[i + 1].name;
       }
+      this.$store.commit("SET_BRACKET_PARTICIPANTS", this.teamsArray);
     },
-    showNoEditText() {
-      let text = document.getElementById("no-edit-text");
-      text.style.display = "block";
-    },
-
-    showText() {
-      let text = document.getElementById("no-pants-text");
-      text.style.display = "block";
-    },
-
-    scrollTop() {
-      window.scrollTo(0, 0);
+    buidMatchArray() {
+      for (let i = 0; i < this.wonIndex; i++) {
+        this.matchArray.push(this.$store.state.match);
+      }
     },
   },
 };
@@ -648,6 +637,7 @@ export default {
 }
 .roundchamp8 {
   width: 25%;
+  margin-top: 26px;
 }
 .round27 {
   width: 23%;
@@ -659,7 +649,6 @@ export default {
 }
 .roundchamp7 {
   width: 25%;
-  margin-top: 26px;
 }
 .round26 {
   width: 23%;
@@ -671,7 +660,6 @@ export default {
 }
 .roundchamp6 {
   width: 26%;
-  margin-top: 26px;
 }
 .round25 {
   width: 23%;
@@ -683,7 +671,6 @@ export default {
 }
 .roundchamp5 {
   width: 25%;
-  margin-top: 26px;
 }
 .round24 {
   width: 32%;
@@ -703,7 +690,6 @@ export default {
 }
 .roundchamp2 {
   width: 78%;
-  margin-bottom: 13px;
 }
 #sp {
   width: 100%;
@@ -712,7 +698,9 @@ export default {
 #sp2 {
   height: 74%;
 }
-
+img {
+  height: 100%;
+}
 #sp3 {
   height: 100%;
 }
@@ -722,38 +710,9 @@ export default {
 input[type="text"] {
   border-color: transparent;
 }
-.champ8 {
-  margin-top: 26px;
-}
-.champ7 {
-  margin-top: 26px;
-}
-.champ6 {
-  margin-top: 26px;
-}
-.champ5 {
-  margin-top: 26px;
-}
-.champ2 {
-  margin-bottom: 16px;
+#fork-round-3 {
 }
 span {
   white-space: nowrap;
-}
-
-#no-pants-text {
-  /* align-content: center;
-  display: flex;
-  justify-content: center; */
-  color: #f38181;
-  font-weight: bold;
-}
-
-#no-edit-text {
-  /* align-content: center;
-  display: flex;
-  justify-content: center; */
-  color: #f38181;
-  font-weight: bold;
 }
 </style>
