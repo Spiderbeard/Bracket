@@ -134,7 +134,13 @@
               :length="teamsArray.length"
               :location="index"
             />
-            <half-fork v-else />
+            <half-fork
+              roundby="twoby"
+              roundbyline="twolineby"
+              :length="teamsArray.length"
+              :location="index"
+              v-else
+            />
           </div>
         </div>
         <div
@@ -183,7 +189,13 @@
               :length="teamsArray.length"
               :location="index"
             />
-            <half-fork v-else />
+            <half-fork
+              roundby="threeby"
+              roundbyline="threelineby"
+              :length="teamsArray.length"
+              :location="index"
+              v-else
+            />
           </div>
         </div>
         <div

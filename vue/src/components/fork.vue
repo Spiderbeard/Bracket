@@ -177,7 +177,7 @@ export default {
 }
 .four120 {
   height: 411px;
-  margin-top: 57px;
+  margin-top: 39px;
 }
 .two110 {
   height: 145px;
