@@ -13,5 +13,7 @@ namespace Capstone.Models
         public int CurrentRound { get; set; }
         public int OrganizerId { get; set; }
 
+
+        public List<Rounds> Rounds { get; set; }
     }
 }

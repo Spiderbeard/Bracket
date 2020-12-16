@@ -12,5 +12,6 @@ namespace Capstone.Models
         public int TournamentId { get; set; }
         public int RoundId { get; set; }
 
+        public List<Match> Matches {  get;  set;  }
     }
 }
