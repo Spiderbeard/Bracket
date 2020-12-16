@@ -15,10 +15,10 @@ export default {
   data(){
     return{
       tournament:{
-        name:this.$store.state.ActiveBracket.name,
-        numberofparticipants:this.$store.state.Participants.length,
-        currentround:1,
-        organizer_id:this.$store.state.user.userId
+        Name:this.$store.state.ActiveBracket.name,
+        NumberOfParticipants:this.$store.state.Participants.length,
+        CurrentRound:1,
+        OrganizerId:this.$store.state.user.userId
 
       },
     }
@@ -37,7 +37,7 @@ export default {
       .catch(error=>{
         console.log(error.response);
       })
-    }
+    },
 
   }
   // I had to re clone the project and forgot to switch to my branch this is all the work to get to those picture.
@@ -46,4 +46,4 @@ export default {
 </script>
 
 <style>
-   </style>
+</style>

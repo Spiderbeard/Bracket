@@ -30,9 +30,11 @@ export default new Vuex.Store({
       teams:[],
     },
     Tournament:currentTournament || {},
+
+
     match: {
       MatchNumber: 0,
-      isactive: false,
+      isActive: true,
       scoreTeam1: 0,
       scoreTeam2: 0,
       team1winner: false,
@@ -42,13 +44,13 @@ export default new Vuex.Store({
       Participants1: {
         participantId: 0,
         name: '',
-        isactive: false
+        isActive: true
 
       },
       Participants2: {
         participantId: 0,
         name: '',
-        isactive: false
+        isActive: true
 
       },
       matchInfo:[{}]
@@ -68,8 +70,10 @@ export default new Vuex.Store({
     LOGOUT(state) {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
+      localStorage.removeItem('tournament');
       state.token = '';
       state.user = {};
+      state.tournament={};
       axios.defaults.headers.common = {};
     },
     UPDATE_PARTICIPANTS(state,numberOfPants){
