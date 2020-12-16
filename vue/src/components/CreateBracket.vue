@@ -47,7 +47,7 @@
             v-bind:key="match.index"
           >
             <div class="team-top border-bottom border-dark">
-              <span>
+              <span :id="`team` + index" @click="addcheck(`team` + index)">
                 <div v-show="teamsArray[index].edit == false">
                   <label
                     class="team-input"
@@ -60,6 +60,7 @@
                     }}
                   </label>
                 </div>
+                <span></span>
                 <input
                   class="input-box"
                   v-show="teamsArray[index].edit == true"
@@ -355,7 +356,6 @@ export default {
       wonIndex: 0,
 
       matchArray: [],
-      
     };
   },
   computed: {
@@ -404,6 +404,9 @@ export default {
         return false;
       }
       return true;
+    },
+    addcheck(id) {
+      document.getElementById(id).insertAdjacentHTML("beforeend", "&#9989");
     },
     round2Bys(index) {
       if (
@@ -509,7 +512,6 @@ export default {
         this.matchArray.push(this.$store.state.match);
       }
     },
-    
   },
 };
 </script>
