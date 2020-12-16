@@ -326,7 +326,8 @@ require("@/css/style.css");
 import fork from "@/components/fork";
 import HalfFork from "@/components/HalfFork";
 import ChampionLine from "./ChampionLine.vue";
-// import ParticipantService from '@/services/ParticipantService'
+import ParticipantService from '@/services/ParticipantService';
+
 export default {
   components: {
     fork,
@@ -354,7 +355,7 @@ export default {
       wonIndex: 0,
 
       matchArray: [],
-      
+      axiosData:[]
     };
   },
   computed: {
@@ -508,9 +509,28 @@ export default {
         this.matchArray.push(this.$store.state.match);
       }
     },
+    SaveParticipants(){
+      this.prepData();
+      ParticipantService
+      .AddParticipants(this.axiosData)
+      .then(response=>{
+        if(response.status == 200){
+          console.log(response.data);
+          this.$store.commit('SET_PARTICIPANTS',response.data);
+        }
+      })
+      .catch(error=>{
+        console.log(error);
+      })
+    },
 
     prepData(){
-
+       this.teamsArray.forEach( team =>{
+         if (team.name ==''){
+           team.name =team.id;
+         }
+         this.axiosData.push(team);
+       })
     }
     
   },
