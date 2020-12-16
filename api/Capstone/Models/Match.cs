@@ -18,8 +18,8 @@ namespace Capstone.Models
         public int Team1 { get; set; }
         public int Team2 { get; set; }
 
-        public Participants participant1 { get; set; } = new Participants();
+        public Participant participant1 { get; set; } = new Participant();
 
-        public Participants participant2 { get; set; } = new Participants();
+        public Participant participant2 { get; set; } = new Participant();
     }
 }
