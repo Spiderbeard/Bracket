@@ -326,11 +326,10 @@ require("@/css/style.css");
 import fork from "@/components/fork";
 import HalfFork from "@/components/HalfFork";
 import ChampionLine from "./ChampionLine.vue";
-
+// import ParticipantService from '@/services/ParticipantService'
 export default {
   components: {
     fork,
-
     HalfFork,
     ChampionLine,
   },
@@ -509,6 +508,10 @@ export default {
         this.matchArray.push(this.$store.state.match);
       }
     },
+
+    prepData(){
+
+    }
     
   },
 };

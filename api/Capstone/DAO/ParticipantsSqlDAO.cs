@@ -41,9 +41,9 @@ namespace Capstone.DAO
             }
         }
 
-        public List<Participants> GetAllParticipants()
+        public List<Participant> GetAllParticipants()
         {
-            List<Participants> returnParticipants = new List<Participants>();
+            List<Participant> returnParticipants = new List<Participant>();
 
             try
             {
@@ -58,7 +58,7 @@ namespace Capstone.DAO
                     {
                         while (reader.Read())
                         {
-                            Participants p = GetParticipantFromReader(reader);
+                            Participant p = GetParticipantFromReader(reader);
                             returnParticipants.Add(p);
                         }
                     }
@@ -72,9 +72,9 @@ namespace Capstone.DAO
             return returnParticipants;
         }
 
-        public Participants GetParticipant(int participantId)
+        public Participant GetParticipant(int participantId)
         {
-            Participants returnParticipant = null;
+            Participant returnParticipant = null;
 
             try
             {
@@ -99,9 +99,13 @@ namespace Capstone.DAO
             return returnParticipant;
         }
 
+<<<<<<< HEAD
         public Participants GetParticipantFromReader(SqlDataReader reader)
+=======
+        private Participant GetParticipantFromReader(SqlDataReader reader)
+>>>>>>> 3fea2afb12b945988b21a227383cb23bd852513a
         {
-            Participants p = new Participants()
+            Participant p = new Participant()
             {
                 ParticipantId = Convert.ToInt32(reader["participant_id"]),
                 Name = Convert.ToString(reader["name"]),
