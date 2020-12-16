@@ -8,9 +8,9 @@ namespace Capstone.DAO
 {
     public interface IParticipantsDAO
     {
-        Participant AddParticipants(Participant participant);
-        List<Participant> GetAllParticipants();
-        Participant GetParticipant(int participantId);
+        Participants AddParticipants(Participants participants);
+        List<Participants> GetAllParticipants();
+        Participants GetParticipants(int participantId);
 
 
     }
