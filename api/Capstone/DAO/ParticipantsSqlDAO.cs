@@ -16,7 +16,11 @@ namespace Capstone.DAO
             connectionString = dbConnectionString;
         }
 
-        public Participant AddParticipants(Participant participant)
+        public ParticipantsSqlDAO()
+        {
+        }
+
+        public Participants AddParticipants(Participants participant)
         {
             try
             {
@@ -37,9 +41,9 @@ namespace Capstone.DAO
             }
         }
 
-        public List<Participant> GetAllParticipants()
+        public List<Participants> GetAllParticipants()
         {
-            List<Participant> returnParticipants = new List<Participant>();
+            List<Participants> returnParticipants = new List<Participants>();
 
             try
             {
@@ -54,7 +58,7 @@ namespace Capstone.DAO
                     {
                         while (reader.Read())
                         {
-                            Participant p = GetParticipantFromReader(reader);
+                            Participants p = GetParticipantFromReader(reader);
                             returnParticipants.Add(p);
                         }
                     }
@@ -68,9 +72,9 @@ namespace Capstone.DAO
             return returnParticipants;
         }
 
-        public Participant GetParticipant(int participantId)
+        public Participants GetParticipants(int participantId)
         {
-            Participant returnParticipant = null;
+            Participants returnParticipant = null;
 
             try
             {
@@ -95,9 +99,10 @@ namespace Capstone.DAO
             return returnParticipant;
         }
 
-        private Participant GetParticipantFromReader(SqlDataReader reader)
+
+        public Participants GetParticipantFromReader(SqlDataReader reader)
         {
-            Participant p = new Participant()
+            Participants p = new Participants()
             {
                 ParticipantId = Convert.ToInt32(reader["participant_id"]),
                 Name = Convert.ToString(reader["name"]),
@@ -107,5 +112,7 @@ namespace Capstone.DAO
 
             return p;
         }
+
+      
     }
 }
