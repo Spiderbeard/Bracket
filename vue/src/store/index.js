@@ -13,7 +13,7 @@ const currentToken = localStorage.getItem('token')
 const currentUser = JSON.parse(localStorage.getItem('user'));
 const currentTournament = JSON.parse(localStorage.getItem('tournament'));
 const Participants = localStorage.getItem('Participants')
-
+const currentTeams = localStorage.getItem('teams');
 
 if(currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
@@ -27,7 +27,7 @@ export default new Vuex.Store({
     Participants: Participants || [],
     ActiveBracket:{
       name:'',
-      teams:[],
+      teams: currentTeams|| [],
     },
     Tournament:currentTournament || {},
 
@@ -83,7 +83,7 @@ export default new Vuex.Store({
         for(let i = 0; i < numberOfPants ; i++){
           let Team = {
             id: "Team "+ (i+1),
-            name:"",
+            Name:"",
             edit:false
           };
           state.Participants.push(Team);
@@ -93,8 +93,9 @@ export default new Vuex.Store({
     SET_BRACKET_NAME(state,name){
       state.ActiveBracket.name = name;
     },
-    SET_PARTICIPANTS(state,teamsArray){
-      state.ActiveBracket.team=teamsArray;
+    SET_PARTICIPANTS(state,teams){
+      state.ActiveBracket.teams=teams;
+      localStorage.setItem('teams',JSON.stringify(teams))
     },
     SET_TOURNAMENT(state,tournament){
       state.Tournament=tournament;
