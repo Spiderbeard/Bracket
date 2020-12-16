@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Capstone.DAO;
+using Capstone.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,5 +13,28 @@ namespace Capstone.Controllers
     [ApiController]
     public class TournamentsController : ControllerBase
     {
+        private readonly ITournamentDAO tournamentDAO;
+
+        public TournamentsController(ITournamentDAO _tournamentDAO)
+        {
+            tournamentDAO = _tournamentDAO;
+        }
+
+        [HttpPost]
+        public ActionResult<Tournament> AddTournament(Tournament newTournament)
+        {
+            try
+            {
+                return Ok(tournamentDAO.AddTournament(newTournament));
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+        }
+
+
+
     }
 }

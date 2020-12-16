@@ -11,7 +11,7 @@ Vue.use(Vuex)
  */
 const currentToken = localStorage.getItem('token')
 const currentUser = JSON.parse(localStorage.getItem('user'));
-
+const currentTournament = JSON.parse(localStorage.getItem('tournament'));
 const Participants = localStorage.getItem('Participants')
 
 
@@ -25,10 +25,11 @@ export default new Vuex.Store({
     user: currentUser || {},
    
     Participants: Participants || [],
-    ActiveBracket: {
+    ActiveBracket:{
       name:'',
-      teams: [],
+      teams:[],
     },
+    Tournament:currentTournament || {},
     match: {
       MatchNumber: 0,
       isactive: false,
@@ -90,7 +91,10 @@ export default new Vuex.Store({
     },
     SET_PARTICIPANTS(state,teamsArray){
       state.ActiveBracket.team=teamsArray;
+    },
+    SET_TOURNAMENT(state,tournament){
+      state.Tournament=tournament;
+      localStorage.setItem('tournament',JSON.stringify(tournament));
     }
-
   }
 })

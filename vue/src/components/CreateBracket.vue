@@ -355,6 +355,7 @@ export default {
       wonIndex: 0,
 
       matchArray: [],
+      
     };
   },
   computed: {
@@ -508,6 +509,7 @@ export default {
         this.matchArray.push(this.$store.state.match);
       }
     },
+    
   },
 };
 </script>
