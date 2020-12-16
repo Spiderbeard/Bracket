@@ -16,6 +16,10 @@ namespace Capstone.DAO
             connectionString = dbConnectionString;
         }
 
+        public MatchSqlDAO()
+        {
+        }
+
         public Match AddMatch(Match match)
         {
             try
@@ -27,11 +31,6 @@ namespace Capstone.DAO
                         "VALUES(@matchnumber, @round_id, @team1, @team2);select scope_identity();";
                     SqlCommand cmd = new SqlCommand(sqlStatement, conn);
                     cmd.Parameters.AddWithValue("@matchnumber", match.MatchNumber);
-                    //cmd.Parameters.AddWithValue("@isActive", match.IsActive);
-                    //cmd.Parameters.AddWithValue("@scoreteam1", match.ScoreTeam1);
-                    //cmd.Parameters.AddWithValue("@scoreteam2", match.ScoreTeam2);
-                    //cmd.Parameters.AddWithValue("@team1winner", match.Team1Winner);
-                    //cmd.Parameters.AddWithValue("@team2winner", match.Team2Winner);
                     cmd.Parameters.AddWithValue("@round_id", match.RoundId);
                     cmd.Parameters.AddWithValue("@team1", match.Team1);
                     cmd.Parameters.AddWithValue("@team2", match.Team2);
@@ -149,7 +148,7 @@ namespace Capstone.DAO
             }
         }
 
-        private Match GetMatchFromReader(SqlDataReader reader)
+        public Match GetMatchFromReader(SqlDataReader reader)
         {
             Match m = new Match()
             {

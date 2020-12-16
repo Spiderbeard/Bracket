@@ -16,6 +16,10 @@ namespace Capstone.DAO
             connectionString = dbConnectionString;
         }
 
+        public RoundsSqlDAO()
+        {
+        }
+
         public List<Rounds> roundsByMatch {get; set;}
         public Rounds AddRound(Rounds round)
         {
@@ -170,7 +174,7 @@ namespace Capstone.DAO
         }
         
 
-        private Rounds GetRoundFromReader(SqlDataReader reader)
+        public Rounds GetRoundFromReader(SqlDataReader reader)
         {
             Rounds r = new Rounds()
             {

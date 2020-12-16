@@ -16,7 +16,11 @@ namespace Capstone.DAO
             connectionString = dbConnectionString;
         }
 
-        public Participant AddParticipants(Participant participant)
+        public ParticipantsSqlDAO()
+        {
+        }
+
+        public Participants AddParticipants(Participants participant)
         {
             try
             {
@@ -95,7 +99,11 @@ namespace Capstone.DAO
             return returnParticipant;
         }
 
+<<<<<<< HEAD
+        public Participants GetParticipantFromReader(SqlDataReader reader)
+=======
         private Participant GetParticipantFromReader(SqlDataReader reader)
+>>>>>>> 3fea2afb12b945988b21a227383cb23bd852513a
         {
             Participant p = new Participant()
             {

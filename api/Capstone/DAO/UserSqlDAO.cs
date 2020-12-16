@@ -72,7 +72,7 @@ namespace Capstone.DAO
         }
 
 
-        public User AddUser(string username, string password, string role,string email)
+        public User AddUser(string username, string password, string role, string email)
         {
             IPasswordHasher passwordHasher = new PasswordHasher();
             PasswordHash hash = passwordHasher.ComputeHash(password);
@@ -100,7 +100,7 @@ namespace Capstone.DAO
             return GetUserByUsername(username);
         }
 
-        private User GetUserFromReader(SqlDataReader reader)
+        public User GetUserFromReader(SqlDataReader reader)
         {
             User u = new User()
             {
