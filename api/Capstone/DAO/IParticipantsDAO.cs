@@ -11,6 +11,8 @@ namespace Capstone.DAO
         Participants AddParticipants(Participants participants);
         List<Participants> GetAllParticipants();
         Participants GetParticipants(int participantId);
+        List<Participants> GetParticipantsByMatchIds(List<int> MatchIDs);
+
 
 
     }

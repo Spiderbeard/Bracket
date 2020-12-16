@@ -99,6 +99,70 @@ namespace Capstone.DAO
             return returnParticipant;
         }
 
+        public List<Participants> GetParticipantsByMatchIds(List<int> MatchIDs)
+        {
+            List<Participants>  output = new List<Participants>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    string SqlStatement = $" select matchnumber, isActive, scoreteam1, scoreteam2, team1winner, team2winner, round_id, match_id, team1, team2, " +
+                        $"participant_id as participant1_Id, name as participant1_name, isActive as particpant1_isActive, participant_id as participant2_Id, name as participant2_name, isActive as participant2_isActive" +
+                        $"from match p join paticipants m1 on p.team1 = m1.participant_id join participants m2 on p.team2= m2.participant_id where match_id in ({MatchIDs}) ";
+                    SqlCommand cmd = new SqlCommand(SqlStatement,  conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            Participants p =  GetParticipantFromReader(reader);
+                            output.Add(p);
+                        }
+                    }
+
+
+                }
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+
+
+            return output;
+        }
+
+        public Match GetMatchAndSomeParticipantsFromReader(SqlDataReader reader)
+        {
+            Match m = new Match()
+            {
+                MatchNumber = Convert.ToInt32(reader["matchnumber"]),
+                IsActive = Convert.ToBoolean(reader["isActive"]),
+                ScoreTeam1 = Convert.ToInt32(reader["scoreteam1"]),
+                ScoreTeam2 = Convert.ToInt32(reader["scoreteam2"]),
+                Team1Winner = Convert.ToBoolean(reader["team1winner"]),
+                Team2Winner = Convert.ToBoolean(reader["team2winner"]),
+                RoundId = Convert.ToInt32(reader["round_id"]),
+                MatchId = Convert.ToInt32(reader["match_id"]),
+                Team1 = Convert.ToInt32(reader["team1"]),
+                Team2 = Convert.ToInt32(reader["team2"]),
+                Participant1_Id = Convert.ToInt32(reader["participant1_id"]),
+                Participant1_name = Convert.ToString(reader["participant1_name"]),
+                Participant1_isActive = Convert.ToBoolean(reader["participant2_id"]),
+                Participant2_Id = Convert.ToInt32(reader["participant2_id"]),
+                Participant2_name = Convert.ToString(reader["participant2_name"]),
+                Participant2_isActive = Convert.ToBoolean(reader["participant2_isActive"]),
+
+            };
+           
+
+            return m;
+        }
 
         public Participants GetParticipantFromReader(SqlDataReader reader)
         {

@@ -9,5 +9,7 @@ namespace Capstone.DAO
     public interface ITournamentDAO
     {
         Tournament AddTournament(Tournament tournament);
+
+        List<Tournament> GetTournamentByOrganizerId(int organizerId);
     }
 }

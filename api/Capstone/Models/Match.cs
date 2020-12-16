@@ -18,8 +18,12 @@ namespace Capstone.Models
         public int Team1 { get; set; }
         public int Team2 { get; set; }
 
-        public Participants participant1 { get; set; } = new Participants();
+        public int Participant1_Id { get; set; }
+        public string Participant1_name { get; set; }
+        public bool Participant1_isActive { get; set; }
 
-        public Participants participant2 { get; set; } = new Participants();
+        public int Participant2_Id { get; set;  }
+        public string Participant2_name { get;  set; }
+        public bool Participant2_isActive { get; set; }
     }
 }
