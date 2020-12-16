@@ -7,11 +7,11 @@ namespace Capstone.Models
 {
     public class Tournament
     {
-        public int TournamentId { get; set; }
-        public string Name { get; set; }
-        public int NumberOfParticipants { get; set; }
-        public int CurrentRound { get; set; }
-        public int OrganizerId { get; set; }
+        public int tournament_id { get; set; }
+        public string name { get; set; }
+        public int numberofparticipants { get; set; }
+        public int currentround { get; set; }
+        public int organizer_id { get; set; }
 
     }
 }
