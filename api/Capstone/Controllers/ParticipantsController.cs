@@ -11,23 +11,23 @@ namespace Capstone.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ParticipantController : ControllerBase
+    public class ParticipantsController : ControllerBase
     {
         private readonly IParticipantsDAO participantsDAO;
 
-        public ParticipantController(IParticipantsDAO _participantsDAO)
+        public ParticipantsController(IParticipantsDAO _participantsDAO)
         {
             participantsDAO = _participantsDAO;
         }
 
         [HttpPost]
-        public ActionResult<List<Participant>> BulkAddPaticipants(List<Participant> participantsToAdd)
+        public ActionResult<List<Participants>> BulkAddPaticipants(List<Participants> participantsToAdd)
         {
-            List<Participant> returnList = new List<Participant>();
+            List<Participants> returnList = new List<Participants>();
 
             try
             {
-                foreach(Participant guy in participantsToAdd)
+                foreach(Participants guy in participantsToAdd)
                 {
                    returnList.Add(participantsDAO.AddParticipants(guy));
                 }
