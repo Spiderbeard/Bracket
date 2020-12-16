@@ -1,0 +1,38 @@
+.tournament-data {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    font: 120%;
+    padding: 5px 5px;
+}
+
+.tournament-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "header header . . "
+    "tourn-name round-num pants button";
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+.tourn-header {
+    grid-area: header;
+}
+
+.tourn-name {
+    grid-area: tourn-name;
+}
+
+.round-num {
+    grid-area: round-num;
+}
+
+.tourn-pants {
+    grid-area: pants;
+}
+
+.tourn-button {
+    grid-area: button;
+}

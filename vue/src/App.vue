@@ -7,7 +7,7 @@
       <router-link class="navigation" v-bind:to="{ name: 'login' }" v-else>Login</router-link>
 
     </div> -->
-    <p id="nav" class="header-stripe">
+    <p id="nav" class="header-stripe" style="color:#050E28">
       <router-link class="navigation-link" v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
       <!-- below is for the brackets link, active and unactive tournaments -->
       <!-- <router-link class="navigation-link" v-bind:to="{name: ''}">Brackets</router-link>&nbsp;|&nbsp;
@@ -23,7 +23,7 @@
     <router-view class="main"/>
     <div class="footer-stripe">
       <footer>
-        <p> &copy; Bracketeers 2020 </p>
+        <p style="color: #E5E5E5;"> &copy; Bracketeers 2020 </p>
       </footer>
     </div>
   </div>
@@ -32,7 +32,7 @@
 <style scoped>
 .navigation-link {
     padding: 0.5em;
-    color:#3A506B;
+    color:#050E28;
     text-decoration: none;
 }
 
@@ -42,15 +42,16 @@
 }
 
 .header-stripe {
-  background-color: #E5E5E5;
+  background-color: #7C99BC;
   padding: 1em;
   width: 100%;
 }
 
 .footer-stripe {
-  background-color: #E5E5E5;
+  background-color: #3a506b;
   padding: 1em;
   width: 100%;
+  height: 55px;
   /* bottom: 0; */
 }
 

@@ -1,10 +1,11 @@
 <template>
    <div id="user-tournament-page">
+       <div class="bracket-well">
        <div class="userInfo"> 
             <h4 class="user-info">Current User: Joe Howell</h4>		
        </div>
        <form>
-           <div class="nav-input-boxes" style="justify-content: left;">
+           <div class="nav-input-boxes" style="justify-content: left; margin: -0.5% 2% 2%;">
                 <label for="tournamentsToDisplay" style="padding-right: 5px;font-size: 18px;">Tournaments:</label>
                 <select v-model="selected" name="" id="">
                     <option v-for="option in options" v-bind:key="option">
@@ -20,8 +21,10 @@
                 <!-- <p v-for="tournament in tournaments"></p> -->
                 <div class="tournament-item">
                     <p class="tournament-border">
-                        placeholder tournament <span class="match-result">72</span>
-                        <button class="tiny-button">Record a new match result</button>
+                        <span class="">Current Tournament</span>
+                        <span class="current-round">Round #</span>
+                        <span class="match-result">Participants remaining: <b>16</b></span>
+                        <button class="tiny-button">Record result</button>
                     </p>
                 </div>
             </div>
@@ -29,27 +32,39 @@
                 <h5>Completed Tournaments</h5>
                 <div class="tournament-item">
                     <p class="tournament-border">
-                        placeholder tournament <span class="match-result">match result</span>
-                        <button class="tiny-button">Record a new match result</button>
+                        <span class="">Finished Tournament</span>
+                        <span class="current-round">Round #</span>
+                        <span class="match-result">Champion: <b>batman</b></span>
+                        <button class="tiny-button">Record result</button>
                     </p>
                 </div>
             </div>
-            <div class="AllTournaments main" v-show="this.selected =='Show All'">
+            <div class="allTournaments" v-show="this.selected =='Show All'">
                 <h5>All Tournaments</h5>
                 <div class="tournament-item">
                     <p class="tournament-border">
-                        placeholder tournament <span class="match-result">match result</span>
-                        <button class="tiny-button">Record a new match result</button>
+                        <span class="">Santa Giveaway Tournament</span>
+                        <span class="current-round">Round #</span>
+
+                        <!-- TODO -->
+                        <!-- v-if tournament is completed then show this -->
+                        <span class="match-result" style="display: none;">Participants remaining: <b>16</b></span>
+                        <!-- v-else show this-->
+                        <span class="match-result" >Champion: <b>batman or something idk</b></span>
+                        
+                        <button class="tiny-button">Record result</button>
                     </p>
                 </div>
             </div>
             </div>
        </form>
+       </div>
    </div>
 </template>
 
 <script>
 require("@/css/style.css");
+require("@/css/text-grid.css")
 
 export default {
 	data(){
@@ -57,6 +72,12 @@ export default {
         selected:"Show All",
         options:["Show All","Completed","Ongoing"]
         };
+    },
+    methods: {
+    showText() {
+      let text = document.getElementById("no-pants-text");
+      text.style.display = "block";
+    }
     }
 }
 </script>
@@ -64,28 +85,54 @@ export default {
 <style>
 /* .myBrackets{
     display: flex;
+    flex-direction: row;
 } */
+
 .tiny-button {
     width: 100px;
-    height: 50px;
+    height: auto;
     font-size: 14px;
     float: right;
-    margin: -1.2%;
+    margin-left: 20px;
+    border: none;
+    background-color: #fca311;
+    border-radius: 5px;
+    color: #FFFFFF;
 }
 
 .tournament-item {
-    display: inline;
+    display: inline-block;
 }
 
 .match-result {
-    margin-left: 44em;
-    font-weight: bold;
+    margin-left: 5em;
 }
 
-.tournament-border {
-    border: 1px solid #CFCFCF;
-    padding: 20px;
+.current-round {
+    margin-left: 10em;
 }
+
+/* .match-name, .match-result, .current-round {
+    padding-right: 30%;
+    font-weight: normal;
+} */
+
+.tournament-border {
+    border: 1.5px solid #CFCFCF;
+    padding: 15px;
+    background-color: #FFFFFF;
+    width: 1060px;
+}
+
+/* .text-wrap {
+    white-space: nowrap; 
+    width: 10px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: -webkit-linear-gradient(gray, white);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+} */
 
 .user-info {
     color: #3a506b;
@@ -96,6 +143,6 @@ export default {
     
 }
 .userInfo{
-    margin: 5px 3px
+    margin: 2% 2%;
 }
 </style>

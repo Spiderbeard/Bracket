@@ -19,17 +19,31 @@ h3 {
 }
 
 .well {
-    background-color: #EEEEEE;
+    background-color: #F7F7F7;
     border-radius: 10px;
-    width: 70%;
+    width: 80%;
     height: 370px;
     position:absolute;
-    left: 15%;
+    left: 10%;
     right: 10%;
     top: 12%;
     bottom: auto;
-    z-index: -1;
-    border: 2px solid #CFCFCF;
+    /* z-index: -1; */
+    border: 2px solid #EDEDED;
+}
+
+.bracket-well {
+    background-color: #F7F7F7;
+    border-radius: 10px;
+    width: 90%;
+    height: 75%;
+    position:absolute;
+    left: 5%;
+    right: 5%;
+    top: 12%;
+    bottom: auto;
+    /* z-index: -1; */
+    border: 2px solid #EDEDED;
 }
 
 /* adds spaces between bracket page buttons for aesthetic */
@@ -66,7 +80,7 @@ h3 {
 }
 
 .tournament-margins {
-    margin: 10px 40px 5px 20px;
+    margin: 10px 40px 5px 40px;
 }
 
 /* class to be added to the winner of a round after an event */
@@ -108,12 +122,12 @@ h3 {
 }
 
 .login-button {
-  max-width: 15%;
+  max-width: 20%;
   max-height: 7%;
 }
 
 .create-account-button {
-  max-width: 25%;
+  max-width: 30%;
   max-height: 7%;     
 }
 

@@ -1,6 +1,6 @@
 <template>
   <div id="register" class="text-center">
-    <div class="well"/>
+    <div class="well">
     <div class="page-margin">
     <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
     <form class="form-register login-vis-update" @submit.prevent="register">
@@ -49,6 +49,7 @@
       <button class="create-account-button btn btn-lg btn-primary btn-block" type="submit" @click="register">
         Create Account
       </button>
+    </div>
     </div>
     </div>
   </div>
