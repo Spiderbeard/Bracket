@@ -40,6 +40,8 @@ export default {
     }
 
   }
+  // I had to re clone the project and forgot to switch to my branch this is all the work to get to those picture.
+
 };
 </script>
 
