@@ -29,6 +29,7 @@ export default new Vuex.Store({
       name:'',
       teams:[],
     },
+    matchArray:[],
     Tournament:currentTournament || {},
 
 
@@ -53,7 +54,7 @@ export default new Vuex.Store({
         isActive: true
 
       },
-      matchInfo:[{}]
+      
 
     }
   },

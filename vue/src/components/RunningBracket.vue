@@ -47,7 +47,12 @@
             v-bind:key="match.index"
           >
             <div class="team-top border-bottom border-dark">
-              <span>
+              <span
+                class="d-flex"
+                :id="`team` + index"
+                @click="addcheck(`team` + index, index)"
+                @dblclick="removecheck(`team` + index, index)"
+              >
                 <div v-show="teamsArray[index].edit == false">
                   <label class="team-input">
                     {{
@@ -77,7 +82,16 @@
                   ]"
                 />
                 -->
-              <span>
+              <span
+                class="d-flex"
+                :id="`team` + (teamsArray.length - index - 1)"
+                @click="
+                  addcheck2(`team` + (teamsArray.length - index - 1), index)
+                "
+                @dblclick="
+                  removecheck2(`team` + (teamsArray.length - index - 1), index)
+                "
+              >
                 <div
                   v-show="
                     teamsArray[teamsArray.length - index - 1].edit == false
@@ -399,6 +413,77 @@ export default {
       }
       return true;
     },
+    addcheck(id, ind) {
+      if (
+        this.matchArray[id.split("team").join("")].team1winner === false &&
+        this.matchArray[id.split("team").join("")].team2winner === false
+      ) {
+        if (!document.getElementById(id).classList.contains("completed")) {
+          document.getElementById(id).classList.add("completed");
+          document.getElementById(id).insertAdjacentHTML("beforeend", "&#9989");
+          let index = id.split("team").join("");
+          this.matchArray[index].team1winner = true;
+        }
+      } else if (
+        this.matchArray[id.split("team").join("")].team1winner === false &&
+        this.matchArray[id.split("team").join("")].team2winner === true
+      ) {
+        document.getElementById(id).classList.add("completed");
+        document.getElementById(id).insertAdjacentHTML("beforeend", "&#9989");
+
+        this.matchArray[ind].team1winner = true;
+        let varid = "team";
+        let d = this.teamsArray.length - 1 - ind;
+        varid += d;
+
+        this.removecheck2(varid, ind);
+      }
+    },
+    removecheck(id) {
+      if (document.getElementById(id).classList.contains("completed")) {
+        document.getElementById(id).classList.remove("completed");
+        let item = document.getElementById(id);
+        document.getElementById(id).removeChild(item.lastChild);
+        let index = id.split("team").join("");
+        this.matchArray[index].team1winner = false;
+      }
+    },
+    addcheck2(id, index) {
+      if (
+        this.matchArray[index].team1winner === false &&
+        this.matchArray[index].team2winner === false
+      ) {
+        if (!document.getElementById(id).classList.contains("completed")) {
+          document.getElementById(id).classList.add("completed");
+          document.getElementById(id).insertAdjacentHTML("beforeend", "&#9989");
+
+          this.matchArray[index].team2winner = true;
+        }
+      } else if (
+        this.matchArray[index].team2winner === false &&
+        this.matchArray[index].team1winner === true
+      ) {
+        document.getElementById(id).classList.add("completed");
+        document.getElementById(id).insertAdjacentHTML("beforeend", "&#9989");
+
+        this.matchArray[index].team2winner = true;
+
+        let varid = "team";
+        let d = index;
+        varid += d;
+
+        this.removecheck(varid, index);
+      }
+    },
+    removecheck2(id, index) {
+      if (document.getElementById(id).classList.contains("completed")) {
+        document.getElementById(id).classList.remove("completed");
+        let item = document.getElementById(id);
+        document.getElementById(id).removeChild(item.lastChild);
+
+        this.matchArray[index].team2winner = false;
+      }
+    },
     updatmatcharray(index, name) {
       this.matchArray[index].name = name;
     },
@@ -498,8 +583,14 @@ export default {
       this.$store.commit("SET_BRACKET_PARTICIPANTS", this.teamsArray);
     },
     buidMatchArray() {
+      this.wonIndex =
+        this.constuctMatches.length +
+        this.round2Matches.length +
+        this.round3Matches.length +
+        this.round4Matches.length;
       for (let i = 0; i < this.wonIndex; i++) {
-        this.matchArray.push(this.$store.state.match);
+        var obj = JSON.parse(JSON.stringify(this.$store.state.match));
+        this.matchArray.push(obj);
       }
     },
   },
