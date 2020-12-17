@@ -190,11 +190,13 @@
                   :id="`team` + (teamsArray.length + index + 1 + index)"
                   @click="
                     addcheck(
-                      `team` + (round2Matches.length + index + 2 + index),
+                      `team` + (teamsArray.length + index + 1 + index),
                       index
                     )
                   "
-                  @dblclick="removecheck(`team` + index, index)"
+                  @dblclick="
+                    removecheck(`team` + teamsArray.length + index + 1, index)
+                  "
                   >{{ displayWinner(index + index) }}</span
                 >
               </div>
@@ -202,10 +204,17 @@
                 <span
                   class="d-flex"
                   :id="`team` + (teamsArray.length + index + 2 + index)"
-                  @click="addcheck(`team` + index, index)"
-                  @dblclick="removecheck(`team` + index, index)"
+                  @click="
+                    addcheck(
+                      `team` + teamsArray.length + index + 2 + index,
+                      index
+                    )
+                  "
+                  @dblclick="
+                    removecheck(`team` + teamsArray.length + 2 + index, index)
+                  "
                   v-if="round2Bys(index)"
-                  >{{ displayWinner(index + 1 + index) }}</span
+                  >{{ displayWinner(index) }}</span
                 >
               </div>
             </div>
@@ -270,13 +279,28 @@
                   "
                   @click="
                     addcheck(
-                      `team` + (round2Matches.length + index + 2 + index),
+                      `team` +
+                        (teamsArray.length +
+                          round2Matches * 2 +
+                          1 +
+                          index +
+                          index),
                       index
                     )
                   "
-                  @dblclick="removecheck(`team` + index, index)"
+                  @dblclick="
+                    removecheck(
+                      `team` +
+                        (teamsArray.length +
+                          round2Matches * 2 +
+                          1 +
+                          index +
+                          index),
+                      index
+                    )
+                  "
                 >
-                  {{ displayWinner(round2Matches.length + index + 4 + index) }}
+                  {{ displayWinner(index) }}
                 </span>
               </div>
               <div class="team-botom ">
@@ -290,11 +314,31 @@
                         index +
                         index)
                   "
-                  @click="addcheck(`team` + index, index)"
-                  @dblclick="removecheck(`team` + index, index)"
+                  @click="
+                    addcheck(
+                      `team` +
+                        (teamsArray.length +
+                          round2Matches.length * 2 +
+                          index +
+                          2 +
+                          index),
+                      index
+                    )
+                  "
+                  @dblclick="
+                    removecheck(
+                      `team` +
+                        (teamsArray.length +
+                          round2Matches.length * 2 +
+                          index +
+                          2 +
+                          index),
+                      index
+                    )
+                  "
                   v-if="round3Bys(index)"
                 >
-                  {{ displayWinner(round2Matches.length + index + 5 + index) }}
+                  {{ displayWinner(index) }}
                 </span>
               </div>
             </div>
