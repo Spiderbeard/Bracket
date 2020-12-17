@@ -201,10 +201,7 @@
                   "
                   class="d-flex"
                   >{{
-                    displayWinner(
-                      index + index,
-                      constuctMatches.length + index + index
-                    )
+                    displayWinner(index + index, constuctMatches.length + index)
                   }}</span
                 >
               </div>
@@ -228,7 +225,7 @@
                   >{{
                     displayWinner(
                       index + 1 + index,
-                      constuctMatches.length + index + index + 1
+                      constuctMatches.length + index
                     )
                   }}
                 </span>
@@ -316,7 +313,12 @@
                     )
                   "
                 >
-                  {{ displayWinner(constuctMatches.length + index + 1) }}
+                  {{
+                    displayWinner(
+                      constuctMatches.length + index + index,
+                      constuctMatches.length + round2Matches.length + index
+                    )
+                  }}
                 </span>
               </div>
               <div class="team-botom ">
@@ -354,7 +356,12 @@
                   "
                   v-if="round3Bys(index)"
                 >
-                  {{ displayWinner(constuctMatches.length + index + 2) }}
+                  {{
+                    displayWinner(
+                      constuctMatches.length + index + 1 + index,
+                      constuctMatches.length + round2Matches.length + index
+                    )
+                  }}
                 </span>
               </div>
             </div>
@@ -401,7 +408,13 @@
                         index)
                   "
                   >{{
-                    displayWinner(constuctMatches.length + index + index)
+                    displayWinner(
+                      constuctMatches.length +
+                        round2Matches.length +
+                        round3Matches.length -
+                        3,
+                      matchArray.length - 1
+                    )
                   }}</span
                 >
               </div>
@@ -416,7 +429,13 @@
                         index)
                   "
                   >{{
-                    displayWinner(constuctMatches.length + index + index + 1)
+                    displayWinner(
+                      constuctMatches.length +
+                        round3Matches.length +
+                        round2Matches.length -
+                        2,
+                      matchArray.length - 1
+                    )
                   }}</span
                 >
               </div>
@@ -442,7 +461,7 @@
             class="border border-dark d-flex flex-column justify-content-center"
           >
             <span class="champion">{{
-              displayWinner(matchArray.length - 1)
+              displayWinner(matchArray.length - 1, matchArray.length - 1)
             }}</span>
           </div>
         </div>
