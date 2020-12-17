@@ -186,18 +186,26 @@
             <div :id="`inde` + index" class="match border border-dark w-100 ">
               <div class="team-top border-bottom border-dark ">
                 <span
-                  class="d-flex"
                   :id="`team` + (teamsArray.length + index + 1 + index)"
                   @click="
                     addcheck(
                       `team` + (teamsArray.length + index + 1 + index),
-                      index
+                      constuctMatches.length + index
                     )
                   "
                   @dblclick="
-                    removecheck(`team` + teamsArray.length + index + 1, index)
+                    removecheck(
+                      `team` + (teamsArray.length + index + 1 + index),
+                      constuctMatches.length + index
+                    )
                   "
-                  >{{ displayWinner(index + index) }}</span
+                  class="d-flex"
+                  >{{
+                    displayWinner(
+                      index + index,
+                      constuctMatches.length + index + index
+                    )
+                  }}</span
                 >
               </div>
               <div :id="`inde` + index + 1" class="team-botom ">
@@ -205,17 +213,25 @@
                   class="d-flex"
                   :id="`team` + (teamsArray.length + index + 2 + index)"
                   @click="
-                    addcheck(
-                      `team` + teamsArray.length + index + 2 + index,
-                      index
+                    addcheck2(
+                      `team` + (teamsArray.length + index + 2 + index),
+                      constuctMatches.length + index
                     )
                   "
                   @dblclick="
-                    removecheck(`team` + teamsArray.length + 2 + index, index)
+                    removecheck2(
+                      `team` + (teamsArray.length + index + 2 + index),
+                      constuctMatches.length + index
+                    )
                   "
                   v-if="round2Bys(index)"
-                  >{{ displayWinner(index) }}</span
-                >
+                  >{{
+                    displayWinner(
+                      index + 1 + index,
+                      constuctMatches.length + index + index + 1
+                    )
+                  }}
+                </span>
               </div>
             </div>
           </div>
@@ -300,7 +316,7 @@
                     )
                   "
                 >
-                  {{ displayWinner(index) }}
+                  {{ displayWinner(constuctMatches.length + index + 1) }}
                 </span>
               </div>
               <div class="team-botom ">
@@ -338,7 +354,7 @@
                   "
                   v-if="round3Bys(index)"
                 >
-                  {{ displayWinner(index) }}
+                  {{ displayWinner(constuctMatches.length + index + 2) }}
                 </span>
               </div>
             </div>
@@ -384,7 +400,9 @@
                         index +
                         index)
                   "
-                  >{{ displayWinner(matchArray.length - 3) }}</span
+                  >{{
+                    displayWinner(constuctMatches.length + index + index)
+                  }}</span
                 >
               </div>
               <div class="team-botom ">
@@ -397,7 +415,9 @@
                         index +
                         index)
                   "
-                  >{{ displayWinner(matchArray.length - 2) }}</span
+                  >{{
+                    displayWinner(constuctMatches.length + index + index + 1)
+                  }}</span
                 >
               </div>
             </div>
@@ -433,7 +453,14 @@
         <button v-on:click="shuffleStore">Randomize</button>
       </div>
       <div class="button-margin">
-        <button @click="SaveParticipants">Add Teams</button>
+        <button
+          @click="
+            updateActiveBracket();
+            SaveParticipants();
+          "
+        >
+          Add Teams
+        </button>
       </div>
       <div class="button-margin">
         <button v-on:click="sendThemHome">Generate New Bracket</button>
@@ -529,18 +556,18 @@ export default {
     },
     addcheck(id, ind) {
       if (
-        this.matchArray[id.split("team").join("")].team1winner === false &&
-        this.matchArray[id.split("team").join("")].team2winner === false
+        this.matchArray[ind].team1winner === false &&
+        this.matchArray[ind].team2winner === false
       ) {
         if (!document.getElementById(id).classList.contains("completed")) {
           document.getElementById(id).classList.add("completed");
           document.getElementById(id).insertAdjacentHTML("beforeend", "&#9989");
-          let index = id.split("team").join("");
-          this.matchArray[index].team1winner = true;
+
+          this.matchArray[ind].team1winner = true;
         }
       } else if (
-        this.matchArray[id.split("team").join("")].team1winner === false &&
-        this.matchArray[id.split("team").join("")].team2winner === true
+        this.matchArray[ind].team1winner === false &&
+        this.matchArray[ind].team2winner === true
       ) {
         document.getElementById(id).classList.add("completed");
         document.getElementById(id).insertAdjacentHTML("beforeend", "&#9989");
@@ -598,13 +625,20 @@ export default {
         this.matchArray[index].team2winner = false;
       }
     },
-    displayWinner(index) {
+    displayWinner(index, matchindex) {
+      console.log("index", index);
       if (this.matchArray[index].team1winner === true) {
+        this.matchArray[matchindex].Participants1.name = this.matchArray[
+          index
+        ].Participants1.name;
         return this.matchArray[index].Participants1.name;
       } else if (this.matchArray[index].team2winner === true) {
+        this.matchArray[index].Participants2.name = this.matchArray[
+          index
+        ].Participants2.name;
         return this.matchArray[index].Participants2.name;
       } else {
-        return `Winner of Match ${index}`;
+        return `Winner of Match`;
       }
     },
 
