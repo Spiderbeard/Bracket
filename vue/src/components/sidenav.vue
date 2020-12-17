@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="well"/>
+    <div class="well">
     <form action="" class="page-margin">
       <main>
         <h2 class="header">Welcome to the tournament bracket generator!</h2>
@@ -45,6 +45,7 @@
         </form>
     </main>
   </form>
+    </div>
 </div>
 </template>
 

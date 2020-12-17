@@ -66,7 +66,40 @@ namespace Capstone.DAO
                         {
                             Tournament t = GetTournamentFromReader(reader);
                             returnTournaments.Add(t);
-                            
+
+                        }
+                    }
+
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return returnTournaments;
+        }
+
+        public List<Tournament> GetTournamentByOrganizerId(int organizerId)
+        {
+            List<Tournament> returnTournaments = new List<Tournament>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string sqlStatement = "SELECT tournament_id, name, numberofparticipants, currentround, organizer_id FROM tournament WHERE organizer_id = @organizer_id";
+                    SqlCommand cmd = new SqlCommand(sqlStatement, conn);
+                    cmd.Parameters.AddWithValue("@organizer_id", organizerId);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            Tournament t = GetTournamentFromReader(reader);
+                            returnTournaments.Add(t);
+
                         }
                     }
 
@@ -92,10 +125,69 @@ namespace Capstone.DAO
 
             return t;
         }
+
+        public List<Tournament> AllYourTournamentAreBelongToMe(int OrganizerId)
+        {
+            List<Tournament> output = new List<Tournament>();
+
+
+
+            List<Tournament> tournamentList = GetTournamentByOrganizerId(OrganizerId);
+
+            List<int> tournamentIds = new List<int>();
+            List<int> roundIds = new List<int>();
+
+            foreach (Tournament tourney in tournamentList)
+            {
+                output.Add(tourney);
+
+                tournamentIds.Add(tourney.TournamentId);
+            }
+
+            List<Rounds> roundList = roundsDAO.GetRoundsByTournamentID(tournamentIds);
+
+            foreach (Tournament tourney in output)
+            {
+                foreach (Rounds round in roundList)
+                {
+                    roundIds.Add(round.RoundId);
+
+                    if (round.TournamentId == tourney.TournamentId)
+                    {
+                        tourney.Rounds.Add(round);
+                    }
+
+
+                }
+
+            }
+
+            List<Match> matchList = matchDAO.GetMatchByRoundId(roundIds);
+
+            foreach  (Tournament tourney in output)
+            {
+               for( int i =0 ; i<tourney.Rounds.Count ;i++)
+                {
+                    foreach(Match match in matchList)
+                    {
+                        if( match.RoundId == tourney.Rounds[i].RoundId)
+                        {
+                            tourney.Rounds[i].Matches.Add(match);
+                        }
+
+
+                    }
+
+                }
+               
+
+            }
+
+            return output;
+        }
     }
 }
 
-    
 
 
 

@@ -140,7 +140,7 @@ namespace Capstone.DAO
             
         }
 
-        private void GetMatchesByRound(int roundId)
+        public void GetMatchesByRound(int roundId)
         {
 
             try
@@ -172,7 +172,41 @@ namespace Capstone.DAO
             
 
         }
-        
+
+        public List<Rounds>GetRoundsByTournamentID( List<int> tournamentIDs)
+        {
+            
+            List<Rounds> output = new List<Rounds>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string sqlStatement = $"select * from rounds where tournament_id in ({tournamentIDs})";
+                    SqlCommand cmd = new SqlCommand(sqlStatement, conn);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            Rounds r = GetRoundFromReader(reader);
+                            output.Add(r);
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            
+            return output;
+        }
 
         public Rounds GetRoundFromReader(SqlDataReader reader)
         {

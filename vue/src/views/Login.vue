@@ -1,6 +1,6 @@
 <template>
   <div id="login" class="text-center">
-    <div class="well"/>
+    <div class="well">
     <form class="form-signin login-page-margin" @submit.prevent="login">
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div
@@ -39,7 +39,7 @@
         class="you-did-good-text"
         v-if="this.$route.query.registration"
       >Thank you for registering, please sign in.</div>
-
+    </div>
   </div>
 </template>
 

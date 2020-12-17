@@ -102,6 +102,39 @@ namespace Capstone.DAO
             return returnMatch;
         }
 
+        public List<Match> GetMatchByRoundId(List<int> roundIds)
+        {
+            
+            List<Match> returnMatches = new List<Match>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string sqlStatement = $"SELECT * FROM match WHERE round_id in ({roundIds})";
+                    SqlCommand cmd = new SqlCommand(sqlStatement, conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            Match m = GetMatchFromReader(reader);
+                            returnMatches.Add(m);
+
+                        }
+                    }
+
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return returnMatches;
+        }
+
         public bool UpdateScoreTeamOne(Match updated)
         {
             try
