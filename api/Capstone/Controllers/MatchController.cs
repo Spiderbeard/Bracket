@@ -15,29 +15,36 @@ namespace Capstone.Controllers
     [Authorize]
     public class MatchController : ControllerBase
     {
-        private static IMatchDAO MatchSqlDAO;
-        private static IParticipantsDAO ParticipantsSqlDAO;
-        private static IRoundsDAO RoundsSqlDAO;
-        private static ITournamentDAO TournamentSqlDAO;
+        private static IMatchDAO matchDAO;
 
-        public MatchController(IMatchDAO _matchDAO, IParticipantsDAO _participantsDAO, IRoundsDAO _roundsDAO, ITournamentDAO _tournamentDAO)
+
+        public MatchController(IMatchDAO _matchDAO)
         {
-            MatchSqlDAO = _matchDAO;
-            ParticipantsSqlDAO = _participantsDAO;
-            RoundsSqlDAO = _roundsDAO;
-            TournamentSqlDAO = _tournamentDAO;
-
+            matchDAO = _matchDAO;
+          
         }
 
         [HttpPost]
-        public ActionResult<Match> AddMatch(Match matchToInsert)
+        public ActionResult<List<Match>> AddMatch(List<Match> matchsToInsert)
         {
-            Match match = MatchSqlDAO.AddMatch(matchToInsert);
-            if (match != null)
+            List<Match> output = new List<Match>();
+
+            try
             {
-                return Ok(match);
+                foreach (Match match in matchsToInsert)
+                {
+                    output.Add(matchDAO.AddMatch(match));
+                }
+
+
+
+                return Ok(output);
             }
-            else return NotFound();
+            catch (Exception e)
+            {
+
+                return BadRequest(e);
+            }
         }
     }
 }
