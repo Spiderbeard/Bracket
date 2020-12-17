@@ -111,21 +111,25 @@ namespace Capstone.DAO
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    conn.Open();
-                    string sqlStatement = $"SELECT * FROM match WHERE round_id in ({roundIds})";
-                    SqlCommand cmd = new SqlCommand(sqlStatement, conn);
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    if (reader.HasRows)
+                    
+                    foreach (int i in roundIds)
                     {
-                        while (reader.Read())
+                        conn.Open();
+                        string sqlStatement = $"SELECT * FROM match WHERE round_id = {i}";
+                        SqlCommand cmd = new SqlCommand(sqlStatement, conn);
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        if (reader.HasRows)
                         {
-                            Match m = GetMatchFromReader(reader);
-                            returnMatches.Add(m);
+                            while (reader.Read())
+                            {
+                                Match m = GetMatchFromReader(reader);
+                                returnMatches.Add(m);
 
+                            }
                         }
+                        conn.Close();
                     }
-
                 }
             }
             catch (Exception e)
@@ -187,8 +191,9 @@ namespace Capstone.DAO
             {
                 MatchNumber = Convert.ToInt32(reader["matchnumber"]),
                 IsActive = Convert.ToBoolean(reader["isActive"]),
-                ScoreTeam1 = Convert.ToInt32(reader["scoreteam1"]),
-                ScoreTeam2 = Convert.ToInt32(reader["scoreteam2"]),
+            
+                //ScoreTeam1 = Convert.ToInt32(reader["scoreteam1"]),
+                //ScoreTeam2 = Convert.ToInt32(reader["scoreteam2"]),
                 Team1Winner = Convert.ToBoolean(reader["team1winner"]),
                 Team2Winner = Convert.ToBoolean(reader["team2winner"]),
                 RoundId = Convert.ToInt32(reader["round_id"]),
