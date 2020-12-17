@@ -184,23 +184,29 @@
             v-bind:key="index"
           >
             <div :id="`inde` + index" class="match border border-dark w-100 ">
-              <div
-                :id="`team` + (teamsArray.length + index + 1 + index)"
-                @click="
-                  addcheck(
-                    `team` + (teamsArray.length + index + 1 + index),
-                    constuctMatches.length + index + index
-                  )
-                "
-                @dblclick="
-                  removecheck(
-                    `team` + (teamsArray.length + index + 1 + index),
-                    constuctMatches.length + index + index
-                  )
-                "
-                class="team-top border-bottom border-dark "
-              >
-                <span class="d-flex">{{ displayWinner(index + index) }}</span>
+              <div class="team-top border-bottom border-dark ">
+                <span
+                  :id="`team` + (teamsArray.length + index + 1 + index)"
+                  @click="
+                    addcheck(
+                      `team` + (teamsArray.length + index + 1 + index),
+                      constuctMatches.length + index
+                    )
+                  "
+                  @dblclick="
+                    removecheck(
+                      `team` + (teamsArray.length + index + 1 + index),
+                      constuctMatches.length + index
+                    )
+                  "
+                  class="d-flex"
+                  >{{
+                    displayWinner(
+                      index + index,
+                      constuctMatches.length + index + index
+                    )
+                  }}</span
+                >
               </div>
               <div :id="`inde` + index + 1" class="team-botom ">
                 <span
@@ -209,18 +215,23 @@
                   @click="
                     addcheck2(
                       `team` + (teamsArray.length + index + 2 + index),
-                      constuctMatches.length + index + index
+                      constuctMatches.length + index
                     )
                   "
                   @dblclick="
                     removecheck2(
                       `team` + (teamsArray.length + index + 2 + index),
-                      constuctMatches.length + index + index
+                      constuctMatches.length + index
                     )
                   "
                   v-if="round2Bys(index)"
-                  >{{ displayWinner(index + 1 + index) }}</span
-                >
+                  >{{
+                    displayWinner(
+                      index + 1 + index,
+                      constuctMatches.length + index + index + 1
+                    )
+                  }}
+                </span>
               </div>
             </div>
           </div>
@@ -305,7 +316,7 @@
                     )
                   "
                 >
-                  {{ displayWinner(index) }}
+                  {{ displayWinner(constuctMatches.length + index + 1) }}
                 </span>
               </div>
               <div class="team-botom ">
@@ -343,7 +354,7 @@
                   "
                   v-if="round3Bys(index)"
                 >
-                  {{ displayWinner(index) }}
+                  {{ displayWinner(constuctMatches.length + index + 2) }}
                 </span>
               </div>
             </div>
@@ -389,7 +400,9 @@
                         index +
                         index)
                   "
-                  >{{ displayWinner(matchArray.length - 3) }}</span
+                  >{{
+                    displayWinner(constuctMatches.length + index + index)
+                  }}</span
                 >
               </div>
               <div class="team-botom ">
@@ -402,7 +415,9 @@
                         index +
                         index)
                   "
-                  >{{ displayWinner(matchArray.length - 2) }}</span
+                  >{{
+                    displayWinner(constuctMatches.length + index + index + 1)
+                  }}</span
                 >
               </div>
             </div>
@@ -610,10 +625,17 @@ export default {
         this.matchArray[index].team2winner = false;
       }
     },
-    displayWinner(index) {
+    displayWinner(index, matchindex) {
+      console.log("index", index);
       if (this.matchArray[index].team1winner === true) {
+        this.matchArray[matchindex].Participants1.name = this.matchArray[
+          index
+        ].Participants1.name;
         return this.matchArray[index].Participants1.name;
       } else if (this.matchArray[index].team2winner === true) {
+        this.matchArray[index].Participants2.name = this.matchArray[
+          index
+        ].Participants2.name;
         return this.matchArray[index].Participants2.name;
       } else {
         return `Winner of Match`;
