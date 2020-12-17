@@ -9,18 +9,18 @@ namespace Capstone.DAO
 {
     public class TournamentSqlDao : ITournamentDAO
     {
-        private string connectionString;
+        private static string connectionString;
 
         public TournamentSqlDao(string dbConnectionString)
         {
             connectionString = dbConnectionString;
         }
 
-        public MatchSqlDAO matchDAO = new MatchSqlDAO();
+        public MatchSqlDAO matchDAO = new MatchSqlDAO(connectionString);
 
-        public ParticipantsSqlDAO participantsDAO = new ParticipantsSqlDAO();
+        public ParticipantsSqlDAO participantsDAO = new ParticipantsSqlDAO(connectionString);
 
-        public RoundsSqlDAO roundsDAO = new RoundsSqlDAO();
+        public RoundsSqlDAO roundsDAO = new RoundsSqlDAO(connectionString);
 
         public Tournament AddTournament(Tournament tournament)
         {
@@ -56,7 +56,7 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    string sqlStatement = "SELECT matchnumber, isActive, scoreteam1, scoreteam2, team1winner, team2winner, round_id, match_id, team1, team2 FROM match";
+                    string sqlStatement = "SELECT * FROM tournament";
                     SqlCommand cmd = new SqlCommand(sqlStatement, conn);
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -135,6 +135,7 @@ namespace Capstone.DAO
             List<Tournament> tournamentList = GetTournamentByOrganizerId(OrganizerId);
 
             List<int> tournamentIds = new List<int>();
+
             List<int> roundIds = new List<int>();
 
             foreach (Tournament tourney in tournamentList)

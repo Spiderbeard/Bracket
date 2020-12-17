@@ -327,7 +327,7 @@
         <button v-on:click="shuffleStore">Randomize</button>
       </div>
       <div class="button-margin">
-        <button @click="updateActiveBracket">Add Teams</button>
+        <button @click="SaveParticipants">Add Teams</button>
       </div>
       <div class="button-margin">
         <button v-on:click="sendThemHome">Generate New Bracket</button>
@@ -586,7 +586,7 @@ export default {
           this.teamsArray.length - 1 - i
         ].name;
       }
-      this.$store.commit("SET_BRACKET_PARTICIPANTS", this.teamsArray);
+      this.$store.commit("SET_PARTICIPANTS", this.teamsArray);
     },
     buidMatchArray() {
       this.wonIndex =

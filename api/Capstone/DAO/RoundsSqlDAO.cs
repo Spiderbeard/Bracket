@@ -183,25 +183,31 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    string sqlStatement = $"select * from rounds where tournament_id in ({tournamentIDs})";
-                    SqlCommand cmd = new SqlCommand(sqlStatement, conn);
-
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    if (reader.HasRows)
+                    foreach (int i in tournamentIDs)
                     {
-                        while (reader.Read())
+
+
+                        string sqlStatement = $"select * from rounds where tournament_id = {i}";
+                        SqlCommand cmd = new SqlCommand(sqlStatement, conn);
+
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        if (reader.HasRows)
                         {
-                            Rounds r = GetRoundFromReader(reader);
-                            output.Add(r);
+                            while (reader.Read())
+                            {
+                                Rounds r = GetRoundFromReader(reader);
+                                output.Add(r);
+                            }
                         }
+
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception e )
             {
 
-                throw;
+                throw ;
             }
 
             

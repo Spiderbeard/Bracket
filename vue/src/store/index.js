@@ -84,7 +84,7 @@ export default new Vuex.Store({
         for(let i = 0; i < numberOfPants ; i++){
           let Team = {
             id: "Team "+ (i+1),
-            Name:"",
+            name:"",
             edit:false
           };
           state.Participants.push(Team);
