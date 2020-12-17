@@ -11,5 +11,7 @@ namespace Capstone.DAO
         Tournament AddTournament(Tournament tournament);
 
         List<Tournament> GetTournamentByOrganizerId(int organizerId);
+        List<Tournament> AllYourTournamentAreBelongToMe(int OrganizerId);
+
     }
 }

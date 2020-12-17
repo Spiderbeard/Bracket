@@ -34,7 +34,20 @@ namespace Capstone.Controllers
             }
         }
 
-
+        [HttpGet("{id}")]
+        public ActionResult <List<Tournament>> AllYourTournamentsAreBelongToMe(int organizerId)
+        {
+            try
+            {
+                return Ok(tournamentDAO.AllYourTournamentAreBelongToMe(organizerId));
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+            
+            
+        }
 
     }
 }
