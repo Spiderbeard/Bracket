@@ -294,22 +294,22 @@
                     addcheck(
                       `team` +
                         (teamsArray.length +
-                          round2Matches * 2 +
+                          round2Matches.length * 2 +
                           1 +
                           index +
                           index),
-                      index
+                      constuctMatches.length + round2Matches.length + index
                     )
                   "
                   @dblclick="
                     removecheck(
                       `team` +
                         (teamsArray.length +
-                          round2Matches * 2 +
+                          round2Matches.length * 2 +
                           1 +
                           index +
                           index),
-                      index
+                      constuctMatches.length + round2Matches.length + index
                     )
                   "
                 >
@@ -333,25 +333,25 @@
                         index)
                   "
                   @click="
-                    addcheck(
+                    addcheck2(
                       `team` +
                         (teamsArray.length +
                           round2Matches.length * 2 +
                           index +
                           2 +
                           index),
-                      index
+                      constuctMatches.length + round2Matches.length + index
                     )
                   "
                   @dblclick="
-                    removecheck(
+                    removecheck2(
                       `team` +
                         (teamsArray.length +
                           round2Matches.length * 2 +
                           index +
                           2 +
                           index),
-                      index
+                      constuctMatches.length + round2Matches.length + index
                     )
                   "
                   v-if="round3Bys(index)"
@@ -407,6 +407,28 @@
                         index +
                         index)
                   "
+                  @click="
+                    addcheck(
+                      `team` +
+                        (teamsArray.length +
+                          round2Matches.length * 2 +
+                          5 +
+                          index +
+                          index),
+                      matchArray.length - 1
+                    )
+                  "
+                  @dblclick="
+                    removecheck(
+                      `team` +
+                        (teamsArray.length +
+                          round2Matches.length * 2 +
+                          5 +
+                          index +
+                          index),
+                      matchArray.length - 1
+                    )
+                  "
                   >{{
                     displayWinner(
                       constuctMatches.length +
@@ -427,6 +449,28 @@
                         6 +
                         index +
                         index)
+                  "
+                  @click="
+                    addcheck2(
+                      `team` +
+                        (teamsArray.length +
+                          round2Matches.length * 2 +
+                          6 +
+                          index +
+                          index),
+                      index
+                    )
+                  "
+                  @dblclick="
+                    removecheck2(
+                      `team` +
+                        (teamsArray.length +
+                          round2Matches.length * 2 +
+                          6 +
+                          index +
+                          index),
+                      index
+                    )
                   "
                   >{{
                     displayWinner(
