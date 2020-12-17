@@ -183,13 +183,38 @@
             v-for="(match, index) in this.round2Matches"
             v-bind:key="index"
           >
-            <div class="match border border-dark w-100 ">
+            <div :id="`inde` + index" class="match border border-dark w-100 ">
               <div class="team-top border-bottom border-dark ">
-                <span>Winner of Match {{ index + 1 + index }}</span>
+                <span
+                  class="d-flex"
+                  :id="`team` + (teamsArray.length + index + 1 + index)"
+                  @click="
+                    addcheck(
+                      `team` + (teamsArray.length + index + 1 + index),
+                      index
+                    )
+                  "
+                  @dblclick="
+                    removecheck(`team` + teamsArray.length + index + 1, index)
+                  "
+                  >{{ displayWinner(index + index) }}</span
+                >
               </div>
-              <div class="team-botom ">
-                <span v-if="round2Bys(index)"
-                  >Winner of Match {{ index + 2 + index }}</span
+              <div :id="`inde` + index + 1" class="team-botom ">
+                <span
+                  class="d-flex"
+                  :id="`team` + (teamsArray.length + index + 2 + index)"
+                  @click="
+                    addcheck(
+                      `team` + teamsArray.length + index + 2 + index,
+                      index
+                    )
+                  "
+                  @dblclick="
+                    removecheck(`team` + teamsArray.length + 2 + index, index)
+                  "
+                  v-if="round2Bys(index)"
+                  >{{ displayWinner(index) }}</span
                 >
               </div>
             </div>
@@ -243,14 +268,77 @@
             >
               <div class="team-top border-bottom border-dark ">
                 <span
-                  >Winner of Match
-                  {{ round2Matches.length + index + 4 + index }}
+                  class="d-flex"
+                  :id="
+                    `team` +
+                      (teamsArray.length +
+                        round2Matches.length * 2 +
+                        1 +
+                        index +
+                        index)
+                  "
+                  @click="
+                    addcheck(
+                      `team` +
+                        (teamsArray.length +
+                          round2Matches * 2 +
+                          1 +
+                          index +
+                          index),
+                      index
+                    )
+                  "
+                  @dblclick="
+                    removecheck(
+                      `team` +
+                        (teamsArray.length +
+                          round2Matches * 2 +
+                          1 +
+                          index +
+                          index),
+                      index
+                    )
+                  "
+                >
+                  {{ displayWinner(index) }}
                 </span>
               </div>
               <div class="team-botom ">
-                <span v-if="round3Bys(index)"
-                  >Winner of Match
-                  {{ round2Matches.length + index + 5 + index }}
+                <span
+                  class="d-flex"
+                  :id="
+                    `team` +
+                      (teamsArray.length +
+                        round2Matches.length * 2 +
+                        2 +
+                        index +
+                        index)
+                  "
+                  @click="
+                    addcheck(
+                      `team` +
+                        (teamsArray.length +
+                          round2Matches.length * 2 +
+                          index +
+                          2 +
+                          index),
+                      index
+                    )
+                  "
+                  @dblclick="
+                    removecheck(
+                      `team` +
+                        (teamsArray.length +
+                          round2Matches.length * 2 +
+                          index +
+                          2 +
+                          index),
+                      index
+                    )
+                  "
+                  v-if="round3Bys(index)"
+                >
+                  {{ displayWinner(index) }}
                 </span>
               </div>
             </div>
@@ -288,12 +376,28 @@
             <div class="match border border-dark w-100">
               <div class="team-top border-bottom border-dark">
                 <span
-                  >Winner of Match {{ constuctMatches.length * 2 - 2 }}</span
+                  :id="
+                    `team` +
+                      (teamsArray.length +
+                        round2Matches.length * 2 +
+                        5 +
+                        index +
+                        index)
+                  "
+                  >{{ displayWinner(matchArray.length - 3) }}</span
                 >
               </div>
               <div class="team-botom ">
                 <span
-                  >Winner of Match {{ constuctMatches.length * 2 - 1 }}</span
+                  :id="
+                    `team` +
+                      (teamsArray.length +
+                        round2Matches.length * 2 +
+                        6 +
+                        index +
+                        index)
+                  "
+                  >{{ displayWinner(matchArray.length - 2) }}</span
                 >
               </div>
             </div>
@@ -317,7 +421,9 @@
           <div
             class="border border-dark d-flex flex-column justify-content-center"
           >
-            <span class="champion">Winner</span>
+            <span class="champion">{{
+              displayWinner(matchArray.length - 1)
+            }}</span>
           </div>
         </div>
       </div>
@@ -368,6 +474,7 @@ export default {
         line: "",
       },
       wonIndex: 0,
+      int: 0,
 
       matchArray: [],
       axiosData: [],
@@ -489,6 +596,15 @@ export default {
         document.getElementById(id).removeChild(item.lastChild);
 
         this.matchArray[index].team2winner = false;
+      }
+    },
+    displayWinner(index) {
+      if (this.matchArray[index].team1winner === true) {
+        return this.matchArray[index].Participants1.name;
+      } else if (this.matchArray[index].team2winner === true) {
+        return this.matchArray[index].Participants2.name;
+      } else {
+        return `Winner of Match ${index}`;
       }
     },
 

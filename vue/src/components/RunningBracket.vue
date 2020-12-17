@@ -233,14 +233,12 @@
               class="match border border-dark w-100 d-flex flex-column justify-content-between"
             >
               <div class="team-top border-bottom border-dark ">
-                <span
-                  >Winner of Match
+                <span>
                   {{ round2Matches.length + index + 4 + index }}
                 </span>
               </div>
               <div class="team-botom ">
-                <span v-if="round3Bys(index)"
-                  >Winner of Match
+                <span v-if="round3Bys(index)">
                   {{ round2Matches.length + index + 5 + index }}
                 </span>
               </div>
@@ -580,7 +578,7 @@ export default {
         this.matchArray[i].Participants1.name = this.teamsArray[i].name;
         this.matchArray[i + 1].Participants2.name = this.teamsArray[i + 1].name;
       }
-      this.$store.commit("SET_BRACKET_PARTICIPANTS", this.teamsArray);
+      this.$store.commit("SET_PARTICIPANTS", this.teamsArray);
     },
     buidMatchArray() {
       this.wonIndex =
