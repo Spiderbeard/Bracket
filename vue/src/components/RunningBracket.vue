@@ -580,7 +580,7 @@ export default {
         this.matchArray[i].Participants1.name = this.teamsArray[i].name;
         this.matchArray[i + 1].Participants2.name = this.teamsArray[i + 1].name;
       }
-      this.$store.commit("SET_BRACKET_PARTICIPANTS", this.teamsArray);
+      this.$store.commit("SET_PARTICIPANTS", this.teamsArray);
     },
     buidMatchArray() {
       this.wonIndex =
