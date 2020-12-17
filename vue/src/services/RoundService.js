@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export default{
 
-    addRound(rounds){
+    AddRounds(rounds){
         return axios.post('/api/Rounds',rounds)
 
     }

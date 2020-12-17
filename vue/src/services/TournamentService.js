@@ -4,7 +4,7 @@ import axios from 'axios';
 export default{
 
     GetTournaments(Organizerid){
-        return axios.get(`/api/Tournaments/${{Organizerid}}`);
+        return axios.get(`/api/Tournaments/${Organizerid}`);
     },
 
     AddTournament(Tournament){

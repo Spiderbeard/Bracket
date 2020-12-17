@@ -34,7 +34,7 @@ namespace Capstone.Controllers
                     output.Add(roundsDAO.AddRound(round));
                 }
 
-                return Ok(output)
+                return Ok(output);
 
 
 
