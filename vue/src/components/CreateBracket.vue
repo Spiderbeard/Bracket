@@ -433,7 +433,7 @@
         <button v-on:click="shuffleStore">Randomize</button>
       </div>
       <div class="button-margin">
-        <button @click="updateActiveBracket">Add Teams</button>
+        <button @click="SaveParticipants">Add Teams</button>
       </div>
       <div class="button-margin">
         <button v-on:click="sendThemHome">Generate New Bracket</button>

@@ -1,3 +1,16 @@
+USE master 
+GO
+
+--drop database if it exists
+IF DB_ID('final_capstone') IS NOT NULL
+BEGIN
+	ALTER DATABASE final_capstone SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+	DROP DATABASE final_capstone;
+END
+
+CREATE DATABASE final_capstone
+GO
+
 USE [final_capstone]
 GO
 /****** Object:  Table [dbo].[match]    Script Date: 12/15/2020 5:21:49 PM ******/
@@ -8,10 +21,10 @@ GO
 CREATE TABLE [dbo].[match](
 	[matchnumber] [int] NOT NULL,
 	[isActive] [bit] NOT NULL,
-	[scoreteam1] [int] NULL,
-	[scoreteam2] [int] NULL,
-	[team1winner] [bit] NULL,
-	[team2winner] [bit] NULL,
+	[scoreteam1] [int] NOT NULL,
+	[scoreteam2] [int] NOT NULL,
+	[team1winner] [bit] NOT NULL,
+	[team2winner] [bit] NOT NULL,
 	[round_id] [int] NOT NULL,
 	[match_id] [int] IDENTITY(1,1) NOT NULL,
 	[team1] [int] NOT NULL,
@@ -90,35 +103,35 @@ CREATE TABLE [dbo].[users](
 GO
 SET IDENTITY_INSERT [dbo].[match] ON 
 GO
-INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (1, 1, NULL, NULL, NULL, NULL, 1, 1, 1, 4)
+INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (1, 1, 0, 0, 0, 0, 1, 1, 1, 4)
 GO
-INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (2, 1, NULL, NULL, NULL, NULL, 1, 3, 7, 6)
+INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (2, 1, 0, 0, 0, 0, 1, 2, 7, 6)
 GO
-INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (3, 1, NULL, NULL, NULL, NULL, 1, 4, 8, 9)
+INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (3, 1, 0, 0, 0, 0, 1, 3, 8, 9)
 GO
-INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (4, 1, NULL, NULL, NULL, NULL, 1, 5, 10, 11)
+INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (4, 1, 0, 0, 0, 0, 1, 4, 10, 11)
 GO
-INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (5, 1, NULL, NULL, NULL, NULL, 1, 6, 12, 13)
+INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (5, 1, 0, 0, 0, 0, 1, 5, 12, 13)
 GO
-INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (6, 1, NULL, NULL, NULL, NULL, 1, 7, 14, 15)
+INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (6, 1, 0, 0, 0, 0, 1, 6, 14, 15)
 GO
-INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (7, 1, NULL, NULL, NULL, NULL, 1, 8, 16, 17)
+INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (7, 1, 0, 0, 0, 0, 1, 7, 16, 17)
 GO
-INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (8, 1, NULL, NULL, NULL, NULL, 1, 9, 18, 19)
+INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (8, 1, 0, 0, 0, 0, 1, 8, 18, 19)
 GO
-INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (9, 1, NULL, NULL, NULL, NULL, 2, 10, 1, 7)
+INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (9, 1, 0, 0, 0, 0, 2, 9, 1, 7)
 GO
-INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (10, 1, NULL, NULL, NULL, NULL, 2, 11, 8, 10)
+INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (10, 1, 0, 0, 0, 0, 2, 10, 8, 10)
 GO
-INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (11, 1, NULL, NULL, NULL, NULL, 2, 12, 12, 14)
+INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (11, 1, 0, 0, 0, 0, 2, 11, 12, 14)
 GO
-INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (12, 1, NULL, NULL, NULL, NULL, 2, 13, 16, 18)
+INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (12, 1, 0, 0, 0, 0, 2, 12, 16, 18)
 GO
-INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (13, 1, NULL, NULL, NULL, NULL, 3, 14, 1, 8)
+INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (13, 1, 0, 0, 0, 0, 3, 13, 1, 8)
 GO
-INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (14, 1, NULL, NULL, NULL, NULL, 3, 15, 12, 16)
+INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (14, 1, 0, 0, 0, 0, 3, 14, 12, 16)
 GO
-INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (15, 1, NULL, NULL, NULL, NULL, 4, 16, 1, 12)
+INSERT [dbo].[match] ([matchnumber], [isActive], [scoreteam1], [scoreteam2], [team1winner], [team2winner], [round_id], [match_id], [team1], [team2]) VALUES (15, 1, 0, 0, 0, 0, 4, 15, 1, 12)
 GO
 SET IDENTITY_INSERT [dbo].[match] OFF
 GO
@@ -252,13 +265,13 @@ SET IDENTITY_INSERT [dbo].[participants] OFF
 GO
 SET IDENTITY_INSERT [dbo].[rounds] ON 
 GO
-INSERT [dbo].[rounds] ([roundnumber], [isActive], [tournament_id], [round_id]) VALUES (1, 1, 1, 1)
+INSERT [dbo].[rounds] ([roundnumber], [isActive], [tournament_id], [round_id]) VALUES (1, 1, 1, 14)
 GO
-INSERT [dbo].[rounds] ([roundnumber], [isActive], [tournament_id], [round_id]) VALUES (2, 1, 1, 2)
+INSERT [dbo].[rounds] ([roundnumber], [isActive], [tournament_id], [round_id]) VALUES (2, 1, 1, 15)
 GO
-INSERT [dbo].[rounds] ([roundnumber], [isActive], [tournament_id], [round_id]) VALUES (3, 1, 1, 3)
+INSERT [dbo].[rounds] ([roundnumber], [isActive], [tournament_id], [round_id]) VALUES (3, 1, 1, 16)
 GO
-INSERT [dbo].[rounds] ([roundnumber], [isActive], [tournament_id], [round_id]) VALUES (4, 1, 1, 4)
+INSERT [dbo].[rounds] ([roundnumber], [isActive], [tournament_id], [round_id]) VALUES (4, 1, 1, 17)
 GO
 INSERT [dbo].[rounds] ([roundnumber], [isActive], [tournament_id], [round_id]) VALUES (1, 1, 2, 5)
 GO
@@ -276,13 +289,13 @@ INSERT [dbo].[rounds] ([roundnumber], [isActive], [tournament_id], [round_id]) V
 GO
 INSERT [dbo].[rounds] ([roundnumber], [isActive], [tournament_id], [round_id]) VALUES (4, 1, 3, 12)
 GO
-INSERT [dbo].[rounds] ([roundnumber], [isActive], [tournament_id], [round_id]) VALUES (1, 1, 6, 14)
+INSERT [dbo].[rounds] ([roundnumber], [isActive], [tournament_id], [round_id]) VALUES (1, 1, 6, 1)
 GO
-INSERT [dbo].[rounds] ([roundnumber], [isActive], [tournament_id], [round_id]) VALUES (2, 1, 6, 15)
+INSERT [dbo].[rounds] ([roundnumber], [isActive], [tournament_id], [round_id]) VALUES (2, 1, 6, 2)
 GO
-INSERT [dbo].[rounds] ([roundnumber], [isActive], [tournament_id], [round_id]) VALUES (3, 1, 6, 16)
+INSERT [dbo].[rounds] ([roundnumber], [isActive], [tournament_id], [round_id]) VALUES (3, 1, 6, 3)
 GO
-INSERT [dbo].[rounds] ([roundnumber], [isActive], [tournament_id], [round_id]) VALUES (4, 1, 6, 17)
+INSERT [dbo].[rounds] ([roundnumber], [isActive], [tournament_id], [round_id]) VALUES (4, 1, 6, 4)
 GO
 SET IDENTITY_INSERT [dbo].[rounds] OFF
 GO
@@ -294,7 +307,7 @@ INSERT [dbo].[tournament] ([tournament_id], [name], [numberofparticipants], [cur
 GO
 INSERT [dbo].[tournament] ([tournament_id], [name], [numberofparticipants], [currentround], [organizer_id]) VALUES (3, N'Magic the Gathering Tournament', 16, 1, 2)
 GO
-INSERT [dbo].[tournament] ([tournament_id], [name], [numberofparticipants], [currentround], [organizer_id]) VALUES (6, N'Dungeon Crawl Classics', 16, 1, 3)
+INSERT [dbo].[tournament] ([tournament_id], [name], [numberofparticipants], [currentround], [organizer_id]) VALUES (6, N'Dungeon Crawl Classics', 16, 1, 6)
 GO
 INSERT [dbo].[tournament] ([tournament_id], [name], [numberofparticipants], [currentround], [organizer_id]) VALUES (7, N'Ultimate Deveoper Hack-Off', 16, 1, 4)
 GO
@@ -306,11 +319,9 @@ INSERT [dbo].[users] ([user_id], [username], [password_hash], [salt], [user_role
 GO
 INSERT [dbo].[users] ([user_id], [username], [password_hash], [salt], [user_role], [email]) VALUES (2, N'admin', N'YhyGVQ+Ch69n4JMBncM4lNF/i9s=', N'Ar/aB2thQTI=', N'admin', NULL)
 GO
-INSERT [dbo].[users] ([user_id], [username], [password_hash], [salt], [user_role], [email]) VALUES (3, N'fakeuser', N'sdfasdf', N'asdfsd', N'user', NULL)
+INSERT [dbo].[users] ([user_id], [username], [password_hash], [salt], [user_role], [email]) VALUES (6, N'a', N'JhDDtQXU03YjiRM0GOur9A6eYG0=', N'nLx4b3MOq7o=', N'user', N'a')
 GO
-INSERT [dbo].[users] ([user_id], [username], [password_hash], [salt], [user_role], [email]) VALUES (4, N'another fake user', N'blahblah', N'blah', N'user', NULL)
-GO
-INSERT [dbo].[users] ([user_id], [username], [password_hash], [salt], [user_role], [email]) VALUES (5, N'ultimate fake user', N'dflksdji', N'aldufoeij', N'user', NULL)
+
 GO
 SET IDENTITY_INSERT [dbo].[users] OFF
 GO
