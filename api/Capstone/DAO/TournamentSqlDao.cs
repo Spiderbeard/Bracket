@@ -89,9 +89,9 @@ namespace Capstone.DAO
                 {
                     conn.Open();
                     string sqlStatement = "SELECT tournament_id, name, numberofparticipants, currentround, organizer_id FROM tournament WHERE organizer_id = @organizer_id";
-                    SqlCommand cmd = new SqlCommand(sqlStatement, conn);
-                    cmd.Parameters.AddWithValue("@organizer_id", organizerId);
-                    SqlDataReader reader = cmd.ExecuteReader();
+                    SqlCommand tourneyCmd = new SqlCommand(sqlStatement, conn);
+                    tourneyCmd.Parameters.AddWithValue("@organizer_id", organizerId);
+                    SqlDataReader reader = tourneyCmd.ExecuteReader();
 
                     if (reader.HasRows)
                     {
@@ -138,6 +138,8 @@ namespace Capstone.DAO
 
             List<int> roundIds = new List<int>();
 
+            List<int> matchIds = new List<int>();
+
             foreach (Tournament tourney in tournamentList)
             {
                 output.Add(tourney);
@@ -145,48 +147,50 @@ namespace Capstone.DAO
                 tournamentIds.Add(tourney.TournamentId);
             }
 
-            List<Rounds> roundList = roundsDAO.GetRoundsByTournamentID(tournamentIds);
+            List<Rounds> roundList = roundsDAO.GetRoundsByTournamentID(tournamentIds,connectionString);
 
             foreach (Tournament tourney in output)
             {
                 foreach (Rounds round in roundList)
                 {
-                    roundIds.Add(round.RoundId);
-
+                   
                     if (round.TournamentId == tourney.TournamentId)
                     {
+                        roundIds.Add(round.RoundId);
                         tourney.Rounds.Add(round);
                     }
-
-
                 }
-
             }
 
-            List<Match> matchList = matchDAO.GetMatchByRoundId(roundIds);
+            List<Match> matchList = matchDAO.GetMatchByRoundId(roundIds,connectionString);
 
+            foreach(Match match in matchList)
+            {
+                matchIds.Add(match.MatchId);
+            }
+
+            List<Match> ParticipantList = participantsDAO.GetParticipantsByMatchIds(matchIds,connectionString);
+           
             foreach  (Tournament tourney in output)
             {
                for( int i =0 ; i<tourney.Rounds.Count ;i++)
                 {
-                    foreach(Match match in matchList)
+                    foreach(Match match in ParticipantList)
                     {
+                       
+
                         if( match.RoundId == tourney.Rounds[i].RoundId)
                         {
                             tourney.Rounds[i].Matches.Add(match);
                         }
-
-
                     }
 
                 }
-               
-
             }
-
             return output;
         }
-    }
+
+    }//ENDOFLINE
 }
 
 

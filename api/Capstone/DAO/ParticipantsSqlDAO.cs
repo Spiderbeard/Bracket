@@ -99,32 +99,35 @@ namespace Capstone.DAO
             return returnParticipant;
         }
 
-        public List<Participants> GetParticipantsByMatchIds(List<int> MatchIDs)
+        public List<Match> GetParticipantsByMatchIds(List<int> MatchIDs,string connectionString)
         {
-            List<Participants>  output = new List<Participants>();
+            List<Match>  output = new List<Match>();
 
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    conn.Open();
 
-                    string SqlStatement = $" select matchnumber, isActive, scoreteam1, scoreteam2, team1winner, team2winner, round_id, match_id, team1, team2, " +
-                        $"participant_id as participant1_Id, name as participant1_name, isActive as particpant1_isActive, participant_id as participant2_Id, name as participant2_name, isActive as participant2_isActive" +
-                        $"from match p join paticipants m1 on p.team1 = m1.participant_id join participants m2 on p.team2= m2.participant_id where match_id in ({MatchIDs}) ";
-                    SqlCommand cmd = new SqlCommand(SqlStatement,  conn);
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    if (reader.HasRows)
+                    foreach (int i in MatchIDs)
                     {
-                        while (reader.Read())
+
+
+                        conn.Open();
+
+                        string SqlStatement = $"select matchnumber, p.isActive, scoreteam1, scoreteam2, team1winner, team2winner, round_id, match_id, team1, team2, m1.participant_id as participant1_Id, m1.name as participant1_name, m1.isActive as particpant1_isActive, m2.participant_id as participant2_Id, m2.name as participant2_name, m2.isActive as participant2_isActive from match p join participants m1 on p.team1 = m1.participant_id join participants m2 on p.team2= m2.participant_id where p.match_id = {i}";
+                        SqlCommand cmd = new SqlCommand(SqlStatement, conn);
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        if (reader.HasRows)
                         {
-                            Participants p =  GetParticipantFromReader(reader);
-                            output.Add(p);
+                            while (reader.Read())
+                            {
+                                Match p = GetMatchAndSomeParticipantsFromReader(reader);
+                                output.Add(p);
+                            }
                         }
+                        conn.Close();
                     }
-
-
                 }
             }
             catch (Exception e)

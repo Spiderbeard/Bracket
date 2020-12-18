@@ -16,9 +16,6 @@ namespace Capstone.DAO
             connectionString = dbConnectionString;
         }
 
-        public RoundsSqlDAO()
-        {
-        }
 
         public List<Rounds> roundsByMatch {get; set;}
         public Rounds AddRound(Rounds round)
@@ -173,7 +170,7 @@ namespace Capstone.DAO
 
         }
 
-        public List<Rounds>GetRoundsByTournamentID( List<int> tournamentIDs)
+        public List<Rounds>GetRoundsByTournamentID( List<int> tournamentIDs,string connectionString)
         {
             
             List<Rounds> output = new List<Rounds>();
@@ -182,15 +179,16 @@ namespace Capstone.DAO
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    conn.Open();
+                    
                     foreach (int i in tournamentIDs)
                     {
+                        conn.Open();
 
 
                         string sqlStatement = $"select * from rounds where tournament_id = {i}";
-                        SqlCommand cmd = new SqlCommand(sqlStatement, conn);
+                        SqlCommand roundCmd = new SqlCommand(sqlStatement, conn);
 
-                        SqlDataReader reader = cmd.ExecuteReader();
+                        SqlDataReader reader = roundCmd.ExecuteReader();
 
                         if (reader.HasRows)
                         {
@@ -200,7 +198,7 @@ namespace Capstone.DAO
                                 output.Add(r);
                             }
                         }
-
+                        conn.Close();
                     }
                 }
             }

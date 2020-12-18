@@ -2,7 +2,7 @@
    <div id="user-tournament-page">
        <div class="bracket-well">
        <div class="userInfo"> 
-            <h4 class="user-info">Current User:{{this.$store.state.user.username}}</h4>		
+            <h4 class="user-info"><u>Current User:</u> {{this.$store.state.user.username}}</h4>		
        </div>
        <form>
            <div class="nav-input-boxes" style="justify-content: left; margin: -0.5% 2% 2%;">
@@ -20,9 +20,9 @@
                 <!-- <p v-for="tournament in tournaments"></p> -->
                 <div class="tournament-item" v-for="tournament in myTournaments" v-bind:key="tournament">
                     <p class="tournament-border">
-                        <span class="">Tournament Name: {{tournament.name}}</span>
-                        <span class="current-round">Round #: {{tournament.currentround}}</span>
-                        <span class="match-result">Participants remaining: <b>{{tournament.NumberOfParticipants}}</b></span>
+                        <span class="name">Tournament: {{tournament.name}}</span>
+                        <span class="current-round">Round #: {{tournament.currentRound}}</span>
+                        <span class="match-result">Participants remaining: <b>{{tournament.numberOfParticipants}}</b></span>
                         <button class="tiny-button">Record result</button>
                     </p>
                 </div>
@@ -40,16 +40,16 @@
             </div>
             <div class="allTournaments" v-show="this.selected =='Show All'">
                 <h5>All Tournaments</h5>
-                <div class="tournament-item">
+                <div class="tournament-item" v-for="tournament in myTournaments" v-bind:key="tournament">
                     <p class="tournament-border">
-                        <span class="">Santa Giveaway Tournament</span>
-                        <span class="current-round">Round #</span>
+                        <span style="float:left; min-width:17rem;">Tournament:<b>{{tournament.name}}</b> </span>
+                        <span class="current-round">Round #: <b>{{tournament.currentRound}}</b> </span>
 
                         <!-- TODO -->
                         <!-- v-if tournament is completed then show this -->
-                        <span class="match-result" style="display: none;">Participants remaining: <b>16</b></span>
+                        <span class="match-result" >Participants remaining: <b>{{tournament.numberOfParticipants}} </b></span>
                         <!-- v-else show this-->
-                        <span class="match-result" >Champion: <b>batman or something idk</b></span>
+                        <!-- <span class="match-result" >Champion: <b>batman or something idk</b></span> -->
                         
                         <button class="tiny-button">Record result</button>
                     </p>
@@ -159,5 +159,10 @@ export default {
 }
 .userInfo{
     margin: 2% 2%;
+}
+.name{
+    float:left;
+    min-width:17rem;
+    max-width:18rem;
 }
 </style>

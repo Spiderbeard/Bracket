@@ -13,7 +13,7 @@ namespace Capstone.DAO
         Rounds GetRound(int roundId);
         bool MarkRoundsInactive(int roundId);
         void GetMatchesByRound(int roundId);
-        List<Rounds> GetRoundsByTournamentID(List<int> tournamentIDs);
+        List<Rounds> GetRoundsByTournamentID(List<int> tournamentIDs,string connectionString);
 
 
 
