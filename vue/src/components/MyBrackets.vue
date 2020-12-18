@@ -42,7 +42,7 @@
                 <h5>All Tournaments</h5>
                 <div class="tournament-item" v-for="tournament in myTournaments" v-bind:key="tournament">
                     <p class="tournament-border">
-                        <span style="float:left; min-width:17rem;">Tournament:<b>{{tournament.name}}</b> </span>
+                        <span style="float:left; min-width:17rem; max-width:17rem;">Tournament: <b>{{tournament.name}}</b> </span>
                         <span class="current-round">Round #: <b>{{tournament.currentRound}}</b> </span>
 
                         <!-- TODO -->
