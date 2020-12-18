@@ -49,9 +49,9 @@
             <div class="team-top border-bottom border-dark">
               <span
                 class="d-flex"
-                :id="`team` + index"
-                @click="addcheck(`team` + index, index)"
-                @dblclick="removecheck(`team` + index, index)"
+                :id="`team` + (index + index)"
+                @click="addcheck(`team` + (index + index), index)"
+                @dblclick="removecheck(`team` + (index + index), index)"
               >
                 <div v-show="teamsArray[index].edit == false">
                   <label
@@ -95,13 +95,9 @@
                 -->
               <span
                 class="d-flex"
-                :id="`team` + (teamsArray.length - index - 1)"
-                @click="
-                  addcheck2(`team` + (teamsArray.length - index - 1), index)
-                "
-                @dblclick="
-                  removecheck2(`team` + (teamsArray.length - index - 1), index)
-                "
+                :id="`team` + (index + index + 1)"
+                @click="addcheck2(`team` + (index + index + 1), index)"
+                @dblclick="removecheck2(`team` + (index + index + 1), index)"
               >
                 <div
                   v-show="
@@ -223,7 +219,7 @@
                   "
                   v-if="round2Bys(index)"
                   >{{
-                    displayWinner(
+                    displayWinnerbottom(
                       index + 1 + index,
                       constuctMatches.length + index
                     )
@@ -357,7 +353,7 @@
                   v-if="round3Bys(index)"
                 >
                   {{
-                    displayWinner(
+                    displayWinnerbottom(
                       constuctMatches.length + index + 1 + index,
                       constuctMatches.length + round2Matches.length + index
                     )
@@ -434,7 +430,7 @@
                       constuctMatches.length +
                         round2Matches.length +
                         round3Matches.length -
-                        3,
+                        2,
                       matchArray.length - 1
                     )
                   }}</span
@@ -458,7 +454,7 @@
                           6 +
                           index +
                           index),
-                      index
+                      matchArray.length - 1
                     )
                   "
                   @dblclick="
@@ -469,15 +465,15 @@
                           6 +
                           index +
                           index),
-                      index
+                      matchArray.length - 1
                     )
                   "
                   >{{
-                    displayWinner(
+                    displayWinnerbottom(
                       constuctMatches.length +
                         round3Matches.length +
                         round2Matches.length -
-                        2,
+                        1,
                       matchArray.length - 1
                     )
                   }}</span
@@ -504,9 +500,9 @@
           <div
             class="border border-dark d-flex flex-column justify-content-center"
           >
-            <span class="champion">{{
-              displayWinner(matchArray.length - 1, matchArray.length - 1)
-            }}</span>
+            <span class="champion"
+              >{{ displayWinner(matchArray.length - 1, matchArray.length - 1) }}
+            </span>
           </div>
         </div>
       </div>
@@ -621,12 +617,15 @@ export default {
       return true;
     },
     addcheck(id, ind) {
+      console.log("id", id);
+      console.log("ind", ind);
       if (
         this.matchArray[ind].team1winner === false &&
         this.matchArray[ind].team2winner === false
       ) {
         if (!document.getElementById(id).classList.contains("completed")) {
           document.getElementById(id).classList.add("completed");
+          document.getElementById(id).classList.add("winner");
           document.getElementById(id).insertAdjacentHTML("beforeend", "&#9989");
 
           this.matchArray[ind].team1winner = true;
@@ -637,21 +636,25 @@ export default {
       ) {
         document.getElementById(id).classList.add("completed");
         document.getElementById(id).insertAdjacentHTML("beforeend", "&#9989");
-
+        document.getElementById(id).classList.add("winner");
         this.matchArray[ind].team1winner = true;
         let varid = "team";
-        let d = this.teamsArray.length - 1 - ind;
+        let p = id.slice(4, 6);
+        p = parseInt(p);
+        let d = 1;
+        d = d + p;
         varid += d;
 
         this.removecheck2(varid, ind);
       }
     },
-    removecheck(id) {
+    removecheck(id, index) {
       if (document.getElementById(id).classList.contains("completed")) {
         document.getElementById(id).classList.remove("completed");
+        document.getElementById(id).classList.remove("winner");
         let item = document.getElementById(id);
         document.getElementById(id).removeChild(item.lastChild);
-        let index = id.split("team").join("");
+
         this.matchArray[index].team1winner = false;
       }
     },
@@ -662,6 +665,7 @@ export default {
       ) {
         if (!document.getElementById(id).classList.contains("completed")) {
           document.getElementById(id).classList.add("completed");
+          document.getElementById(id).classList.add("winner");
           document.getElementById(id).insertAdjacentHTML("beforeend", "&#9989");
 
           this.matchArray[index].team2winner = true;
@@ -671,13 +675,18 @@ export default {
         this.matchArray[index].team1winner === true
       ) {
         document.getElementById(id).classList.add("completed");
+        document.getElementById(id).classList.add("winner");
         document.getElementById(id).insertAdjacentHTML("beforeend", "&#9989");
 
         this.matchArray[index].team2winner = true;
 
         let varid = "team";
-        let d = index;
-        varid += d;
+        let p = 0;
+        p = id.slice(4, 6);
+        p = parseInt(p);
+        let d = 1;
+        p -= d;
+        varid += p;
 
         this.removecheck(varid, index);
       }
@@ -685,6 +694,7 @@ export default {
     removecheck2(id, index) {
       if (document.getElementById(id).classList.contains("completed")) {
         document.getElementById(id).classList.remove("completed");
+        document.getElementById(id).classList.remove("winner");
         let item = document.getElementById(id);
         document.getElementById(id).removeChild(item.lastChild);
 
@@ -692,19 +702,35 @@ export default {
       }
     },
     displayWinner(index, matchindex) {
-      console.log("index", index);
       if (this.matchArray[index].team1winner === true) {
         this.matchArray[matchindex].Participants1_name = this.matchArray[
           index
-        ].Participants1_name;
-        return this.matchArray[index].Participants1_name;
+        ].Participants1.name;
+        return this.matchArray[matchindex].Participants1.name;
       } else if (this.matchArray[index].team2winner === true) {
-        this.matchArray[index].Participants2_name = this.matchArray[
+        this.matchArray[matchindex].Participants1.name = this.matchArray[
           index
-        ].Participants2_name;
-        return this.matchArray[index].Participants2_name;
+        ].Participants2.name;
+        return this.matchArray[matchindex].Participants1.name;
       } else {
         return `Winner of Match`;
+      }
+    },
+    displayWinnerbottom(index, matchindex) {
+      console.log("index", index);
+      console.log("matchindex", matchindex);
+      if (this.matchArray[index].team2winner === true) {
+        this.matchArray[matchindex].Participants2.name = this.matchArray[
+          index
+        ].Participants2.name;
+        return this.matchArray[matchindex].Participants2.name;
+      } else if (this.matchArray[index].team1winner === true) {
+        this.matchArray[matchindex].Participants2.name = this.matchArray[
+          index
+        ].Participants1.name;
+        return this.matchArray[matchindex].Participants2.name;
+      } else {
+        return "Winner of Match";
       }
     },
 
