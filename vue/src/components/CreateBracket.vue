@@ -705,13 +705,13 @@ export default {
       if (this.matchArray[index].team1winner === true) {
         this.matchArray[matchindex].Participants1_name = this.matchArray[
           index
-        ].Participants1.name;
-        return this.matchArray[matchindex].Participants1.name;
+        ].Participants1_name;
+        return this.matchArray[matchindex].Participants1_name;
       } else if (this.matchArray[index].team2winner === true) {
-        this.matchArray[matchindex].Participants1.name = this.matchArray[
+        this.matchArray[matchindex].Participants1_name = this.matchArray[
           index
-        ].Participants2.name;
-        return this.matchArray[matchindex].Participants1.name;
+        ].Participants2_name;
+        return this.matchArray[matchindex].Participants1_name;
       } else {
         return `Winner of Match`;
       }
@@ -720,15 +720,15 @@ export default {
       console.log("index", index);
       console.log("matchindex", matchindex);
       if (this.matchArray[index].team2winner === true) {
-        this.matchArray[matchindex].Participants2.name = this.matchArray[
+        this.matchArray[matchindex].Participants2_name = this.matchArray[
           index
-        ].Participants2.name;
-        return this.matchArray[matchindex].Participants2.name;
+        ].Participants2_name;
+        return this.matchArray[matchindex].Participants2_name;
       } else if (this.matchArray[index].team1winner === true) {
-        this.matchArray[matchindex].Participants2.name = this.matchArray[
+        this.matchArray[matchindex].Participants2_name = this.matchArray[
           index
-        ].Participants1.name;
-        return this.matchArray[matchindex].Participants2.name;
+        ].Participants1_name;
+        return this.matchArray[matchindex].Participants2_name;
       } else {
         return "Winner of Match";
       }
