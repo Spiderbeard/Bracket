@@ -430,7 +430,7 @@
                       constuctMatches.length +
                         round2Matches.length +
                         round3Matches.length -
-                        4,
+                        2,
                       matchArray.length - 1
                     )
                   }}</span
@@ -622,6 +622,7 @@ export default {
       ) {
         if (!document.getElementById(id).classList.contains("completed")) {
           document.getElementById(id).classList.add("completed");
+          document.getElementById(id).classList.add("winner");
           document.getElementById(id).insertAdjacentHTML("beforeend", "&#9989");
 
           this.matchArray[ind].team1winner = true;
@@ -632,7 +633,7 @@ export default {
       ) {
         document.getElementById(id).classList.add("completed");
         document.getElementById(id).insertAdjacentHTML("beforeend", "&#9989");
-
+        document.getElementById(id).classList.add("winner");
         this.matchArray[ind].team1winner = true;
         let varid = "team";
         let p = id.slice(4, 6);
@@ -647,6 +648,7 @@ export default {
     removecheck(id, index) {
       if (document.getElementById(id).classList.contains("completed")) {
         document.getElementById(id).classList.remove("completed");
+        document.getElementById(id).classList.remove("winner");
         let item = document.getElementById(id);
         document.getElementById(id).removeChild(item.lastChild);
 
@@ -660,6 +662,7 @@ export default {
       ) {
         if (!document.getElementById(id).classList.contains("completed")) {
           document.getElementById(id).classList.add("completed");
+          document.getElementById(id).classList.add("winner");
           document.getElementById(id).insertAdjacentHTML("beforeend", "&#9989");
 
           this.matchArray[index].team2winner = true;
@@ -669,6 +672,7 @@ export default {
         this.matchArray[index].team1winner === true
       ) {
         document.getElementById(id).classList.add("completed");
+        document.getElementById(id).classList.add("winner");
         document.getElementById(id).insertAdjacentHTML("beforeend", "&#9989");
 
         this.matchArray[index].team2winner = true;
@@ -687,6 +691,7 @@ export default {
     removecheck2(id, index) {
       if (document.getElementById(id).classList.contains("completed")) {
         document.getElementById(id).classList.remove("completed");
+        document.getElementById(id).classList.remove("winner");
         let item = document.getElementById(id);
         document.getElementById(id).removeChild(item.lastChild);
 
