@@ -325,6 +325,8 @@ GO
 GO
 SET IDENTITY_INSERT [dbo].[users] OFF
 GO
+ALTER TABLE [dbo].[rounds] ADD  CONSTRAINT [DF_rounds_isActive]  DEFAULT ((1)) FOR [isActive]
+GO
 ALTER TABLE [dbo].[match] ADD  CONSTRAINT [DF_match_isActive]  DEFAULT ((1)) FOR [isActive]
 GO
 ALTER TABLE [dbo].[participants] ADD  CONSTRAINT [DF_participants_isActive]  DEFAULT ((1)) FOR [isActive]

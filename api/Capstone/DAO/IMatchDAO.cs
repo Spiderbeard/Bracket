@@ -14,7 +14,7 @@ namespace Capstone.DAO
         Match GetMatch(int matchId);
         bool UpdateScoreTeamOne(Match updated);
         bool UpdateScoreTeamTwo(Match updated);
-        List<Match> GetMatchByRoundId(List<int> roundIds);
+        List<Match> GetMatchByRoundId(List<int> roundIds,string connectionString);
 
 
     }

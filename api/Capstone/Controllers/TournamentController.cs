@@ -34,12 +34,12 @@ namespace Capstone.Controllers
             }
         }
 
-        [HttpGet("{id}")]
-        public ActionResult <List<Tournament>> AllYourTournamentsAreBelongToMe(int id)
+        [HttpGet("{Organizerid}")]
+        public ActionResult <List<Tournament>> AllYourTournamentsAreBelongToMe(int Organizerid)
         {
             try
             {
-                return Ok(tournamentDAO.AllYourTournamentAreBelongToMe(id));
+                return Ok(tournamentDAO.AllYourTournamentAreBelongToMe(Organizerid));
             }
             catch(Exception e)
             {

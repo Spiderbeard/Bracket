@@ -516,6 +516,7 @@
           @click="
             updateActiveBracket();
             SaveParticipants();
+            
           "
         >
           Add Teams
@@ -534,6 +535,7 @@ import fork from "@/components/fork";
 import HalfFork from "@/components/HalfFork";
 import ChampionLine from "./ChampionLine.vue";
 import ParticipantService from "@/services/ParticipantService";
+import RoundService from "@/services/RoundService";
 
 export default {
   components: {
@@ -564,6 +566,7 @@ export default {
 
       matchArray: [],
       axiosData: [],
+      RoundsArray:[],
     };
   },
   computed: {
@@ -700,15 +703,15 @@ export default {
     },
     displayWinner(index, matchindex) {
       if (this.matchArray[index].team1winner === true) {
-        this.matchArray[matchindex].Participants1.name = this.matchArray[
+        this.matchArray[matchindex].Participants1_name = this.matchArray[
           index
-        ].Participants1.name;
-        return this.matchArray[matchindex].Participants1.name;
+        ].Participants1_name;
+        return this.matchArray[matchindex].Participants1_name;
       } else if (this.matchArray[index].team2winner === true) {
-        this.matchArray[matchindex].Participants1.name = this.matchArray[
+        this.matchArray[matchindex].Participants1_name = this.matchArray[
           index
-        ].Participants2.name;
-        return this.matchArray[matchindex].Participants1.name;
+        ].Participants2_name;
+        return this.matchArray[matchindex].Participants1_name;
       } else {
         return `Winner of Match`;
       }
@@ -717,15 +720,15 @@ export default {
       console.log("index", index);
       console.log("matchindex", matchindex);
       if (this.matchArray[index].team2winner === true) {
-        this.matchArray[matchindex].Participants2.name = this.matchArray[
+        this.matchArray[matchindex].Participants2_name = this.matchArray[
           index
-        ].Participants2.name;
-        return this.matchArray[matchindex].Participants2.name;
+        ].Participants2_name;
+        return this.matchArray[matchindex].Participants2_name;
       } else if (this.matchArray[index].team1winner === true) {
-        this.matchArray[matchindex].Participants2.name = this.matchArray[
+        this.matchArray[matchindex].Participants2_name = this.matchArray[
           index
-        ].Participants1.name;
-        return this.matchArray[matchindex].Participants2.name;
+        ].Participants1_name;
+        return this.matchArray[matchindex].Participants2_name;
       } else {
         return "Winner of Match";
       }
@@ -820,8 +823,8 @@ export default {
     },
     updateActiveBracket() {
       for (let i = 0; i < this.matchArray.length / 2; i++) {
-        this.matchArray[i].Participants1.name = this.teamsArray[i].name;
-        this.matchArray[i].Participants2.name = this.teamsArray[
+        this.matchArray[i].Participants1_name = this.teamsArray[i].name;
+        this.matchArray[i].Participants2_name = this.teamsArray[
           this.teamsArray.length - 1 - i
         ].name;
       }
@@ -839,20 +842,35 @@ export default {
       }
     },
     SaveParticipants() {
-      this.prepData();
+      this.prepDataParticipants();
       ParticipantService.AddParticipants(this.axiosData)
         .then((response) => {
           if (response.status == 200) {
             console.log(response.data);
             this.$store.commit("SET_PARTICIPANTS", response.data);
+            this.SaveRounds();
           }
         })
         .catch((error) => {
           console.log(error);
         });
     },
+    SaveRounds(){
+      this.PrepDataRounds();
+      RoundService.AddRounds(this.RoundsArray)
+      .then(response =>{
+        if (response.status == 200){
+          console.log(response.data);
+          this.$store.commit('SET_ROUNDS_LIST',response.data)
+        }
+      })
+      .catch(error =>{
+        console.log(error);
+      })
 
-    prepData() {
+    },
+
+    prepDataParticipants() {
       this.teamsArray.forEach((team) => {
         if (team.name == "") {
           team.name = team.id;
@@ -860,6 +878,16 @@ export default {
         this.axiosData.push(team);
       });
     },
+    PrepDataRounds(){
+      for ( let i=0;i<this.getNumberOfRounds;i++){
+        let Round={
+          RoundNumber:i,
+          TournamentId:this.$store.state.Tournament.tournamentId,
+          
+        };
+        this.RoundsArray.push(Round);
+      }
+    }
   },
 };
 </script>

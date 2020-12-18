@@ -102,7 +102,7 @@ namespace Capstone.DAO
             return returnMatch;
         }
 
-        public List<Match> GetMatchByRoundId(List<int> roundIds)
+        public List<Match> GetMatchByRoundId(List<int> roundIds,string connectionString)
         {
             
             List<Match> returnMatches = new List<Match>();

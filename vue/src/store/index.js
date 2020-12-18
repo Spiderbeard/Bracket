@@ -14,6 +14,10 @@ const currentUser = JSON.parse(localStorage.getItem('user'));
 const currentTournament = JSON.parse(localStorage.getItem('tournament'));
 const Participants = localStorage.getItem('Participants')
 const currentTeams = localStorage.getItem('teams');
+const currentRoundsList = localStorage.getItem('roundsList');
+const currentMatches = localStorage.getItem('matchArray');
+
+
 
 if(currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
@@ -29,10 +33,10 @@ export default new Vuex.Store({
       name:'',
       teams: currentTeams|| [],
     },
-    matchArray:[],
+    matches:currentMatches || [{}],
     Tournament:currentTournament || {},
-
-
+    roundsList:currentRoundsList || [{}],
+    MyTournaments:[],
     match: {
       MatchNumber: 0,
       isActive: true,
@@ -42,18 +46,12 @@ export default new Vuex.Store({
       team2winner: false,
       roundId: 0,
       matchId: 0,
-      Participants1: {
-        participantId: 0,
-        name: '',
-        isActive: true
-
-      },
-      Participants2: {
-        participantId: 0,
-        name: '',
-        isActive: true
-
-      },
+      Participants1_Id:0,
+      Participants1_name:'',
+      PArticipants1_isActive:true, 
+      Participants2_Id:0,
+      Participants2_name:'',
+      Participants2_isActive:true,
       
 
     }
@@ -101,6 +99,18 @@ export default new Vuex.Store({
     SET_TOURNAMENT(state,tournament){
       state.Tournament=tournament;
       localStorage.setItem('tournament',JSON.stringify(tournament));
+    },
+    SET_ROUNDS_LIST(state,roundsArray){
+      state.roundsList=roundsArray;
+      localStorage.setItem('roundsList',JSON.stringify(roundsArray));
+    },
+    SET_MATCHES(state,matchArray){
+      state.matches=matchArray;
+      localStorage.setItem('matchArray',JSON.stringify(matchArray));
+
+    },
+    SET_MY_TOURNAMENTS(state,TournamentsList){
+      state.MyTournaments= TournamentsList;
     }
   }
 })
